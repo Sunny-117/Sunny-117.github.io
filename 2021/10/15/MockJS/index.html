@@ -1,0 +1,664 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <meta name="description" content="https:&#x2F;&#x2F;github.com&#x2F;nuysoft&#x2F;Mock&#x2F;wiki&#x2F;Getting-Startedhttp:&#x2F;&#x2F;mockjs.com&#x2F; 语法规范1. 属性值是字符串 String123456console.log(    Mock.mock(&amp;#123;        &amp;#x27;data1|1-4&amp;#x27;: &amp;#x27;陈学辉&amp;#x27;,		&#x2F;&#x2F;随机重复1-4次        &amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MockJS">
+<meta property="og:url" content="http://example.com/2021/10/15/MockJS/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="https:&#x2F;&#x2F;github.com&#x2F;nuysoft&#x2F;Mock&#x2F;wiki&#x2F;Getting-Startedhttp:&#x2F;&#x2F;mockjs.com&#x2F; 语法规范1. 属性值是字符串 String123456console.log(    Mock.mock(&amp;#123;        &amp;#x27;data1|1-4&amp;#x27;: &amp;#x27;陈学辉&amp;#x27;,		&#x2F;&#x2F;随机重复1-4次        &amp;#x">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-15T10:43:11.000Z">
+<meta property="article:modified_time" content="2021-10-15T10:46:04.665Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>MockJS - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="MockJS">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-15 18:43" pubdate>
+        October 15, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      9.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">MockJS</h1>
+            
+            <div class="markdown-body">
+              <p><a target="_blank" rel="noopener" href="https://github.com/nuysoft/Mock/wiki/Getting-Started">https://github.com/nuysoft/Mock/wiki/Getting-Started</a><br><a target="_blank" rel="noopener" href="http://mockjs.com/">http://mockjs.com/</a></p>
+<h1 id="语法规范"><a href="#语法规范" class="headerlink" title="语法规范"></a>语法规范</h1><h2 id="1-属性值是字符串-String"><a href="#1-属性值是字符串-String" class="headerlink" title="1. 属性值是字符串 String"></a>1. 属性值是字符串 String</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html">console.log(<br>    Mock.mock(&#123;<br>        &#x27;data1|1-4&#x27;: &#x27;陈学辉&#x27;,		//随机重复1-4次<br>        &#x27;data2|3&#x27;: &#x27;好帅&#x27;,	//固定重置3次<br>    &#125;)<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="2-属性值是数字-Number"><a href="#2-属性值是数字-Number" class="headerlink" title="2. 属性值是数字 Number"></a>2. 属性值是数字 Number</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<br>  Mock.mock(&#123;<br>    <span class="hljs-string">&#x27;number1|+1&#x27;</span>: <span class="hljs-number">100</span>,	<span class="hljs-comment">//整数，自动加1并且初始值为100</span><br>    <span class="hljs-string">&#x27;number2|1-100&#x27;</span>: <span class="hljs-number">12</span>,	<span class="hljs-comment">//整数，1-100之间的随机数，包括1和100（1=&lt;数字&lt;=100）	12用来确定是数据为数字类型</span><br>    <span class="hljs-string">&#x27;number3|1-100.5&#x27;</span>: <span class="hljs-number">12</span>,	<span class="hljs-comment">//小数，整数部分为为1-100间随机数，包括1和100；小数部分为固定5位随机数</span><br>    <span class="hljs-string">&#x27;number4|1-100.1-10&#x27;</span>: <span class="hljs-number">12</span>,	<span class="hljs-comment">//小数，整数部分为为1-100间随机数，包括1和100；小数部分为1-10个随机数（位数随机，数字也随机）</span><br>    <span class="hljs-string">&#x27;number5|123.1-10&#x27;</span>: <span class="hljs-number">12</span>,	<span class="hljs-comment">//数字123后面随机添加1-10位小数</span><br>    <span class="hljs-string">&#x27;number6|123.10&#x27;</span>: <span class="hljs-number">12</span>,	<span class="hljs-comment">//数字123后面固定添加10位小数，但小数的值是随机的</span><br>  &#125;)<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="3-属性值是布尔型-Boolean"><a href="#3-属性值是布尔型-Boolean" class="headerlink" title="3. 属性值是布尔型 Boolean"></a>3. 属性值是布尔型 Boolean</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html">console.log(<br>    Mock.mock(&#123;<br>        &#x27;b1|1&#x27;: false,	//随机生成一个布尔值，true与false的概率各为一半<br>        &#x27;b2|1-5&#x27;: true,	//随机生成一个布尔值，值为value的概率是min / (min + max)，值为!value的概率是max / (min + max)<br>    &#125;)<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="4-属性值是对象-Object"><a href="#4-属性值是对象-Object" class="headerlink" title="4. 属性值是对象 Object"></a>4. 属性值是对象 Object</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Mock.mock(&#123;<br>        <span class="hljs-string">&#x27;num1|1-3&#x27;</span>: &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">20</span>, <span class="hljs-attr">c</span>: <span class="hljs-number">30</span>, <span class="hljs-attr">d</span>: <span class="hljs-number">40</span> &#125;,	<span class="hljs-comment">//随机选取对象里1-3个属性</span><br>        <span class="hljs-string">&#x27;num2|2&#x27;</span>: &#123; <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">20</span>, <span class="hljs-attr">c</span>: <span class="hljs-number">30</span>, <span class="hljs-attr">d</span>: <span class="hljs-number">40</span> &#125;,	<span class="hljs-comment">//随机选取对象里2个属性</span><br>    &#125;)<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="5-属性值是数组-Array"><a href="#5-属性值是数组-Array" class="headerlink" title="5.属性值是数组 Array"></a>5.属性值是数组 Array</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html">console.log(<br>    Mock.mock(&#123;<br>        &#x27;arr1|1&#x27;: [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;],	//随机选取数组里1个数据<br>        &#x27;arr2|1-3&#x27;: [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;],	//通过重复属性值生成一个新数组，min&lt;=重复次数&lt;=max<br>    &#125;)<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="6-属性值是函数-Function"><a href="#6-属性值是函数-Function" class="headerlink" title="6. 属性值是函数 Function"></a>6. 属性值是函数 Function</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Mock.mock(&#123;<br>        <span class="hljs-string">&#x27;result&#x27;</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + <span class="hljs-number">2</span> &#125;	<span class="hljs-comment">//把函数的返回值当作属性的结果</span><br>    &#125;)<br>)<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="7-属性值是正则表达式-RegExp"><a href="#7-属性值是正则表达式-RegExp" class="headerlink" title="7. 属性值是正则表达式 RegExp"></a>7. 属性值是正则表达式 RegExp</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Mock.mock(&#123;<br>        <span class="hljs-string">&#x27;reg1&#x27;</span>: <span class="hljs-regexp">/[a-z][A-Z][0-9]/</span>,<br>        <span class="hljs-string">&#x27;reg2&#x27;</span>: <span class="hljs-regexp">/\w\W\s\S\d\D/</span>,<br>        <span class="hljs-string">&#x27;reg3&#x27;</span>: <span class="hljs-regexp">/\d&#123;5,10&#125;/</span><br>    &#125;)<br>)<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="Mock-Random"><a href="#Mock-Random" class="headerlink" title="Mock.Random"></a>Mock.Random</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> Random = Mock.Random;<br><span class="hljs-comment">// console.log(Random);</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="1、Basics-基础类里的方法，共7个"><a href="#1、Basics-基础类里的方法，共7个" class="headerlink" title="1、Basics  基础类里的方法，共7个"></a>1、Basics  基础类里的方法，共7个</h2><h3 id="Random-boolean"><a href="#Random-boolean" class="headerlink" title="Random.boolean()"></a>Random.boolean()</h3><p>随机一个布尔值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.boolean(),<br>    Random.boolean(<span class="hljs-number">1</span>, <span class="hljs-number">9</span>, <span class="hljs-literal">true</span>),<br>    Random.boolean(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-literal">false</span>),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-natural"><a href="#Random-natural" class="headerlink" title="Random.natural()"></a>Random.natural()</h3><p>随机一个自然数（大于等于 0 的整数）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.natural(),<br>    Random.natural(<span class="hljs-number">100</span>),<br>    Random.natural(<span class="hljs-number">0</span>, <span class="hljs-number">50</span>),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-integer"><a href="#Random-integer" class="headerlink" title="Random.integer()"></a>Random.integer()</h3><p>随机一个整数（包含负数）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.integer(),<br>    Random.integer(-<span class="hljs-number">100</span>),<br>    Random.integer(-<span class="hljs-number">50</span>, <span class="hljs-number">50</span>),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-float"><a href="#Random-float" class="headerlink" title="Random.float()"></a>Random.float()</h3><p>随机一个小数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.float(),<br>    Random.float(<span class="hljs-number">0</span>),<br>    Random.float(-<span class="hljs-number">10</span>, <span class="hljs-number">10</span>),<br>    Random.float(-<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">3</span>),<br>    Random.float(-<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-character"><a href="#Random-character" class="headerlink" title="Random.character()"></a>Random.character()</h3><p>随机一个字符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.character(),<br>    Random.character(<span class="hljs-string">&#x27;abc123&#x27;</span>),<br>    Random.character(<span class="hljs-string">&#x27;lower&#x27;</span>),<br>    Random.character(<span class="hljs-string">&#x27;symbol&#x27;</span>),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-string"><a href="#Random-string" class="headerlink" title="Random.string()"></a>Random.string()</h3><p>随机一个字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.string(),<br>    Random.string(<span class="hljs-number">5</span>),<br>    Random.string(<span class="hljs-number">7</span>, <span class="hljs-number">10</span>),<br>    Random.string(<span class="hljs-string">&#x27;symbol&#x27;</span>, <span class="hljs-number">5</span>),<br>    Random.string(<span class="hljs-string">&#x27;abc123&#x27;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-range"><a href="#Random-range" class="headerlink" title="Random.range()"></a>Random.range()</h3><p>随机一个整数数据的数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.range(<span class="hljs-number">7</span>),<br>    Random.range(<span class="hljs-number">3</span>, <span class="hljs-number">7</span>),<br>    Random.range(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="Random对象"><a href="#Random对象" class="headerlink" title="Random对象"></a>Random对象</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> Random = Mock.Random;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="2、Date-日期类里的方法，共4个"><a href="#2、Date-日期类里的方法，共4个" class="headerlink" title="2、Date 日期类里的方法，共4个"></a>2、Date 日期类里的方法，共4个</h2><h3 id="Random-date"><a href="#Random-date" class="headerlink" title="Random.date()"></a>Random.date()</h3><p>随机一个日期</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.date(),<br>    Random.date(<span class="hljs-string">&#x27;yyyy-MM--dd : HH-m-ss&#x27;</span>),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-time"><a href="#Random-time" class="headerlink" title="Random.time()"></a>Random.time()</h3><p>随机一个时间</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.time(),<br>    Random.time(<span class="hljs-string">&#x27;A HH:mm:ss:SS&#x27;</span>),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-datetime"><a href="#Random-datetime" class="headerlink" title="Random.datetime()"></a>Random.datetime()</h3><p>随机一个日期+时间</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.datetime(),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-now"><a href="#Random-now" class="headerlink" title="Random.now()"></a>Random.now()</h3><p>返回当前的日期和时间字符串</p>
+<h3 id="week"><a href="#week" class="headerlink" title="week"></a>week</h3><p>定到这个周的第一天</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.now(),<br>    Random.now(<span class="hljs-string">&#x27;minute&#x27;</span>),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="3、Image-图片类里的方法，花2个"><a href="#3、Image-图片类里的方法，花2个" class="headerlink" title="3、Image 图片类里的方法，花2个"></a>3、Image 图片类里的方法，花2个</h2><h3 id="Random-image"><a href="#Random-image" class="headerlink" title="Random.image()"></a>Random.image()</h3><p>生成一个随机的图片地址</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.image(),<br>    Random.image(<span class="hljs-string">&#x27;200x100&#x27;</span>),<br>    Random.image(<span class="hljs-string">&#x27;200x100&#x27;</span>, <span class="hljs-string">&#x27;#ffcc33&#x27;</span>, <span class="hljs-string">&#x27;#FFF&#x27;</span>, <span class="hljs-string">&#x27;png&#x27;</span>, <span class="hljs-string">&#x27;kaivon&#x27;</span>),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-dataImage"><a href="#Random-dataImage" class="headerlink" title="Random.dataImage()"></a>Random.dataImage()</h3><p>生成一段随机的 Base64 图片编码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    <span class="hljs-comment">//Random.dataImage(),</span><br>    Random.dataImage(<span class="hljs-string">&#x27;200x100&#x27;</span>),<br>)<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="Color-颜色类里的方法，共5个"><a href="#Color-颜色类里的方法，共5个" class="headerlink" title="Color  颜色类里的方法，共5个"></a>Color  颜色类里的方法，共5个</h2><h3 id="Random-color"><a href="#Random-color" class="headerlink" title="Random.color()"></a>Random.color()</h3><p>随机一个16进制的颜色</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.color(),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-hex"><a href="#Random-hex" class="headerlink" title="Random.hex()"></a>Random.hex()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.hex(),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-rgb"><a href="#Random-rgb" class="headerlink" title="Random.rgb()"></a>Random.rgb()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.rgb(),	<span class="hljs-comment">//随机生成一个rgb格式的颜色</span><br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-rgba"><a href="#Random-rgba" class="headerlink" title="Random.rgba()"></a>Random.rgba()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.rgba(),	<span class="hljs-comment">//随机生成一个rgba格式的颜色</span><br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-hsl"><a href="#Random-hsl" class="headerlink" title="Random.hsl()"></a>Random.hsl()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Random.hsl(),	<span class="hljs-comment">//随机生成一个hsl格式(色相、饱和度、亮度)的颜色</span><br>);<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="5、Text-文本类里的方法，共8个"><a href="#5、Text-文本类里的方法，共8个" class="headerlink" title="5、Text 文本类里的方法，共8个"></a>5、Text 文本类里的方法，共8个</h2><h3 id="Random-paragraph"><a href="#Random-paragraph" class="headerlink" title="Random.paragraph()"></a>Random.paragraph()</h3><p>随机生成一段文本</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.paragraph());<br><span class="hljs-built_in">console</span>.log(Random.paragraph(<span class="hljs-number">2</span>));<br><span class="hljs-built_in">console</span>.log(Random.paragraph(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>));<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-cparagraph"><a href="#Random-cparagraph" class="headerlink" title="Random.cparagraph()"></a>Random.cparagraph()</h3><p>随机生成一段中文文本。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(Random.cparagraph());<br><span class="hljs-built_in">console</span>.log(Random.cparagraph(<span class="hljs-number">2</span>));<br><span class="hljs-built_in">console</span>.log(Random.cparagraph(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>));<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-sentence"><a href="#Random-sentence" class="headerlink" title="Random.sentence()"></a>Random.sentence()</h3><p>随机生成一个句子，句子首字母大写</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(Random.sentence());<br><span class="hljs-built_in">console</span>.log(Random.sentence(<span class="hljs-number">5</span>));<br><span class="hljs-built_in">console</span>.log(Random.sentence(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>));<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-csentence"><a href="#Random-csentence" class="headerlink" title="Random.csentence()"></a>Random.csentence()</h3><p>随机生成一段中文文本</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.csentence());<br><span class="hljs-built_in">console</span>.log(Random.csentence(<span class="hljs-number">5</span>));<br><span class="hljs-built_in">console</span>.log(Random.csentence(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>));<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-word"><a href="#Random-word" class="headerlink" title="Random.word()"></a>Random.word()</h3><p>随机生成一个单词</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.word());<br><span class="hljs-built_in">console</span>.log(Random.word(<span class="hljs-number">5</span>));<br><span class="hljs-built_in">console</span>.log(Random.word(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>));<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-cword"><a href="#Random-cword" class="headerlink" title="Random.cword()"></a>Random.cword()</h3><p>随机生成一个汉字</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.cword());<br><span class="hljs-built_in">console</span>.log(Random.cword(<span class="hljs-number">5</span>));<br><span class="hljs-built_in">console</span>.log(Random.cword(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>));<br><span class="hljs-built_in">console</span>.log(Random.cword(<span class="hljs-string">&#x27;零一二三四五六七八九十&#x27;</span>, <span class="hljs-number">3</span>));<br><span class="hljs-built_in">console</span>.log(Random.cword(<span class="hljs-string">&#x27;零一二三四五六七八九十&#x27;</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>));<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-title"><a href="#Random-title" class="headerlink" title="Random.title()"></a>Random.title()</h3><p>随机生成一个标题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.title());<br><span class="hljs-built_in">console</span>.log(Random.title(<span class="hljs-number">3</span>));<br><span class="hljs-built_in">console</span>.log(Random.title(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>));<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-ctitle"><a href="#Random-ctitle" class="headerlink" title="Random.ctitle()"></a>Random.ctitle()</h3><p>随机生成一句中文标题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.ctitle());<br><span class="hljs-built_in">console</span>.log(Random.ctitle(<span class="hljs-number">3</span>));<br><span class="hljs-built_in">console</span>.log(Random.ctitle(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>));<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="6、Name-名字类里的方法，共6个"><a href="#6、Name-名字类里的方法，共6个" class="headerlink" title="6、Name 名字类里的方法，共6个"></a>6、Name 名字类里的方法，共6个</h2><h3 id="Random-first"><a href="#Random-first" class="headerlink" title="Random.first()"></a>Random.first()</h3><p>随机生成一个常见的英文名</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.first())<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-last"><a href="#Random-last" class="headerlink" title="Random.last()"></a>Random.last()</h3><p>随机生成一个常见的英文姓</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.last());<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-name"><a href="#Random-name" class="headerlink" title="Random.name()"></a>Random.name()</h3><p>随机生成一个常见的英文姓名</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.name(<span class="hljs-literal">true</span>));	<span class="hljs-comment">//是否添加一个中间值</span><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-cfirst"><a href="#Random-cfirst" class="headerlink" title="Random.cfirst()"></a>Random.cfirst()</h3><p>随机生成一个常见的中文名</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.cfirst());<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-clast"><a href="#Random-clast" class="headerlink" title="Random.clast()"></a>Random.clast()</h3><p>随机生成一个常见的中文姓</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.clast());<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-cname"><a href="#Random-cname" class="headerlink" title="Random.cname()"></a>Random.cname()</h3><p>随机生成一个常见的中文姓名</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.cname());<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="7、Web-Web类里的方法，共6个"><a href="#7、Web-Web类里的方法，共6个" class="headerlink" title="7、Web  Web类里的方法，共6个"></a>7、Web  Web类里的方法，共6个</h2><h3 id="Random-url"><a href="#Random-url" class="headerlink" title="Random.url()"></a>Random.url()</h3><p>随机生成一个 URL</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.url());<br><span class="hljs-built_in">console</span>.log(Random.url(<span class="hljs-string">&#x27;http&#x27;</span>));	<span class="hljs-comment">//指定协议</span><br><span class="hljs-built_in">console</span>.log(Random.url(<span class="hljs-string">&#x27;http&#x27;</span>, <span class="hljs-string">&#x27;kaivon.cn&#x27;</span>));	<span class="hljs-comment">//指定域名</span><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-protocol"><a href="#Random-protocol" class="headerlink" title="Random.protocol()"></a>Random.protocol()</h3><p>随机生成一个 URL 协议</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.protocol());<span class="hljs-string">``</span><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-domain"><a href="#Random-domain" class="headerlink" title="Random.domain()"></a>Random.domain()</h3><p>随机生成一个域名</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.domain());<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-tld"><a href="#Random-tld" class="headerlink" title="Random.tld()"></a>Random.tld()</h3><p>随机生成一个顶级域名</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.tld());<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-email"><a href="#Random-email" class="headerlink" title="Random.email()"></a>Random.email()</h3><p>随机生成一个邮件地址</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.email());<br><span class="hljs-built_in">console</span>.log(Random.email(<span class="hljs-string">&#x27;kaivon.cn&#x27;</span>));	<span class="hljs-comment">//指定@后的域名</span><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-ip"><a href="#Random-ip" class="headerlink" title="Random.ip()"></a>Random.ip()</h3><p>随机生成一个 IP 地址</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.ip());<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="8、Address-地址类里的方法，共5个"><a href="#8、Address-地址类里的方法，共5个" class="headerlink" title="8、Address  地址类里的方法，共5个"></a>8、Address  地址类里的方法，共5个</h2><h3 id="Random-region"><a href="#Random-region" class="headerlink" title="Random.region()"></a>Random.region()</h3><p>随机生成一个（中国）大区</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.region());<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-province"><a href="#Random-province" class="headerlink" title="Random.province()"></a>Random.province()</h3><p>随机生成一个（中国）省（或直辖市、自治区、特别行政区）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.province());<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-city"><a href="#Random-city" class="headerlink" title="Random.city()"></a>Random.city()</h3><p>随机生成一个（中国）市</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.city());<br><span class="hljs-built_in">console</span>.log(Random.city(<span class="hljs-literal">true</span>));	<span class="hljs-comment">//是否生成所属的省</span><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-county"><a href="#Random-county" class="headerlink" title="Random.county()"></a>Random.county()</h3><p>随机生成一个（中国）县</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.county());<br><span class="hljs-built_in">console</span>.log(Random.county(<span class="hljs-literal">true</span>));	<span class="hljs-comment">//指示是否生成所属的省、市</span><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-zip"><a href="#Random-zip" class="headerlink" title="Random.zip()"></a>Random.zip()</h3><p>随机生成一个邮政编码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.zip());<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="9、Helper-帮助类里的方法，共5个"><a href="#9、Helper-帮助类里的方法，共5个" class="headerlink" title="9、Helper  帮助类里的方法，共5个"></a>9、Helper  帮助类里的方法，共5个</h2><h3 id="Random-capitalize"><a href="#Random-capitalize" class="headerlink" title="Random.capitalize()"></a>Random.capitalize()</h3><p>把字符串的第一个字母转换为大写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.capitalize(<span class="hljs-string">&#x27;kaivon&#x27;</span>));<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-upper"><a href="#Random-upper" class="headerlink" title="Random.upper()"></a>Random.upper()</h3><p>把字符串转换为大写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.upper(<span class="hljs-string">&#x27;kaivon&#x27;</span>));<span class="hljs-string">``</span><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-lower"><a href="#Random-lower" class="headerlink" title="Random.lower()"></a>Random.lower()</h3><p>把字符串转换为小写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.lower(<span class="hljs-string">&#x27;KAI&#x27;</span>));<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-pick"><a href="#Random-pick" class="headerlink" title="Random.pick()"></a>Random.pick()</h3><p>从数组中随机选取一个元素</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.pick([<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>]));<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-shuffle"><a href="#Random-shuffle" class="headerlink" title="Random.shuffle()"></a>Random.shuffle()</h3><p>打乱数组中元素的顺序</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.shuffle([<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;e&#x27;</span>]));<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="10、Miscellaneous-其它类里的方法，共3个"><a href="#10、Miscellaneous-其它类里的方法，共3个" class="headerlink" title="10、Miscellaneous  其它类里的方法，共3个"></a>10、Miscellaneous  其它类里的方法，共3个</h2><h3 id="Random-guid"><a href="#Random-guid" class="headerlink" title="Random.guid()"></a>Random.guid()</h3><p>随机生成一个 GUID</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.guid());<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Random-id"><a href="#Random-id" class="headerlink" title="Random.id()"></a>Random.id()</h3><p>随机生成一个 18 位身份证</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(Random.id());<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>    Mock.mock(<span class="hljs-string">&#x27;@EMAIL&#x27;</span>),<br>    Mock.mock(<span class="hljs-string">&#x27;@CITY(true)&#x27;</span>),<br>    Mock.mock(<span class="hljs-string">&#x27;@cword(&quot;陈学辉好帅&quot;, 1, 3)&#x27;</span>),<br>);<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="扩展方法"><a href="#扩展方法" class="headerlink" title="扩展方法"></a>扩展方法</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html">Random.extend(&#123;<br>    constellation: function (date) &#123;<br>        var constellations = [&#x27;白羊座&#x27;, &#x27;金牛座&#x27;, &#x27;双子座&#x27;, &#x27;巨蟹座&#x27;, &#x27;狮子座&#x27;, &#x27;处女座&#x27;, &#x27;天秤座&#x27;, &#x27;天蝎座&#x27;, &#x27;射手座&#x27;, &#x27;摩羯座&#x27;, &#x27;水瓶座&#x27;, &#x27;双鱼座&#x27;];<br>        return this.pick(constellations)<br>    &#125;<br>&#125;);<br>console.log(Random.constellation());<br>console.log(Mock.mock(&#x27;@constellation&#x27;))<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="Mock方法"><a href="#Mock方法" class="headerlink" title="Mock方法"></a>Mock方法</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css"></span><br><span class="css">		<span class="hljs-selector-tag">table</span> &#123;</span><br><span class="css">			<span class="hljs-attribute">border-collapse</span>: collapse;</span><br><span class="css">			<span class="hljs-attribute">width</span>: <span class="hljs-number">90%</span>;</span><br><span class="css">			<span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;</span><br><span class="css">			<span class="hljs-attribute">font-size</span>: <span class="hljs-number">20px</span>;</span><br><span class="css">			<span class="hljs-attribute">line-height</span>: <span class="hljs-number">60px</span>;</span><br><span class="css">		&#125;</span><br><span class="css"></span><br><span class="css">		<span class="hljs-selector-tag">th</span>,</span><br><span class="css">		<span class="hljs-selector-tag">td</span> &#123;</span><br><span class="css">			<span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span><br><span class="css">			<span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#99b0da</span>;</span><br><span class="css">			<span class="hljs-attribute">text-align</span>: center;</span><br><span class="css">		&#125;</span><br><span class="css"></span><br><span class="css">		<span class="hljs-selector-tag">th</span> &#123;</span><br><span class="css">			<span class="hljs-attribute">background</span>: <span class="hljs-number">#dbe3fa</span>;</span><br><span class="css">		&#125;</span><br><span class="css">	</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/mock.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.4.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span>&gt;</span>请求数据<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span><br>			<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>学号<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>姓名<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>性别<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>邮箱<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>生日<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>手机号<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>住址<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>				<span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>操作<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>			<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>		<span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span><br>		<span class="hljs-tag">&lt;<span class="hljs-name">tbody</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;table-body&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span><br>	<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><br><br>	<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">		$(<span class="hljs-string">&#x27;#btn&#x27;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">			$.ajax(&#123;</span><br><span class="javascript">				<span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;js/data.json&#x27;</span>,</span><br><span class="javascript">				<span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;get&#x27;</span>,</span><br><span class="javascript">				<span class="hljs-attr">dataType</span>: <span class="hljs-string">&#x27;json&#x27;</span>,</span><br><span class="javascript">				<span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(data);</span><br><span class="javascript">					createDom(data.data);</span><br><span class="javascript">				&#125;</span><br><span class="javascript">			&#125;);</span><br><span class="javascript">		&#125;);</span><br><span class="javascript"></span><br><span class="javascript">		<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createDom</span>(<span class="hljs-params">data</span>) </span>&#123;</span><br><span class="javascript">			<span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;&#x27;</span>;</span><br><span class="javascript">			data.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item, index</span>) </span>&#123;</span><br><span class="javascript">				str += <span class="hljs-string">`</span></span><br><span class="hljs-string"><span class="javascript">					&lt;tr&gt;</span></span><br><span class="hljs-string"><span class="javascript">						&lt;td&gt;<span class="hljs-subst">$&#123;item.sNo&#125;</span>&lt;/td&gt;</span></span><br><span class="hljs-string"><span class="javascript">						&lt;td&gt;<span class="hljs-subst">$&#123;item.name&#125;</span>&lt;/td&gt;</span></span><br><span class="hljs-string"><span class="javascript">						&lt;td&gt;<span class="hljs-subst">$&#123;item.sex&#125;</span>&lt;/td&gt;</span></span><br><span class="hljs-string"><span class="javascript">						&lt;td&gt;<span class="hljs-subst">$&#123;item.email&#125;</span>&lt;/td&gt;</span></span><br><span class="hljs-string"><span class="javascript">						&lt;td&gt;<span class="hljs-subst">$&#123;item.birth&#125;</span>&lt;/td&gt;</span></span><br><span class="hljs-string"><span class="javascript">						&lt;td&gt;<span class="hljs-subst">$&#123;item.phone&#125;</span>&lt;/td&gt;</span></span><br><span class="hljs-string"><span class="javascript">						&lt;td&gt;<span class="hljs-subst">$&#123;item.address&#125;</span>&lt;/td&gt;</span></span><br><span class="hljs-string"><span class="javascript">						&lt;td&gt;</span></span><br><span class="hljs-string"><span class="javascript">							&lt;button&gt;编辑&lt;/button&gt;</span></span><br><span class="hljs-string"><span class="javascript">							&lt;button&gt;删除&lt;/button&gt;</span></span><br><span class="hljs-string"><span class="javascript">						&lt;/td&gt;</span></span><br><span class="hljs-string"><span class="javascript">					&lt;/tr&gt;</span></span><br><span class="hljs-string"><span class="javascript">				`</span>;</span><br><span class="javascript">			&#125;);</span><br><span class="javascript">			$(<span class="hljs-string">&#x27;#table-body&#x27;</span>).html(str);</span><br><span class="javascript">		&#125;;</span><br><span class="javascript"></span><br><span class="javascript"></span><br><span class="javascript">		Mock.mock(<span class="hljs-string">&#x27;js/data.json&#x27;</span>, &#123;</span><br><span class="javascript">			<span class="hljs-string">&quot;status&quot;</span>: <span class="hljs-string">&quot;success&quot;</span>,</span><br><span class="javascript">			<span class="hljs-string">&quot;msg&quot;</span>: <span class="hljs-string">&quot;查询成功&quot;</span>,</span><br><span class="javascript">			<span class="hljs-string">&quot;data|10&quot;</span>: [&#123;</span><br><span class="javascript">				<span class="hljs-string">&quot;id|+1&quot;</span>: <span class="hljs-number">1</span>,</span><br><span class="javascript">				<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;@cname&quot;</span>,</span><br><span class="javascript">				<span class="hljs-string">&quot;birth&quot;</span>: <span class="hljs-string">&quot;@date&quot;</span>,</span><br><span class="javascript">				<span class="hljs-string">&quot;sex|1&quot;</span>: [<span class="hljs-string">&#x27;男&#x27;</span>, <span class="hljs-string">&#x27;女&#x27;</span>],</span><br><span class="javascript">				<span class="hljs-string">&quot;sNo|+1&quot;</span>: <span class="hljs-number">11000</span>,</span><br><span class="javascript">				<span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;@email&quot;</span>,</span><br><span class="javascript">				<span class="hljs-string">&quot;phone&quot;</span>: <span class="hljs-string">&quot;@natural(13000000000,19900000000)&quot;</span>,</span><br><span class="javascript">				<span class="hljs-string">&quot;address&quot;</span>: <span class="hljs-string">&quot;@county(true) @ctitle(5,10)&quot;</span>,</span><br><span class="javascript">				<span class="hljs-string">&quot;appkey&quot;</span>: <span class="hljs-string">&quot;@string(4,7)_@date(T)&quot;</span>,</span><br><span class="javascript">				<span class="hljs-string">&quot;ctime&quot;</span>: <span class="hljs-string">&quot;@date(T)&quot;</span>,</span><br><span class="javascript">           		<span class="hljs-string">&quot;utime&quot;</span>: <span class="hljs-string">&quot;@date(T)&quot;</span></span><br><span class="javascript">			&#125;],</span><br><span class="javascript">		&#125;);</span><br><span class="javascript"></span><br><span class="javascript">		Mock.setup(&#123;</span><br><span class="javascript">			<span class="hljs-attr">timeout</span>:<span class="hljs-number">5000</span>,</span><br><span class="javascript">		&#125;);</span><br><span class="javascript"></span><br><span class="javascript">		<span class="hljs-comment">//https://github.com/YMFE/yapi</span></span><br><span class="javascript">	</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2021/7z/758572/1615534293942-c8d1c9de-af56-4888-8c0c-237f82f08a1b.7z?_lake_card=%7B%22uid%22:%221615534261938-0%22,%22src%22:%22https://www.yuque.com/attachments/yuque/0/2021/7z/758572/1615534293942-c8d1c9de-af56-4888-8c0c-237f82f08a1b.7z%22,%22name%22:%2203-mock%E6%96%B9%E6%B3%95.7z%22,%22size%22:86099,%22type%22:%22%22,%22ext%22:%227z%22,%22progress%22:%7B%22percent%22:99%7D,%22status%22:%22done%22,%22percent%22:0,%22id%22:%22GT8VF%22,%22card%22:%22file%22%7D">03-mock方法.7z</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/15/moment/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">moment</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/15/jQuery/">
+                        <span class="hidden-mobile">jQuery</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
