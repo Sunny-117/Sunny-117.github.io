@@ -1,0 +1,725 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <meta name="description" content="1.JavaScript 模块化发展史第一阶段在 JavaScript 语言刚刚诞生的时候，它仅仅用于实现页面中的一些小效果那个时候，一个页面所用到的 JS 可能只有区区几百行的代码在这种情况下，语言本身所存在的一些缺陷往往被大家有意的忽略，因为程序的规模实在太小，只要开发人员小心谨慎，往往不会造成什么问题在这个阶段，也不存在专业的前端工程师，由于前端要做的事情实在太少，因此这一部分工作往往由后端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="modularization">
+<meta property="og:url" content="http://example.com/2020/05/10/modularization/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.JavaScript 模块化发展史第一阶段在 JavaScript 语言刚刚诞生的时候，它仅仅用于实现页面中的一些小效果那个时候，一个页面所用到的 JS 可能只有区区几百行的代码在这种情况下，语言本身所存在的一些缺陷往往被大家有意的忽略，因为程序的规模实在太小，只要开发人员小心谨慎，往往不会造成什么问题在这个阶段，也不存在专业的前端工程师，由于前端要做的事情实在太少，因此这一部分工作往往由后端">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/7-1.png">
+<meta property="og:image" content="http://example.com/img/7-2.png">
+<meta property="og:image" content="http://example.com/img/7-3.png">
+<meta property="og:image" content="http://example.com/img/7-4.png">
+<meta property="og:image" content="http://example.com/img/7-5.png">
+<meta property="og:image" content="http://example.com/img/7-6.png">
+<meta property="og:image" content="http://example.com/img/7-7.png">
+<meta property="og:image" content="http://example.com/img/7-8.png">
+<meta property="article:published_time" content="2020-05-10T02:31:51.000Z">
+<meta property="article:modified_time" content="2021-10-20T02:40:55.295Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/7-1.png">
+  
+  <title>modularization - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Sunny</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="modularization">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-05-10 10:31" pubdate>
+        May 10, 2020 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      10k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      32 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">modularization</h1>
+            
+            <div class="markdown-body">
+              <h1 id="1-JavaScript-模块化发展史"><a href="#1-JavaScript-模块化发展史" class="headerlink" title="1.JavaScript 模块化发展史"></a>1.JavaScript 模块化发展史</h1><h2 id="第一阶段"><a href="#第一阶段" class="headerlink" title="第一阶段"></a>第一阶段</h2><p>在 JavaScript 语言刚刚诞生的时候，它仅仅用于实现页面中的一些小效果<br>那个时候，一个页面所用到的 JS 可能只有区区几百行的代码<br>在这种情况下，语言本身所存在的一些缺陷往往被大家有意的忽略，因为程序的规模实在太小，只要开发人员小心谨慎，往往不会造成什么问题<br>在这个阶段，也不存在专业的前端工程师，由于前端要做的事情实在太少，因此这一部分工作往往由后端工程师顺带完成<br>第一阶段发生的大事件：</p>
+<ul>
+<li>1996 年，NetScape 将 JavaScript 语言提交给欧洲的一个标准制定组织 ECMA（欧洲计算机制造商协会）</li>
+<li>1998 年，NetScape 在与微软浏览器 IE 的竞争中失利，宣布破产</li>
+</ul>
+<h2 id="第二阶段"><a href="#第二阶段" class="headerlink" title="第二阶段"></a>第二阶段</h2><p>ajax 的出现，逐渐改变了 JavaScript 在浏览器中扮演的角色。现在，它不仅可以实现小的效果，还可以和服务器之间进行交互，以更好的体验来改变数据<br>JS 代码的数量开始逐渐增长，从最初的几百行，到后来的几万行，前端程序逐渐变得复杂<br>后端开发者压力逐渐增加，致使一些公司开始招募专业的前端开发者<br>但此时，前端开发者的待遇远不及后端开发者，因为前端开发者承担的开发任务相对于后端开发来说，还是比较简单的，通过短短一个月的时间集训，就可以成为满足前端开发的需要<br>究其根本原因，是因为前端开发还有几个大的问题没有解决，这些问题都严重的制约了前端程序的规模进一步扩大：</p>
+<ol>
+<li><strong>浏览器解释执行 JS 的速度太慢</strong></li>
+<li><strong>用户端的电脑配置不足</strong></li>
+<li>更多的代码带来了全局变量污染、依赖关系混乱等问题</li>
+</ol>
+<p>上面三个问题，就像是阿喀琉斯之踵，成为前端开发挥之不去的阴影和原罪。<br>在这个阶段，前端开发处在一个非常尴尬的境地，它在传统的开发模式和前后端分离之间无助的徘徊<br>第二阶段的大事件：</p>
+<ol>
+<li>IE 浏览器制霸市场后，几乎不再更新</li>
+<li>ES4.0 流产，导致 JS 语言 10 年间几乎毫无变化</li>
+<li>2008 年 ES5 发布，仅解决了一些 JS API 不足的糟糕局面</li>
+</ol>
+<h2 id="第三阶段"><a href="#第三阶段" class="headerlink" title="第三阶段"></a>第三阶段</h2><p>时间继续向前推移，到了 2008 年，谷歌的 V8 引擎发布(面试），将 JS 的执行速度推上了一个新的台阶，甚至可以和后端语言媲美。<br>摩尔定律持续发酵，个人电脑的配置开始飞跃<br>突然间，制约前端发展的两大问题得以解决，此时，只剩下最后一个问题还在负隅顽抗，即<strong>全局变量污染和依赖混乱</strong>的问题，解决了它，前端便可以突破一切障碍，未来无可限量。<br>于是，全世界的前端开发者在社区中激烈的讨论，想要为这个问题寻求解决之道……<br>2008 年，有一个名叫 Ryan Dahl 小伙子正在为一件事焦头烂额，它需要在服务器端手写一个高性能的 web 服务，该服务对于性能要求之高，以至于目前市面上已有的 web 服务产品都满足不了需求。</p>
+<blockquote>
+<p>服务器开发</p>
+</blockquote>
+<p>新浪的服务器（电脑）收到请求<br>其中一个应用程序在做以下的事情 web 服务</p>
+<ol>
+<li>监听 80 端口</li>
+<li>将请求进行分析</li>
+<li>将分析的结果交给相应的程序（php，Java）进行处理</li>
+<li>把程序处理的结果返还给客户端</li>
+</ol>
+<p>经过分析，它确定，如果要实现高性能，那么必须要尽可能的减少线程，而要减少线程，避免不了要实用异步的处理方案。<br>一开始，他打算自己实用 C/C++语言来编写，可是这一过程实在太痛苦。<br>就在他一筹莫展的时候，谷歌 V8 引擎的发布引起了他的注意，他突然发现，JS 不就是最好的实现 web 服务的语言吗？它天生就是单线程，并且是基于异步的！有了 V8 引擎的支撑，它的执行速度完全可以撑起一个服务器。而且 V8 是鼎鼎大名的谷歌公司发布的，谷歌一定会不断的优化 V8，有这种又省钱又省力的好事，我干嘛还要自己去写呢？<br>典型异步场景</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;a&quot;</span>);<br>&#125;, <span class="hljs-number">1000</span>);<br><span class="hljs-comment">//后面不会阻塞</span><br><span class="hljs-comment">//JS单线程指的是执行线程，不代表浏览器单线程</span><br></code></pre></td></tr></table></figure>
+
+<p>于是，它基于开源的 V8 引擎，对源代码作了一些修改，便快速的完成了该项目。<br>2009 年，Ryan 推出了该 web 服务项目，命名为 nodejs。<br>从此，JS 第一次堂堂正正的入主后端，不再是必须附属于浏览器的“玩具”语言了。<br>也是从此刻开始，人们认识到，JS（ES）是一门真正的语言，它依附于运行环境（运行时）（宿主程序）而执行</p>
+<p><img src="/img/7-1.png" srcset="/img/loading.gif" lazyload></p>
+<p>nodejs 的诞生，便把 JS 中的最后一个问题放到了台前，即<strong>全局变量污染和依赖混乱</strong>问题<br>要直到，nodejs 是服务器端，如果不解决这个问题，分模块开发就无从实现，而模块化开发是所有后端程序必不可少的内容<br>经过社区的激烈讨论，最终，形成了一个模块化方案，即鼎鼎大名的 CommonJS，该方案，彻底解决了全局变量污染和依赖混乱的问题<br>该方案一出，立即被 nodejs 支持，于是，nodejs 成为了第一个为 JS 语言实现模块化的平台，为前端接下来的迅猛发展奠定了实践基础<br>该阶段发生的大事件：</p>
+<ul>
+<li>2008 年，V8 发布</li>
+<li>IE 的市场逐步被 firefox 和 chrome 蚕食，现已无力回天</li>
+<li>2009 年，nodejs 发布，并附带 commonjs 模块化标准</li>
+</ul>
+<h2 id="第四阶段"><a href="#第四阶段" class="headerlink" title="第四阶段"></a>第四阶段</h2><p>CommonJS 的出现打开了前端开发者的思路<br>既然后端可以使用模块化的 JS，作为 JS 语言的老东家浏览器为什么不行呢？<br>于是，开始有人想办法把 CommonJS 运用到浏览器中<br>可是这里面存在诸多的困难（课程中详解）<br>办法总比困难多，有些开发者就想，既然 CommonJS 运用到浏览器困难，我们干嘛不自己重新定一个模块化的标准出来，难道就一定要用 CommonJS 标准吗？<br>于是很快，AMD 规范出炉，它解决的问题和 CommonJS 一样，但是可以更好的适应浏览器环境<br>相继的，CMD 规范出炉，它对 AMD 规范进行了改进<br>这些行为，都受到了 ECMA 官方的密切关注……<br>2015 年，ES6 发布，它提出了官方的模块化解决方案 —— ES6 模块化<br>从此以后，模块化成为了 JS 本身特有的性质，这门语言终于有了和其他语言较量的资本，成为了可以编写大型应用的正式语言<br>于此同时，很多开发者、技术厂商早已预见到 JS 的无穷潜力，于是有了下面的故事</p>
+<ul>
+<li>既然 JS 也能编写大型应用，那么自然也需要像其他语言那样有解决复杂问题的开发框架<ul>
+<li>Angular、React、Vue 等前端开发框架出现</li>
+<li>Express、Koa 等后端开发框架出现</li>
+<li>各种后端数据库驱动出现</li>
+</ul>
+</li>
+<li>要开发大型应用，自然少不了各种实用的第三方库的支持<ul>
+<li>npm 包管理器出现，实用第三方库变得极其方便</li>
+<li>webpack 等构建工具出现，专门用于打包和部署</li>
+</ul>
+</li>
+<li>既然 JS 可以放到服务器环境，为什么不能放到其他终端环境呢？<ul>
+<li>Electron 发布，可以使用 JS 语言开发桌面应用程序</li>
+<li>RN 和 Vuex 等技术发布，可以使用 JS 语言编写移动端应用程序</li>
+<li>各种小程序出现，可以使用 JS 编写依附于其他应用的小程序</li>
+<li>目前还有很多厂商致力于将 JS 应用到各种其他的终端设备，最终形成大前端生态<blockquote>
+<p>可以看到，模块化的出现，是 JS 通向大型应用的基石，学习好模块化，变具备了编写大型应用的基本功。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="2-CommonJS"><a href="#2-CommonJS" class="headerlink" title="2. CommonJS"></a>2. CommonJS</h1><h2 id="2-1-安装-nodejs"><a href="#2-1-安装-nodejs" class="headerlink" title="2-1. 安装 nodejs"></a>2-1. 安装 nodejs</h2><p>官网地址：<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">https://nodejs.org/zh-cn/</a><br><strong>浏览器</strong><br>浏览器运行的是 html 页面，并加载页面中通过 script 元素引入的 js</p>
+<p><img src="/img/7-2.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>nodejs</strong><br>nodejs 直接运行某个 js 文件，该文件被称之为入口文件</p>
+<p><img src="/img/7-3.png" srcset="/img/loading.gif" lazyload></p>
+<p>nodejs 遵循 EcmaScript 标准，但由于脱离了浏览器环境，因此：</p>
+<ol>
+<li>你可以在 nodejs 中使用 EcmaScript 标准的任何语法或 api，例如：循环、判断、数组、对象等</li>
+<li>你不能在 nodejs 中使用浏览器的 web api，例如：dom 对象、window 对象、document 对象等</li>
+</ol>
+<p>由于大部分开发者是从浏览器端开发转向 nodejs 开发的，为了降低开发者的学习成本，nodejs 中提供了一些和浏览器 web api 同样的对象或函数，例如：console、setTimeout、setInterval 等</p>
+<p>运行 node demo</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello NodeJs&quot;</span>); <span class="hljs-comment">//是不是ES标准</span><br><span class="hljs-built_in">setInterval</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello&quot;</span>);<br>&#125;, <span class="hljs-number">1000</span>);<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-2-CommonJS"><a href="#2-2-CommonJS" class="headerlink" title="2-2. CommonJS"></a>2-2. CommonJS</h2><p>在 nodejs 中，由于有且仅有一个入口文件（启动文件），而开发一个应用肯定会涉及到多个文件配合，因此，nodejs 对模块化的需求比浏览器端要大的多</p>
+<p><img src="/img/7-4.png" srcset="/img/loading.gif" lazyload></p>
+<p>由于 nodejs 刚刚发布的时候，前端没有统一的、官方的模块化规范，因此，它选择使用社区提供的 CommonJS 作为模块化规范<br>在学习 CommonJS 之前，首先认识两个重要的概念：<strong>模块的导出</strong>和<strong>模块的导入</strong></p>
+<h3 id="模块的导出"><a href="#模块的导出" class="headerlink" title="模块的导出"></a>模块的导出</h3><p>要理解模块的导出，首先要理解模块的含义<br>什么是模块？<br>模块就是一个 JS 文件，它实现了一部分功能，并隐藏自己的内部实现，同时提供了一些接口供其他模块使用<br>模块有两个核心要素：<strong>隐藏</strong>和<strong>暴露</strong><br><strong>demo</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> count = <span class="hljs-number">0</span>; <span class="hljs-comment">//需要隐藏的内部实现</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNumber</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-comment">//要暴露的接口</span><br>  count++;<br>  <span class="hljs-keyword">return</span> count;<br>&#125;<br><span class="hljs-built_in">console</span>.log(getNumber());<br><span class="hljs-built_in">console</span>.log(getNumber());<br><span class="hljs-built_in">console</span>.log(getNumber());<br><span class="hljs-built_in">console</span>.log(getNumber());<br></code></pre></td></tr></table></figure>
+
+<p>隐藏的，是自己内部的实现<br>暴露的，是希望外部使用的接口<br>任何一个正常的模块化标准，都应该默认隐藏模块中的所有实现，而通过一些语法或 api 调用来暴露接口<br><strong>暴露接口的过程即模块的导出</strong></p>
+<p><img src="/img/7-5.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="模块的导入"><a href="#模块的导入" class="headerlink" title="模块的导入"></a>模块的导入</h3><p>当需要使用一个模块时，使用的是该模块暴露的部分（导出的部分），隐藏的部分是永远无法使用的。<br><strong>当通过某种语法或 api 去使用一个模块时，这个过程叫做模块的导入</strong></p>
+<h3 id="CommonJS-规范"><a href="#CommonJS-规范" class="headerlink" title="CommonJS 规范"></a>CommonJS 规范</h3><p>CommonJS 使用<code>exports</code>导出模块，<code>require</code>导入模块<br>具体规范如下：</p>
+<ol>
+<li>如果一个 JS 文件中存在<code>exports</code>或<code>require</code>，该 JS 文件是一个模块</li>
+<li>模块内的所有代码均为隐藏代码，包括全局变量、全局函数，这些全局的内容均不应该对全局变量造成任何污染</li>
+<li>如果一个模块需要暴露一些 API 提供给外部使用，需要通过<code>exports</code>导出，<code>exports</code>是一个空的对象，你可以为该对象添加任何需要导出的内容</li>
+<li>如果一个模块需要导入其他模块，通过<code>require</code>实现，<code>require</code>是一个函数，传入模块的路径即可返回该模块导出的整个内容</li>
+</ol>
+<p>导出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 原本相当于exports=&#123;&#125;</span><br><span class="hljs-built_in">exports</span>.getNumber = getNumber;<br>相当于;<br><span class="hljs-comment">// exports: &#123;</span><br><span class="hljs-comment">//     getNumber: getNumber</span><br><span class="hljs-comment">// &#125;</span><br><span class="hljs-built_in">exports</span>.abc = <span class="hljs-number">123</span>;<br>相当于;<br><span class="hljs-comment">// exports: &#123;</span><br><span class="hljs-comment">//     getNumber: fn,</span><br><span class="hljs-comment">//         abc: 123</span><br><span class="hljs-comment">// &#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>导入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./util.js&quot;</span>);<br><span class="hljs-built_in">console</span>.log(a);<span class="hljs-comment">//a是对象</span><br>count不能访问，因为没有导出<br></code></pre></td></tr></table></figure>
+
+<h3 id="nodejs-对-CommonJS-的实现（面试）"><a href="#nodejs-对-CommonJS-的实现（面试）" class="headerlink" title="nodejs 对 CommonJS 的实现（面试）"></a>nodejs 对 CommonJS 的实现（面试）</h3><p>为了实现 CommonJS 规范，nodejs 对模块做出了以下处理</p>
+<ol>
+<li><p>为了保证高效的执行，仅加载必要的模块。nodejs 只有执行到<code>require</code>函数时才会加载并执行模块</p>
+<blockquote>
+<p>nodejs 中导入模块，使用相对路径，并且必须以./或../开头,浏览器可以省略./，nodejs 不行</p>
+</blockquote>
+</li>
+<li><p>为了隐藏模块中的代码，nodejs 执行模块时，会将模块中的所有代码放置到一个函数中执行，以保证不污染全局变量。</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-comment">//模块中的代码</span><br>&#125;)();<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>为了保证顺利的导出模块内容，nodejs 做了以下处理<ol>
+<li>在模块开始执行前，初始化一个值<code>module.exports = &#123;&#125;</code></li>
+<li><code>module.exports</code>即模块的导出值</li>
+<li>为了方便开发者便捷的导出，nodejs 在初始化完<code>module.exports</code>后，又声明了一个变量<code>exports = module.exports</code></li>
+</ol>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"><span class="hljs-built_in">module</span></span>) </span>&#123;<br>  <span class="hljs-built_in">module</span>.exports = &#123;&#125;;<br>  <span class="hljs-keyword">var</span> <span class="hljs-built_in">exports</span> = <span class="hljs-built_in">module</span>.exports;<br>  <span class="hljs-comment">//模块中的代码</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-built_in">module</span>.exports;<br>&#125;)();<br><span class="hljs-comment">//面试题经常考module.exports与module几乎没区别，只是最后返回module.exports</span><br></code></pre></td></tr></table></figure>
+
+<p>面试</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./index.js&quot;</span>);<br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">module</span>.exports == <span class="hljs-built_in">exports</span>); <span class="hljs-comment">//没区别</span><br><span class="hljs-built_in">module</span>.exports = &#123;<br>  <span class="hljs-attr">getNumber</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    count++;<br>    <span class="hljs-keyword">return</span> count;<br>  &#125;,<br>  <span class="hljs-attr">abc</span>: <span class="hljs-number">123</span>,<br>&#125;;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">module</span>.exports == <span class="hljs-built_in">exports</span>); <span class="hljs-comment">//module被赋值了，exports=&#123;&#125;,他两个不一样了。应用：下一题</span><br><span class="hljs-comment">// 最终导出的是module.exports</span><br></code></pre></td></tr></table></figure>
+
+<p>经典面试题<br>util.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> count = <span class="hljs-number">0</span>;<br><span class="hljs-built_in">module</span>.exports = &#123;<br>  <span class="hljs-attr">getNumber</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    count++;<br>    <span class="hljs-keyword">return</span> count;<br>  &#125;,<br>  <span class="hljs-attr">abc</span>: <span class="hljs-number">123</span>,<br>&#125;;<br><span class="hljs-built_in">exports</span>.bcd = <span class="hljs-number">456</span>;<br></code></pre></td></tr></table></figure>
+
+<p>index.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./util.js&quot;</span>);<br><span class="hljs-built_in">console</span>.log(util.bcd); <span class="hljs-comment">//undefined</span><br><span class="hljs-comment">// 因为最终返回module.exports,当前面被重新赋值，意味着module.exports和exports无关了</span><br></code></pre></td></tr></table></figure>
+
+<p>经验：对 exports 赋值无意义，建议用 module.exports</p>
+<ol start="4">
+<li>为了避免反复加载同一个模块，nodejs 默认开启了模块缓存，如果加载的模块已经被加载过了，则会自动使用之前的导出结果</li>
+</ol>
+<h2 id="3-AMD-和-CMD"><a href="#3-AMD-和-CMD" class="headerlink" title="3.AMD 和 CMD"></a>3.AMD 和 CMD</h2><h2 id="3-1-浏览器端模块化的难题"><a href="#3-1-浏览器端模块化的难题" class="headerlink" title="3-1 浏览器端模块化的难题"></a>3-1 浏览器端模块化的难题</h2><p>本节为重点：AMD CMD 不常用了<br><strong>CommonJS 的工作原理</strong><br>当使用<code>require(模块路径)</code>导入一个模块时，node 会做以下两件事情（不考虑模块缓存）：</p>
+<ol>
+<li>通过模块路径找到本机文件，并读取文件内容</li>
+<li>将文件中的代码放入到一个函数环境中执行，并将执行后 module.exports 的值作为 require 函数的返回结果</li>
+</ol>
+<p>正是这两个步骤，使得 CommonJS 在 node 端可以良好的被支持<br>可以认为，<strong>CommonJS 是同步的</strong>，必须要等到加载完文件并执行完代码后才能继续向后执行<br><strong>当浏览器遇到 CommonJS</strong><br>当想要把 CommonJS 放到浏览器端时，就遇到了一些挑战</p>
+<ol>
+<li>浏览器要加载 JS 文件，需要远程从服务器读取，而网络传输的效率远远低于 node 环境中读取本地文件的效率。由于 CommonJS 是同步的，这会极大的降低运行性能</li>
+<li>如果需要读取 JS 文件内容并把它放入到一个环境中执行，需要浏览器厂商的支持，可是浏览器厂商不愿意提供支持，最大的原因是 CommonJS 属于社区标准，并非官方标准</li>
+</ol>
+<p><strong>新的规范</strong><br>基于以上两点原因，浏览器无法支持模块化<br>可这并不代表模块化不能在浏览器中实现<br>要在浏览器中实现模块化，只要能解决上面的两个问题就行了<br>解决办法其实很简单：</p>
+<ol>
+<li>远程加载 JS 浪费了时间？做成异步即可，加载完成后调用一个回调就行了</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;./a.js&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;&#125;); <span class="hljs-comment">//回调</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>模块中的代码需要放置到函数中执行？编写模块时，直接放函数中就行了</li>
+</ol>
+<p>基于这种简单有效的思路，出现了 AMD 和 CMD 规范，有效的解决了浏览器模块化的问题。</p>
+<h2 id="3-2AMD"><a href="#3-2AMD" class="headerlink" title="3-2AMD"></a>3-2AMD</h2><p>全称是 Asynchronous Module Definition，即异步模块加载机制<br>require.js 实现了 AMD 规范</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">data-main</span>=<span class="hljs-string">&quot;./js/index.js&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./js/require.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-comment">&lt;!-- index.js入口 , 必须引用require.js--&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>在 AMD 中，导入和导出模块的代码，都必须放置在 define 函数中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">define([依赖的模块列表], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">模块名称列表</span>) </span>&#123;<br>  <span class="hljs-comment">//模块内部的代码</span><br>  <span class="hljs-keyword">return</span> 导出的内容;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>require.js 里面提供了个全局方法 define()<br>写法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript">define(<span class="hljs-number">123</span>); <span class="hljs-comment">//导出123</span><br>define(&#123; <span class="hljs-attr">a</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">b</span>: <span class="hljs-number">2</span> &#125;); <span class="hljs-comment">//导出对象</span><br>define(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>; <span class="hljs-comment">//不会污染</span><br>  <span class="hljs-keyword">var</span> b = <span class="hljs-number">234</span>;<br>  <span class="hljs-keyword">return</span> &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;b模块&quot;</span>,<br>    <span class="hljs-attr">data</span>: <span class="hljs-string">&quot;b模块的数据&quot;</span>,<br>  &#125;;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-3CMD"><a href="#3-3CMD" class="headerlink" title="3-3CMD"></a>3-3CMD</h2><p>全称是 Common Module Definition，公共模块定义规范<br>sea.js 实现了 CMD 规范</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./js/sea.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">  seajs.use(<span class="hljs-string">&quot;./js/index&quot;</span>);</span><br><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>在 CMD 中，导入和导出模块的代码，都必须放置在 define 函数中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">define(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"><span class="hljs-built_in">require</span>, <span class="hljs-built_in">exports</span>, <span class="hljs-built_in">module</span></span>) </span>&#123;<br>  <span class="hljs-comment">//模块内部的代码</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<p>可以使用异步</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript">define(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-built_in">require</span>, <span class="hljs-built_in">exports</span>, <span class="hljs-built_in">module</span></span>) =&gt;</span> &#123;<br>  <span class="hljs-built_in">require</span>.async(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(a);<br>  &#125;);<br>  <span class="hljs-built_in">require</span>.async(<span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">b</span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(b);<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h1 id="4-es6-模块化"><a href="#4-es6-模块化" class="headerlink" title="4.es6 模块化"></a>4.es6 模块化</h1><h2 id="4-1-ES6-模块化简介"><a href="#4-1-ES6-模块化简介" class="headerlink" title="4-1.ES6 模块化简介"></a>4-1.ES6 模块化简介</h2><p>ECMA 组织参考了众多社区模块化标准，终于在 2015 年，随着 ES6 发布了官方的模块化标准，后成为 ES6 模块化<br>ES6 模块化具有以下的特点</p>
+<ol>
+<li>使用依赖<strong>预声明</strong>的方式导入模块<ol>
+<li>依赖延迟声明（commonjs）<ol>
+<li>优点：某些时候可以提高效率</li>
+<li>缺点：无法在一开始确定模块依赖关系（比较模糊）</li>
+</ol>
+</li>
+<li>依赖预声明（AMD）<ol>
+<li>优点：在一开始可以确定模块依赖关系</li>
+<li>缺点：某些时候效率较低</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>灵活的多种导入导出方式(相对于 module.export 较简单）</li>
+<li>规范的路径表示法：所有路径必须以./或../开头</li>
+</ol>
+<h2 id="4-2-基本导入导出"><a href="#4-2-基本导入导出" class="headerlink" title="4-2.基本导入导出"></a>4-2.基本导入导出</h2><h3 id="模块的引入"><a href="#模块的引入" class="headerlink" title="模块的引入"></a>模块的引入</h3><p><strong>注意：这一部分非模块化标准</strong><br>目前，浏览器使用以下方式引入一个 ES6 模块文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;入口文件&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;module&quot;</span>&gt;</span><span class="javascript"></span><br><span class="javascript">  <span class="hljs-comment">//module作为模块运行</span></span><br><span class="javascript">  <span class="hljs-comment">//当成了模块，就不会污染全局变量</span></span><br></code></pre></td></tr></table></figure>
+
+<h3 id="模块的基本导出和导入"><a href="#模块的基本导出和导入" class="headerlink" title="模块的基本导出和导入"></a>模块的基本导出和导入</h3><p>ES6 中的模块导入导出分为两种：</p>
+<ol>
+<li>基本导入导出</li>
+<li>默认导入导出</li>
+</ol>
+<p><img src="/img/7-6.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="基本导出"><a href="#基本导出" class="headerlink" title="基本导出"></a>基本导出</h3><p>类似于 <code>exports.xxx = xxxx</code><br>基本导出可以有多个，每个必须有名称<br>基本导出的语法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> 声明表达式  <span class="hljs-comment">//必须是声明语句</span><br></code></pre></td></tr></table></figure>
+
+<p>举例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>; <span class="hljs-comment">//导出a，值为1，类似于CommonJS中的exports.a = 1</span><br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-comment">//导出test，值为一个函数，类似于CommonJS中的exports.test = function ()&#123;&#125;</span><br>&#125;<br><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>&#123;&#125;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;abc&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> &#123; 具名符号 &#125;; <span class="hljs-comment">// 大括号不是对象</span><br></code></pre></td></tr></table></figure>
+
+<p>举例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> age = <span class="hljs-number">18</span>;<br><span class="hljs-keyword">var</span> sex = <span class="hljs-number">1</span>;<br><br><span class="hljs-keyword">export</span> &#123; age, sex &#125;; <span class="hljs-comment">//将age变量的名称作为导出的名称，age变量的值，作为导出的值</span><br></code></pre></td></tr></table></figure>
+
+<p>由于基本导出必须具有名称，所以要求导出内容必须跟上<strong>声明表达式</strong>或<strong>具名符号</strong></p>
+<h3 id="基本导入"><a href="#基本导入" class="headerlink" title="基本导入"></a>基本导入</h3><p>由于使用的是<strong>依赖预加载</strong>，因此，导入任何其他模块，导入代码必须放置到所有代码之前<br>对于基本导出，如果要进行导入，使用下面的代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; 导入的符号列表 &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;模块路径&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>举例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; name, age &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./a.js&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>注意以下细节：</p>
+<ul>
+<li>导入时，可以通过关键字<code>as</code>对导入的符号进行重命名</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; name <span class="hljs-keyword">as</span> name1, age <span class="hljs-keyword">as</span> age1 &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./a.js&quot;</span>;<br><span class="hljs-keyword">var</span> b = <span class="hljs-number">3</span>;<br><span class="hljs-built_in">console</span>.log(b2);<br><span class="hljs-built_in">console</span>.log(name1, age);<br><span class="hljs-built_in">console</span>.log(b);<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>导入时使用的符号是常量，不可修改</li>
+<li>可以使用*号导入所有的基本导出，形成一个对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> a <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./a.js&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./b.js&quot;</span>; <span class="hljs-comment">//这条导入语句，仅会运行模块，不适用它内部的任何导出</span><br><span class="hljs-comment">// 适用于初始化代码init</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="4-3-默认导入导出"><a href="#4-3-默认导入导出" class="headerlink" title="4-3. 默认导入导出"></a>4-3. 默认导入导出</h2><p><img src="/img/7-7.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="默认导出"><a href="#默认导出" class="headerlink" title="默认导出"></a>默认导出</h3><p>每个模块，除了允许有多个基本导出之外，还允许有一个默认导出<br>默认导出类似于 CommonJS 中的<code>module.exports</code>，由于只有一个，因此无需具名<br>具体的语法是</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> 默认导出的数据;<br></code></pre></td></tr></table></figure>
+
+<p>举例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-number">123</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> a;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">fn</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123; &#125;,<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;adsfaf&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> &#123; 默认导出的数据 <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span> &#125;;<br></code></pre></td></tr></table></figure>
+
+<p>举例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> &#123; a <span class="hljs-keyword">as</span> abc &#125;;<br></code></pre></td></tr></table></figure>
+
+<p>由于每个模块仅允许有一个默认导出，因此，每个模块不能出现多个默认导出语句</p>
+<h3 id="默认导入"><a href="#默认导入" class="headerlink" title="默认导入"></a>默认导入</h3><p>需要想要导入一个模块的默认导出，需要使用下面的语法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123;导入的符号列表&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;模块路径”</span><br></code></pre></td></tr></table></figure>
+
+<p>举例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> data <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./a.js&quot;</span>; <span class="hljs-comment">//将a.js模块中的默认导出放置到常量data中</span><br></code></pre></td></tr></table></figure>
+
+<p>类似于 CommonJS 中的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> 接受变量名 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;模块路径	&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>由于默认导入时变量名是自行定义的，因此没有别名一说<br>如果希望同时导入某个模块的默认导出和基本导出，可以使用下面的语法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> 接收默认导出的变量，&#123;接收基本导出的变量&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;模块变量&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>注：如果使用*号，会将所有基本导出和默认导出聚合到一个对象中，默认导出会作为属性 default 存在</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> data, &#123; a, b &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./a.js&quot;</span>;<br><span class="hljs-comment">// a里面默认导出放在data里面，基本导出放在a,b里面</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="4-4-ES6-模块化的其他细节"><a href="#4-4-ES6-模块化的其他细节" class="headerlink" title="4-4.ES6 模块化的其他细节"></a>4-4.ES6 模块化的其他细节</h2><ol>
+<li><strong>尽量导出不可变值</strong></li>
+</ol>
+<p>当导出一个内容时，尽量保证该内容是不可变的（大部分情况都是如此）<br>因为，虽然导入后，无法更改导入内容，但是在导入的模块内部却有可能发生更改，这将导致一些无法预料的事情发生</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;模块a&quot;</span>; <span class="hljs-comment">//用const更加坐实了这点</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>可以使用无绑定的导入用于执行一些初始化代码</strong></li>
+</ol>
+<p>如果我们只是想执行模块中的一些代码，而不需要导入它的任何内容，可以使用无绑定的导入：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;模块路径&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>举例<br>arrayPatcher.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Array</span>.prototype.print = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>);<br>&#125;;<br><span class="hljs-comment">//一些其他的代码</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./arrayPatcher.js&quot;</span>; <span class="hljs-comment">//无绑定的导入</span><br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>];<br>arr.print();<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>可以使用绑定再导出，来重新导出来自另一个模块的内容</strong></li>
+</ol>
+<p>有的时候，我们可能需要用一个模块封装多个模块，然后有选择的将多个模块的内容分别导出，可以使用下面的语法轻松完成</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> &#123; 绑定的标识符 &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;模块路径&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/7-8.png" srcset="/img/loading.gif" lazyload><br>举例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> &#123; a, b &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./m1.js&quot;</span>;<br><span class="hljs-keyword">export</span> &#123; k, <span class="hljs-keyword">default</span>, a <span class="hljs-keyword">as</span> m2a &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./m2.js&quot;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> r = <span class="hljs-string">&quot;m-r&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/16/Package-manager/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Package manager</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/01/git/">
+                        <span class="hidden-mobile">git</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
