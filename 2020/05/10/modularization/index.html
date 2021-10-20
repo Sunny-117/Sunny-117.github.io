@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://example.com/img/7-7.png">
 <meta property="og:image" content="http://example.com/img/7-8.png">
 <meta property="article:published_time" content="2020-05-10T02:31:51.000Z">
-<meta property="article:modified_time" content="2021-10-20T02:40:55.295Z">
+<meta property="article:modified_time" content="2021-10-20T02:50:26.754Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/7-1.png">
@@ -378,7 +378,7 @@
 <ol start="4">
 <li>为了避免反复加载同一个模块，nodejs 默认开启了模块缓存，如果加载的模块已经被加载过了，则会自动使用之前的导出结果</li>
 </ol>
-<h2 id="3-AMD-和-CMD"><a href="#3-AMD-和-CMD" class="headerlink" title="3.AMD 和 CMD"></a>3.AMD 和 CMD</h2><h2 id="3-1-浏览器端模块化的难题"><a href="#3-1-浏览器端模块化的难题" class="headerlink" title="3-1 浏览器端模块化的难题"></a>3-1 浏览器端模块化的难题</h2><p>本节为重点：AMD CMD 不常用了<br><strong>CommonJS 的工作原理</strong><br>当使用<code>require(模块路径)</code>导入一个模块时，node 会做以下两件事情（不考虑模块缓存）：</p>
+<h1 id="3-AMD-和-CMD"><a href="#3-AMD-和-CMD" class="headerlink" title="3.AMD 和 CMD"></a>3.AMD 和 CMD</h1><h2 id="3-1-浏览器端模块化的难题"><a href="#3-1-浏览器端模块化的难题" class="headerlink" title="3-1 浏览器端模块化的难题"></a>3-1 浏览器端模块化的难题</h2><p>本节为重点：AMD CMD 不常用了<br><strong>CommonJS 的工作原理</strong><br>当使用<code>require(模块路径)</code>导入一个模块时，node 会做以下两件事情（不考虑模块缓存）：</p>
 <ol>
 <li>通过模块路径找到本机文件，并读取文件内容</li>
 <li>将文件中的代码放入到一个函数环境中执行，并将执行后 module.exports 的值作为 require 函数的返回结果</li>
