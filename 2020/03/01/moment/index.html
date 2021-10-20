@@ -1,0 +1,627 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <meta name="description" content="Momenthttp:&#x2F;&#x2F;momentjs.cn&#x2F; 1.解析方法设置语言环境 (全局)moment.locale(‘zh-cn’);解析 moment()1console.log(moment());  moment(String)12345678console.log(moment(&quot;2013-02-08&quot;)); &#x2F;&#x2F;返回2013年2月8号的日期对象console.log(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="moment">
+<meta property="og:url" content="http://example.com/2020/03/01/moment/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Momenthttp:&#x2F;&#x2F;momentjs.cn&#x2F; 1.解析方法设置语言环境 (全局)moment.locale(‘zh-cn’);解析 moment()1console.log(moment());  moment(String)12345678console.log(moment(&quot;2013-02-08&quot;)); &#x2F;&#x2F;返回2013年2月8号的日期对象console.log(">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-01T10:43:18.000Z">
+<meta property="article:modified_time" content="2021-10-20T02:27:33.554Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>moment - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Sunny</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="moment">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-03-01 18:43" pubdate>
+        March 1, 2020 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      15k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      47 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">moment</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Moment"><a href="#Moment" class="headerlink" title="Moment"></a>Moment</h1><p><a target="_blank" rel="noopener" href="http://momentjs.cn/">http://momentjs.cn/</a></p>
+<h1 id="1-解析方法"><a href="#1-解析方法" class="headerlink" title="1.解析方法"></a>1.解析方法</h1><h2 id="设置语言环境-全局"><a href="#设置语言环境-全局" class="headerlink" title="设置语言环境 (全局)"></a>设置语言环境 (全局)</h2><p>moment.locale(‘zh-cn’);<br>解析</p>
+<h3 id="moment"><a href="#moment" class="headerlink" title="moment()"></a>moment()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment());<br></code></pre></td></tr></table></figure>
+
+<h3 id="moment-String"><a href="#moment-String" class="headerlink" title="moment(String)"></a>moment(String)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;2013-02-08&quot;</span>)); <span class="hljs-comment">//返回2013年2月8号的日期对象</span><br><span class="hljs-built_in">console</span>.log(<br>  moment(<span class="hljs-string">&quot;2013-039&quot;</span>), <span class="hljs-comment">//返回2013年的第39天，2013年2月8号</span><br>  moment(<span class="hljs-string">&quot;2013050&quot;</span>), <span class="hljs-comment">//返回2013年的第50天，2013年2月19号</span><br>  moment(<span class="hljs-string">&quot;2013W065&quot;</span>), <span class="hljs-comment">//返回2013年的第6个星期的第5天，2013年2月8号（W表示星期）</span><br>  moment(<span class="hljs-string">&quot;2013-02-08T09&quot;</span>) <span class="hljs-comment">//返回2013年2月8号9点（T表示时间）</span><br>);<br><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;kaivon&quot;</span>)); <span class="hljs-comment">//警告，同时照样能返回那个对象，不过对象里的参数的值是不正确的</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="moment-String-带格式"><a href="#moment-String-带格式" class="headerlink" title="moment(String) 带格式"></a>moment(String) 带格式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;12-25-1995&quot;</span>, <span class="hljs-string">&quot;MM-DD-YYYY&quot;</span>));<br><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;12/25/1995&quot;</span>, <span class="hljs-string">&quot;LL&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<h3 id="moment-String-多个格式"><a href="#moment-String-多个格式" class="headerlink" title="moment(String) 多个格式"></a>moment(String) 多个格式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;29-06-1995&quot;</span>, [<span class="hljs-string">&quot;MM-DD-YYYY&quot;</span>, <span class="hljs-string">&quot;DD-MM&quot;</span>, <span class="hljs-string">&quot;DD-MM-YYYY&quot;</span>]));<br></code></pre></td></tr></table></figure>
+
+<h3 id="moment-String-特殊格式"><a href="#moment-String-特殊格式" class="headerlink" title="moment(String) 特殊格式"></a>moment(String) 特殊格式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;2010-01-01T05:06:07&quot;</span>, moment.ISO_8601));<br></code></pre></td></tr></table></figure>
+
+<h3 id="moment-Object"><a href="#moment-Object" class="headerlink" title="moment(Object)"></a>moment(Object)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment(&#123;<br>    <span class="hljs-attr">year</span>: <span class="hljs-number">2010</span>,<br>    <span class="hljs-attr">month</span>: <span class="hljs-number">3</span>,<br>    <span class="hljs-attr">day</span>: <span class="hljs-number">5</span>,<br>    <span class="hljs-attr">hour</span>: <span class="hljs-number">15</span>,<br>    <span class="hljs-attr">minute</span>: <span class="hljs-number">10</span>,<br>    <span class="hljs-attr">second</span>: <span class="hljs-number">3</span>,<br>    <span class="hljs-attr">millisecond</span>: <span class="hljs-number">123</span>,<br>  &#125;)<br>); <span class="hljs-comment">//注意：这里的月份也是从0开始，此时对应的是4月</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="moment-Number"><a href="#moment-Number" class="headerlink" title="moment(Number)"></a>moment(Number)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-number">1318781876406</span>)); <span class="hljs-comment">//这个参数为毫秒数</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="unix"><a href="#unix" class="headerlink" title="unix()"></a>unix()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment.unix(<span class="hljs-number">1318781876406</span> / <span class="hljs-number">1000</span>)); <span class="hljs-comment">//这个参数为秒数</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="moment-Date"><a href="#moment-Date" class="headerlink" title="moment(Date)"></a>moment(Date)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-number">2011</span>, <span class="hljs-number">9</span>, <span class="hljs-number">16</span>)));<br></code></pre></td></tr></table></figure>
+
+<h3 id="moment-Number-1"><a href="#moment-Number-1" class="headerlink" title="moment(Number[])"></a>moment(Number[])</h3><p>参数为一个数组  [year, month, day, hour, minute, second, millisecond]</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment([<span class="hljs-number">2010</span>, <span class="hljs-number">1</span>, <span class="hljs-number">14</span>, <span class="hljs-number">15</span>, <span class="hljs-number">25</span>, <span class="hljs-number">50</span>, <span class="hljs-number">125</span>])); <span class="hljs-comment">//注意月份是从0开始的，这里对应的是2月</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="moment-JSONDate"><a href="#moment-JSONDate" class="headerlink" title="moment(JSONDate)"></a>moment(JSONDate)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;/Date(1198908717056-0700)/&quot;</span>)); <span class="hljs-comment">//前面一串数字为时间戳，-后面的是时区</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="moment-Moment"><a href="#moment-Moment" class="headerlink" title="moment(Moment)"></a>moment(Moment)</h3><p>参数为一个 moment 对象，用于克隆</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = moment([<span class="hljs-number">2012</span>]);<br><span class="hljs-keyword">var</span> b = moment(a);<br><span class="hljs-built_in">console</span>.log(a.valueOf() === b.valueOf());<br></code></pre></td></tr></table></figure>
+
+<h3 id="clone"><a href="#clone" class="headerlink" title="clone()"></a>clone()</h3><p>也可以使用 clone 去克隆</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = moment([<span class="hljs-number">2008</span>]);<br><span class="hljs-keyword">var</span> b = a.clone();<br><span class="hljs-built_in">console</span>.log(a, b);<br></code></pre></td></tr></table></figure>
+
+<p>GMT 世界时，格林尼治标准时间</p>
+<p>UTC 协调世界时，世界统一时间、世界标准时间</p>
+<h3 id="utc"><a href="#utc" class="headerlink" title="utc()"></a>utc()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().format()); <span class="hljs-comment">//GMT //默认为本地当前时间，东八区的时间（+08:00）</span><br><span class="hljs-built_in">console</span>.log(moment.utc().format()); <span class="hljs-comment">//UTC		//UTC的时间（世界标准时间，位于0时区，时区用Z表示，它与北京时间相差8个小时）</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="isValid"><a href="#isValid" class="headerlink" title="isValid()"></a>isValid()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment([<span class="hljs-number">2015</span>, <span class="hljs-number">25</span>, <span class="hljs-number">35</span>]).isValid(), <span class="hljs-comment">//false</span><br>  moment([<span class="hljs-number">2015</span>, <span class="hljs-number">10</span>, <span class="hljs-number">35</span>]).invalidAt() <span class="hljs-comment">//2</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h1 id="2-取值，赋值方法"><a href="#2-取值，赋值方法" class="headerlink" title="2.取值，赋值方法"></a>2.取值，赋值方法</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().seconds() === <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getSeconds()); <span class="hljs-comment">//true</span><br><span class="hljs-built_in">console</span>.log(moment.utc().seconds() === <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getUTCSeconds()); <span class="hljs-comment">//true</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="millisecond-milliseconds"><a href="#millisecond-milliseconds" class="headerlink" title="millisecond()/milliseconds()"></a>millisecond()/milliseconds()</h3><p>获取或设置毫秒</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().millisecond());<br><span class="hljs-built_in">console</span>.log(moment().milliseconds());<br><span class="hljs-built_in">console</span>.log(moment().millisecond(<span class="hljs-number">100</span>).valueOf());<br><span class="hljs-built_in">console</span>.log(moment().milliseconds(<span class="hljs-number">100</span>).valueOf());<br></code></pre></td></tr></table></figure>
+
+<h3 id="second-seconds-获取-设置秒"><a href="#second-seconds-获取-设置秒" class="headerlink" title="second()/seconds()   获取/设置秒"></a>second()/seconds()   获取/设置秒</h3><h3 id="minute-minutes-获取-设置分"><a href="#minute-minutes-获取-设置分" class="headerlink" title="minute()/minutes() 获取/设置分"></a>minute()/minutes() 获取/设置分</h3><h3 id="hour-hours-获取-设置小时"><a href="#hour-hours-获取-设置小时" class="headerlink" title="hour()/hours()   获取/设置小时"></a>hour()/hours()   获取/设置小时</h3><h3 id="date-dates-获取-设置日期"><a href="#date-dates-获取-设置日期" class="headerlink" title="date()/dates()   获取/设置日期"></a>date()/dates()   获取/设置日期</h3><h3 id="day-days-获取-设置星期"><a href="#day-days-获取-设置星期" class="headerlink" title="day()/days()       获取/设置星期"></a>day()/days()       获取/设置星期</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment().day(), <span class="hljs-comment">//1</span><br>  moment().day(<span class="hljs-string">&quot;Sunday&quot;</span>) <span class="hljs-comment">//设置星期的时候可以传入一个星期的英文单词</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="weekday"><a href="#weekday" class="headerlink" title="weekday()"></a>weekday()</h3><p>根据语言环境获获取/设置星期，根据语言环境获取或设置星期几</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js">moment.locale(<span class="hljs-string">&quot;zh-cn&quot;</span>); <span class="hljs-comment">//把当前的语言环境设置为中文</span><br><span class="hljs-built_in">console</span>.log(<br>  moment().weekday(), <span class="hljs-comment">//0</span><br>  moment().weekday(<span class="hljs-number">0</span>) <span class="hljs-comment">//0	//英文下是周日，中文下是周一</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="dayOfYear"><a href="#dayOfYear" class="headerlink" title="dayOfYear()"></a>dayOfYear()</h3><p>获取或设置年份的日期（今天是今年的第几天）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().dayOfYear()); <span class="hljs-comment">//111</span><br><span class="hljs-built_in">console</span>.log(moment().dayOfYear(<span class="hljs-number">1</span>));<br></code></pre></td></tr></table></figure>
+
+<h3 id="week-weeks"><a href="#week-weeks" class="headerlink" title="week()/weeks()"></a>week()/weeks()</h3><p>获取或设置年份的星期（当前星期是今年的第几个星期）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().week()); <span class="hljs-comment">//17</span><br><span class="hljs-built_in">console</span>.log(moment([<span class="hljs-number">2021</span>, <span class="hljs-number">4</span>, <span class="hljs-number">20</span>]).week()); <span class="hljs-comment">//20</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="month-months"><a href="#month-months" class="headerlink" title="month()/months()"></a>month()/months()</h3><p>获取或设置月份，设置时范围为 0-11，还支持月份名称</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().month()); <span class="hljs-comment">//3</span><br><span class="hljs-built_in">console</span>.log(moment().month(<span class="hljs-string">&quot;July&quot;</span>)); <span class="hljs-comment">//3</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="quarter-quarters"><a href="#quarter-quarters" class="headerlink" title="quarter()/quarters()"></a>quarter()/quarters()</h3><p>获取或设置季度</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().quarter()); <span class="hljs-comment">//2</span><br><span class="hljs-built_in">console</span>.log(moment().quarter(<span class="hljs-number">4</span>)); <span class="hljs-comment">//2</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="year-years"><a href="#year-years" class="headerlink" title="year()/years()"></a>year()/years()</h3><p>获取或设置年份</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().year());<br><span class="hljs-built_in">console</span>.log(moment().year(<span class="hljs-number">2088</span>));<br></code></pre></td></tr></table></figure>
+
+<h3 id="weekYear"><a href="#weekYear" class="headerlink" title="weekYear()"></a>weekYear()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment([<span class="hljs-number">2020</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]).weekYear());<br><span class="hljs-built_in">console</span>.log(moment([<span class="hljs-number">2020</span>, <span class="hljs-number">11</span>, <span class="hljs-number">31</span>]).weekYear());<br></code></pre></td></tr></table></figure>
+
+<h3 id="weeksInYear"><a href="#weeksInYear" class="headerlink" title="weeksInYear()"></a>weeksInYear()</h3><p>根据语言环境获取当前 moment 年份的周数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().weeksInYear()); <span class="hljs-comment">//52</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h3><p>获取日期</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().get(<span class="hljs-string">&quot;year&quot;</span>));<br><span class="hljs-built_in">console</span>.log(moment().get(<span class="hljs-string">&quot;M&quot;</span>));<br><span class="hljs-built_in">console</span>.log(moment().get(<span class="hljs-string">&quot;date&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<h3 id="set"><a href="#set" class="headerlink" title="set()"></a>set()</h3><p>设置日期</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment().set(<span class="hljs-string">&quot;year&quot;</span>, <span class="hljs-number">2030</span>),<br>  moment().set(<span class="hljs-string">&quot;month&quot;</span>, <span class="hljs-number">8</span>),<br>  moment().set(&#123;<br>    <span class="hljs-attr">year</span>: <span class="hljs-number">2008</span>,<br>    <span class="hljs-attr">month</span>: <span class="hljs-number">7</span>,<br>    <span class="hljs-attr">date</span>: <span class="hljs-number">8</span>,<br>  &#125;)<br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="max"><a href="#max" class="headerlink" title="max()"></a>max()</h3><p>对比多个日期，返回最大的那个日期</p>
+<h3 id="min"><a href="#min" class="headerlink" title="min()"></a>min()</h3><p>对比多个日期，返回最小的那个日期</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = moment(<span class="hljs-string">&quot;2019-10-15&quot;</span>);<br><span class="hljs-keyword">var</span> b = moment(&#123; <span class="hljs-attr">year</span>: <span class="hljs-number">2010</span>, <span class="hljs-attr">month</span>: <span class="hljs-number">3</span>, <span class="hljs-attr">date</span>: <span class="hljs-number">5</span> &#125;);<br><span class="hljs-keyword">var</span> c = moment([<span class="hljs-number">2020</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>]);<br><span class="hljs-built_in">console</span>.log(moment.max(a, b, c)); <span class="hljs-comment">//c</span><br><span class="hljs-built_in">console</span>.log(moment.min(a, b, c)); <span class="hljs-comment">//b</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="3-操作显示方法"><a href="#3-操作显示方法" class="headerlink" title="3.操作显示方法"></a>3.操作显示方法</h1><h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="add"><a href="#add" class="headerlink" title="add()"></a>add()</h3><p>增加日期</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().add(<span class="hljs-number">7</span>, <span class="hljs-string">&quot;days&quot;</span>)); <span class="hljs-comment">//以今天的日期往后加7天</span><br><span class="hljs-built_in">console</span>.log(moment().add(<span class="hljs-number">5</span>, <span class="hljs-string">&quot;M&quot;</span>)); <span class="hljs-comment">//以今天的日期往后加5个月。这里第二个参数使用的是快捷键</span><br><span class="hljs-built_in">console</span>.log(moment().add(<span class="hljs-number">365</span>, <span class="hljs-string">&quot;days&quot;</span>).add(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;months&quot;</span>));<br><span class="hljs-built_in">console</span>.log(moment().add(&#123; <span class="hljs-attr">days</span>: <span class="hljs-number">365</span>, <span class="hljs-attr">months</span>: <span class="hljs-number">1</span> &#125;));<br></code></pre></td></tr></table></figure>
+
+<p>注意：如果原始日期中的日期大于最终月份的天数，则跳到最后一天</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment([<span class="hljs-number">2010</span>, <span class="hljs-number">0</span>, <span class="hljs-number">31</span>]).add(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;months&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<h3 id="subtract"><a href="#subtract" class="headerlink" title="subtract()"></a>subtract()</h3><p>减少日期</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().subtract(<span class="hljs-number">7</span>, <span class="hljs-string">&quot;days&quot;</span>));<br><span class="hljs-built_in">console</span>.log(<br>  moment().subtract(<span class="hljs-number">1.5</span>, <span class="hljs-string">&quot;months&quot;</span>).valueOf() ===<br>    moment().subtract(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;months&quot;</span>).valueOf()<br>); <span class="hljs-comment">//true 如果传小数的话，会被四舍五入</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="startOf"><a href="#startOf" class="headerlink" title="startOf()"></a>startOf()</h3><p>把日期设置成参数的开始值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().startOf(<span class="hljs-string">&quot;year&quot;</span>)); <span class="hljs-comment">//设置成今年第一天</span><br><span class="hljs-built_in">console</span>.log(moment().startOf(<span class="hljs-string">&quot;month&quot;</span>)); <span class="hljs-comment">//设置成当月第一天</span><br><span class="hljs-built_in">console</span>.log(moment().startOf(<span class="hljs-string">&quot;hour&quot;</span>)); <span class="hljs-comment">//设置成当前小时的最开始那一秒</span><br><span class="hljs-built_in">console</span>.log(moment().minutes(<span class="hljs-number">0</span>).seconds(<span class="hljs-number">0</span>).milliseconds(<span class="hljs-number">0</span>));<br></code></pre></td></tr></table></figure>
+
+<h3 id="endOf"><a href="#endOf" class="headerlink" title="endOf()"></a>endOf()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().endOf(<span class="hljs-string">&quot;year&quot;</span>)); <span class="hljs-comment">//置成今年的最后一天的最后一刻</span><br><span class="hljs-built_in">console</span>.log(moment().endOf(<span class="hljs-string">&quot;month&quot;</span>)); <span class="hljs-comment">//设置为当月的最后一天的最后一刻</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="local"><a href="#local" class="headerlink" title="local()"></a>local()</h3><p>在日期上设置个标记，以使用本地时间</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = moment.utc([<span class="hljs-number">2011</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">8</span>]);<br><span class="hljs-built_in">console</span>.log(a.hours()); <span class="hljs-comment">//8</span><br>a.local();<br><span class="hljs-built_in">console</span>.log(a.hours()); <span class="hljs-comment">//16</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="utcOffset"><a href="#utcOffset" class="headerlink" title="utcOffset()"></a>utcOffset()</h3><p>获取本地时间与 UTC 时间的偏移量（差值）以分钟数为单位</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().utcOffset()); <span class="hljs-comment">//480</span><br><span class="hljs-built_in">console</span>.log(moment().utcOffset(<span class="hljs-number">10</span>)); <span class="hljs-comment">//把本地时间与UTC时间的偏移量设置成10，也就是本地时间比UTC时间多10个小时</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h2><h3 id="format"><a href="#format" class="headerlink" title="format()"></a>format()</h3><p>格式化时间，它的参数非常丰富</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment().format()); <span class="hljs-comment">//2020-04-21T11:38:30+08:00</span><br><span class="hljs-built_in">console</span>.log(moment().format(<span class="hljs-string">&quot;DDDo, W, MMMM Do YYYY, h:mm:ss a - ZZ&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<p>本地化的格式，它定义了一些常用格式，这些格式会根据语言环境来决定显示的内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js">moment.locale(<span class="hljs-string">&quot;zh-cn&quot;</span>);<br><span class="hljs-built_in">console</span>.log(moment().format(<span class="hljs-string">&quot;LLLL&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<h3 id="fromNow"><a href="#fromNow" class="headerlink" title="fromNow()"></a>fromNow()</h3><p>相对于现在的时间</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment([<span class="hljs-number">2008</span>]).fromNow(), <span class="hljs-comment">//12 年前	2008年相对于今天是12年前的时间</span><br>  moment([<span class="hljs-number">2008</span>]).fromNow(<span class="hljs-literal">true</span>) <span class="hljs-comment">//12 年</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="from"><a href="#from" class="headerlink" title="from()"></a>from()</h3><p>一个时间相对于另一个时间的时间</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = moment([<span class="hljs-number">2007</span>, <span class="hljs-number">0</span>, <span class="hljs-number">15</span>]);<br><span class="hljs-keyword">var</span> b = moment([<span class="hljs-number">2007</span>, <span class="hljs-number">0</span>, <span class="hljs-number">29</span>]);<br><span class="hljs-built_in">console</span>.log(<br>  a.from(b), <span class="hljs-comment">//a相对于b是14天前的时间</span><br>  a.from(b, <span class="hljs-literal">true</span>)<br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="toNow"><a href="#toNow" class="headerlink" title="toNow()"></a>toNow()</h3><p>到现在的时间</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<br>  moment([<span class="hljs-number">2008</span>]).toNow(), <span class="hljs-comment">//12 年内</span><br>  moment([<span class="hljs-number">2008</span>]).toNow(<span class="hljs-literal">true</span>) <span class="hljs-comment">//12 年</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="to"><a href="#to" class="headerlink" title="to()"></a>to()</h3><p>一个时间到另一个时间的间隔</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = moment([<span class="hljs-number">2007</span>, <span class="hljs-number">0</span>, <span class="hljs-number">15</span>]);<br><span class="hljs-keyword">var</span> b = moment([<span class="hljs-number">2007</span>, <span class="hljs-number">0</span>, <span class="hljs-number">29</span>]);<br><span class="hljs-built_in">console</span>.log(<br>  a.to(b), <span class="hljs-comment">//14 天内	a到b的时间在14天内</span><br>  a.to(b, <span class="hljs-literal">true</span>) <span class="hljs-comment">//14 天</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="calendar"><a href="#calendar" class="headerlink" title="calendar()"></a>calendar()</h3><p>返回一个相对于参数（默认为当前时间）的日历时间。最终的结果它会根据两个时间的接近程度来决定。一共定义了 6 个档（读一下文档）最大的范围限制在一个星期，超过一个星期就会显示为“其它”</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(moment().calendar());<br><span class="hljs-built_in">console</span>.log(moment().calendar(moment([<span class="hljs-number">2020</span>, <span class="hljs-number">3</span>, <span class="hljs-number">15</span>]))); <span class="hljs-comment">//下星期二11:54 当前的日期为参数的日期的下星期2</span><br><span class="hljs-built_in">console</span>.log(moment().calendar(moment([<span class="hljs-number">2020</span>, <span class="hljs-number">3</span>, <span class="hljs-number">20</span>]))); <span class="hljs-comment">//明天11:56</span><br><span class="hljs-built_in">console</span>.log(moment().calendar(moment([<span class="hljs-number">2020</span>, <span class="hljs-number">4</span>, <span class="hljs-number">20</span>]))); <span class="hljs-comment">//2020/04/21</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="diff"><a href="#diff" class="headerlink" title="diff()"></a>diff()</h3><p>返回两个时间的差值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = moment([<span class="hljs-number">2007</span>, <span class="hljs-number">0</span>, <span class="hljs-number">29</span>]);<br><span class="hljs-keyword">var</span> b = moment([<span class="hljs-number">2007</span>, <span class="hljs-number">0</span>, <span class="hljs-number">28</span>]);<br><span class="hljs-built_in">console</span>.log(a.diff(b)); <span class="hljs-comment">//86400000 默认取两个时间差的毫秒数</span><br><span class="hljs-built_in">console</span>.log(a.diff(b, <span class="hljs-string">&quot;days&quot;</span>)); <span class="hljs-comment">//1</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="valueOf-NaN"><a href="#valueOf-NaN" class="headerlink" title="valueOf()"></a>valueOf()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(moment().valueOf(), <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().valueOf());<br></code></pre></td></tr></table></figure>
+
+<h3 id="unix-1"><a href="#unix-1" class="headerlink" title="unix()"></a>unix()</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(moment().unix());<br></code></pre></td></tr></table></figure>
+
+<h3 id="daysInMonth"><a href="#daysInMonth" class="headerlink" title="daysInMonth()"></a>daysInMonth()</h3><p>获取某月的天数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(moment().daysInMonth()); <span class="hljs-comment">//30</span><br><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;2020-02&quot;</span>).daysInMonth()); <span class="hljs-comment">//29</span><br><br><span class="hljs-built_in">console</span>.log(moment().toDate());<br><span class="hljs-built_in">console</span>.log(moment().toArray());<br><span class="hljs-built_in">console</span>.log(moment().toObject()); <span class="hljs-comment">//toObject()	把日期的各个组成部分拆分成了属性，返回整个对象</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="4-查询方法"><a href="#4-查询方法" class="headerlink" title="4.查询方法"></a>4.查询方法</h1><h3 id="isBefore"><a href="#isBefore" class="headerlink" title="isBefore()"></a>isBefore()</h3><p>检查一个时间是否在另一个时间之前，默认是都转成毫秒数进行计算</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;2010-10-20&quot;</span>).isBefore()); <span class="hljs-comment">//true	没给参数默认为现在的时间</span><br><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;2010-10-20&quot;</span>).isBefore(<span class="hljs-string">&quot;2010-10-19&quot;</span>)); <span class="hljs-comment">//false	第一个日期是否在第二个日期之前</span><br><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;2009-10-20&quot;</span>).isBefore(<span class="hljs-string">&quot;2010-10-19&quot;</span>, <span class="hljs-string">&quot;year&quot;</span>)); <span class="hljs-comment">//false	二个参数为对比的单位，可以给的有year month week isoWeek day hour minute second</span><br><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;2010-10-20&quot;</span>).isBefore(<span class="hljs-string">&quot;2008-12-31&quot;</span>, <span class="hljs-string">&quot;month&quot;</span>)); <span class="hljs-comment">//false</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="isSame"><a href="#isSame" class="headerlink" title="isSame()"></a>isSame()</h3><p>检查两个时间是否相同</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;2010-10-20&quot;</span>).isSame(<span class="hljs-string">&quot;2010-10-20&quot;</span>));<br><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;2010-10-20&quot;</span>).isSame(<span class="hljs-string">&quot;2010-12-20&quot;</span>, <span class="hljs-string">&quot;year&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<h3 id="isAfter"><a href="#isAfter" class="headerlink" title="isAfter()"></a>isAfter()</h3><p>检查一个时间是否在另一个时间之后</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(moment(<span class="hljs-string">&quot;2010-10-20&quot;</span>).isAfter(<span class="hljs-string">&quot;2010-09-19&quot;</span>)); <span class="hljs-comment">//true</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="isSameOrBefore"><a href="#isSameOrBefore" class="headerlink" title="isSameOrBefore()"></a>isSameOrBefore()</h3><p>检查一个时间是否在另一个时间之前或者与之相同（&lt;=）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<br>  moment(<span class="hljs-string">&quot;2010-10-20&quot;</span>).isSameOrBefore(<span class="hljs-string">&quot;2010-10-21&quot;</span>), <span class="hljs-comment">//true</span><br>  moment(<span class="hljs-string">&quot;2010-10-20&quot;</span>).isSameOrBefore(<span class="hljs-string">&quot;2010-10-20&quot;</span>), <span class="hljs-comment">//true</span><br>  moment(<span class="hljs-string">&quot;2010-11-20&quot;</span>).isSameOrBefore(<span class="hljs-string">&quot;2010-10-20&quot;</span>) <span class="hljs-comment">//false</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="isSameOrAfter"><a href="#isSameOrAfter" class="headerlink" title="isSameOrAfter()"></a>isSameOrAfter()</h3><p>检查一个时间是否在另一个时间之后或者与之相同（&gt;=）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<br>  moment(<span class="hljs-string">&quot;2010-11-20&quot;</span>).isSameOrAfter(<span class="hljs-string">&quot;2010-10-21&quot;</span>), <span class="hljs-comment">//true</span><br>  moment(<span class="hljs-string">&quot;2010-10-20&quot;</span>).isSameOrAfter(<span class="hljs-string">&quot;2010-10-20&quot;</span>), <span class="hljs-comment">//true</span><br>  moment(<span class="hljs-string">&quot;2010-10-19&quot;</span>).isSameOrAfter(<span class="hljs-string">&quot;2010-10-20&quot;</span>) <span class="hljs-comment">//false</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="isBetween"><a href="#isBetween" class="headerlink" title="isBetween()"></a>isBetween()</h3><p>检查一个时间是否在其他两个时间之间</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment(<span class="hljs-string">&quot;2010-10-20&quot;</span>).isBetween(<span class="hljs-string">&quot;2010-10-19&quot;</span>, <span class="hljs-string">&quot;2010-10-25&quot;</span>), <span class="hljs-comment">//true</span><br>  moment(<span class="hljs-string">&quot;2010-10-20&quot;</span>).isBetween(<span class="hljs-string">&quot;2010-10-19&quot;</span>, <span class="hljs-literal">undefined</span>), <span class="hljs-comment">//true undefined等于moment(),就是当前的时间</span><br>  moment(<span class="hljs-string">&quot;2010-10-20&quot;</span>).isBetween(<span class="hljs-string">&quot;2009-10-19&quot;</span>, <span class="hljs-string">&quot;2012-01-01&quot;</span>, <span class="hljs-string">&quot;year&quot;</span>), <span class="hljs-comment">//true</span><br><br>  <span class="hljs-comment">//第四个参数为包容性，第三个参数为null，表示对比单位为默认毫秒数</span><br>  moment(<span class="hljs-string">&quot;2016-10-30&quot;</span>).isBetween(<span class="hljs-string">&quot;2016-10-30&quot;</span>, <span class="hljs-string">&quot;2016-12-30&quot;</span>, <span class="hljs-literal">null</span>, <span class="hljs-string">&quot;()&quot;</span>) <span class="hljs-comment">//false</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="isLeapYear"><a href="#isLeapYear" class="headerlink" title="isLeapYear()"></a>isLeapYear()</h3><p>检测是否为闰年</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment().isLeapYear(), <span class="hljs-comment">//true</span><br>  moment([<span class="hljs-number">2019</span>]).isLeapYear() <span class="hljs-comment">//false</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="isMoment"><a href="#isMoment" class="headerlink" title="isMoment()"></a>isMoment()</h3><p>检测变量是否为 moment 对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment.isMoment(), <span class="hljs-comment">//false</span><br>  moment.isMoment(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()), <span class="hljs-comment">//false</span><br>  moment.isMoment(moment()) <span class="hljs-comment">//true</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="isDate"><a href="#isDate" class="headerlink" title="isDate()"></a>isDate()</h3><p>检测变量是否为原生的 Date 对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment.isDate(), <span class="hljs-comment">//false</span><br>  moment.isDate(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()), <span class="hljs-comment">//true</span><br>  moment.isDate(moment()) <span class="hljs-comment">//false</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h1 id="5-国际化、自定义方法"><a href="#5-国际化、自定义方法" class="headerlink" title="5.国际化、自定义方法"></a>5.国际化、自定义方法</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment.locale()); <span class="hljs-comment">//en //返回当前的语言环境</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment().weekday(<span class="hljs-number">0</span>), <span class="hljs-comment">//根据语言环境获取或设置（传参）星期几。英文环境为星期天，中文环境为星期一</span><br>  moment().format(<span class="hljs-string">&quot;LLLL&quot;</span>), <span class="hljs-comment">//格式化时间，参数为本地化格式。英文环境与中文环境都不同</span><br><br>  moment().month()<br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="设置语言环境-局部"><a href="#设置语言环境-局部" class="headerlink" title="设置语言环境 (局部)"></a>设置语言环境 (局部)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> myMoment = moment();<br>myMoment.locale(<span class="hljs-string">&quot;ar-dz&quot;</span>);<br><br><span class="hljs-built_in">console</span>.log(moment().format(<span class="hljs-string">&quot;LLLL&quot;</span>));<br><span class="hljs-built_in">console</span>.log(myMoment.format(<span class="hljs-string">&quot;LLLL&quot;</span>));<br></code></pre></td></tr></table></figure>
+
+<h3 id="months-weekdays"><a href="#months-weekdays" class="headerlink" title="months()/weekdays()"></a>months()/weekdays()</h3><h3 id="moment-locale-‘ru’"><a href="#moment-locale-‘ru’" class="headerlink" title="moment.locale(‘ru’);"></a>moment.locale(‘ru’);</h3><h3 id="moment-locale-‘zh-hk’"><a href="#moment-locale-‘zh-hk’" class="headerlink" title="moment.locale(‘zh-hk’);"></a>moment.locale(‘zh-hk’);</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment.months(),<br>  moment.monthsShort(),<br>  moment.weekdays(),<br>  moment.weekdaysShort(),<br>  moment.weekdaysMin()<br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="localeData"><a href="#localeData" class="headerlink" title="localeData()"></a>localeData()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment.localeData(), moment.localeData().monthsShort());<br></code></pre></td></tr></table></figure>
+
+<h2 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><code class="hljs js">moment.updateLocale(<span class="hljs-string">&quot;zh-cn&quot;</span>, &#123;<br>  <span class="hljs-comment">//设置月份名称</span><br>  <span class="hljs-attr">months</span>:<br>    <span class="hljs-string">&quot;一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月&quot;</span>.split(<br>      <span class="hljs-string">&quot;_&quot;</span><br>    ),<br><br>  <span class="hljs-comment">//设置月分名称的缩写</span><br>  <span class="hljs-attr">monthsShort</span>: <span class="hljs-string">&quot;1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月&quot;</span>.split(<span class="hljs-string">&quot;_&quot;</span>),<br><br>  <span class="hljs-comment">//设置星期名称</span><br>  <span class="hljs-attr">weekdays</span>: <span class="hljs-string">&quot;星期日_星期一_星期二_星期三_星期四_星期五_星期六&quot;</span>.split(<span class="hljs-string">&quot;_&quot;</span>),<br><br>  <span class="hljs-comment">//设置星期名称的缩写</span><br>  <span class="hljs-attr">weekdaysShort</span>: <span class="hljs-string">&quot;周日_周一_周二_周三_周四_周五_周六&quot;</span>.split(<span class="hljs-string">&quot;_&quot;</span>),<br><br>  <span class="hljs-comment">//设置星期名称的最小缩写</span><br>  <span class="hljs-attr">weekdaysMin</span>: <span class="hljs-string">&quot;日_一_二_三_四_五_六&quot;</span>.split(<span class="hljs-string">&quot;_&quot;</span>),<br><br>  <span class="hljs-comment">//设置长日期格式，是个对象</span><br>  <span class="hljs-attr">longDateFormat</span>: &#123;<br>    <span class="hljs-attr">LT</span>: <span class="hljs-string">&quot;Ah点mm分&quot;</span>,<br>    <span class="hljs-attr">LTS</span>: <span class="hljs-string">&quot;Ah点m分s秒&quot;</span>,<br>    <span class="hljs-attr">L</span>: <span class="hljs-string">&quot;YYYY-MM-DD&quot;</span>,<br>    <span class="hljs-attr">LL</span>: <span class="hljs-string">&quot;YYYY年MMMD日&quot;</span>,<br>    <span class="hljs-attr">LLL</span>: <span class="hljs-string">&quot;YYYY年MMMD日Ah点mm分&quot;</span>,<br>    <span class="hljs-attr">LLLL</span>: <span class="hljs-string">&quot;YYYY年MMMD日ddddAh点mm分&quot;</span>,<br>    <span class="hljs-attr">l</span>: <span class="hljs-string">&quot;YYYY-MM-DD&quot;</span>,<br>    <span class="hljs-attr">ll</span>: <span class="hljs-string">&quot;YYYY年MMMD日&quot;</span>,<br>    <span class="hljs-attr">lll</span>: <span class="hljs-string">&quot;YYYY年MMMD日Ah点mm分&quot;</span>,<br>    <span class="hljs-attr">llll</span>: <span class="hljs-string">&quot;YYYY年MMMD日ddddAh点mm分&quot;</span>,<br>  &#125;,<br><br>  <span class="hljs-comment">//设置相对时间，from()与to()的方法返回的值就是从这里取的</span><br>  <span class="hljs-attr">relativeTime</span>: &#123;<br>    <span class="hljs-attr">future</span>: <span class="hljs-string">&quot;%s内&quot;</span>,<br>    <span class="hljs-attr">past</span>: <span class="hljs-string">&quot;%s前~~~&quot;</span>,<br>    <span class="hljs-attr">s</span>: <span class="hljs-string">&quot;几秒&quot;</span>,<br>    <span class="hljs-attr">m</span>: <span class="hljs-string">&quot;1 分钟&quot;</span>,<br>    <span class="hljs-attr">mm</span>: <span class="hljs-string">&quot;%d 分钟&quot;</span>,<br>    <span class="hljs-attr">h</span>: <span class="hljs-string">&quot;1 小时&quot;</span>,<br>    <span class="hljs-attr">hh</span>: <span class="hljs-string">&quot;%d 小时&quot;</span>,<br>    <span class="hljs-attr">d</span>: <span class="hljs-string">&quot;1 天&quot;</span>,<br>    <span class="hljs-attr">dd</span>: <span class="hljs-string">&quot;%d 天&quot;</span>,<br>    <span class="hljs-attr">M</span>: <span class="hljs-string">&quot;1 个月&quot;</span>,<br>    <span class="hljs-attr">MM</span>: <span class="hljs-string">&quot;%d 个月&quot;</span>,<br>    <span class="hljs-attr">y</span>: <span class="hljs-string">&quot;1 年&quot;</span>,<br>    <span class="hljs-attr">yy</span>: <span class="hljs-string">&quot;%d 年&quot;</span>,<br>  &#125;,<br><br>  <span class="hljs-comment">//设置时间段，参数：小时,分钟,大小写</span><br>  <span class="hljs-attr">meridiem</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">hour, minute, isLower</span>) </span>&#123;<br>    <span class="hljs-keyword">const</span> hm = hour * <span class="hljs-number">100</span> + minute;<br>    <span class="hljs-keyword">if</span> (hm &lt; <span class="hljs-number">600</span>) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;凌晨&quot;</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (hm &lt; <span class="hljs-number">900</span>) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;早上&quot;</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (hm &lt; <span class="hljs-number">1130</span>) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;上午&quot;</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (hm &lt; <span class="hljs-number">1230</span>) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;中午&quot;</span>;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (hm &lt; <span class="hljs-number">1800</span>) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;下午@@@@&quot;</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;晚上&quot;</span>;<br>    &#125;<br>  &#125;,<br><br>  <span class="hljs-comment">//设置日历</span><br>  <span class="hljs-attr">calendar</span>: &#123;<br>    <span class="hljs-attr">sameDay</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.minutes() === <span class="hljs-number">0</span> ? <span class="hljs-string">&quot;[今天]Ah[点整]&quot;</span> : <span class="hljs-string">&quot;[今天]LT&quot;</span>;<br>    &#125;,<br>    <span class="hljs-attr">nextDay</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.minutes() === <span class="hljs-number">0</span> ? <span class="hljs-string">&quot;[明天]Ah[点整]&quot;</span> : <span class="hljs-string">&quot;[明天]LT&quot;</span>;<br>    &#125;,<br>    <span class="hljs-attr">lastDay</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.minutes() === <span class="hljs-number">0</span> ? <span class="hljs-string">&quot;[昨天]Ah[点整]&quot;</span> : <span class="hljs-string">&quot;[昨天]LT&quot;</span>;<br>    &#125;,<br>    <span class="hljs-attr">nextWeek</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>      <span class="hljs-keyword">let</span> startOfWeek, prefix;<br>      startOfWeek = moment().startOf(<span class="hljs-string">&quot;week&quot;</span>);<br>      prefix = <span class="hljs-built_in">this</span>.diff(startOfWeek, <span class="hljs-string">&quot;days&quot;</span>) &gt;= <span class="hljs-number">7</span> ? <span class="hljs-string">&quot;[下]&quot;</span> : <span class="hljs-string">&quot;[本####]&quot;</span>;<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.minutes() === <span class="hljs-number">0</span> ? prefix + <span class="hljs-string">&quot;dddAh点整&quot;</span> : prefix + <span class="hljs-string">&quot;dddAh点mm&quot;</span>;<br>    &#125;,<br>    <span class="hljs-attr">lastWeek</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>      <span class="hljs-keyword">let</span> startOfWeek, prefix;<br>      startOfWeek = moment().startOf(<span class="hljs-string">&quot;week&quot;</span>);<br>      prefix = <span class="hljs-built_in">this</span>.unix() &lt; startOfWeek.unix() ? <span class="hljs-string">&quot;[上]&quot;</span> : <span class="hljs-string">&quot;[本]&quot;</span>;<br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.minutes() === <span class="hljs-number">0</span> ? prefix + <span class="hljs-string">&quot;dddAh点整&quot;</span> : prefix + <span class="hljs-string">&quot;dddAh点mm&quot;</span>;<br>    &#125;,<br>    <span class="hljs-attr">sameElse</span>: <span class="hljs-string">&quot;LL&quot;</span>,<br>  &#125;,<br>  <span class="hljs-attr">week</span>: &#123;<br>    <span class="hljs-attr">dow</span>: <span class="hljs-number">1</span>, <span class="hljs-comment">//星期的第一天是周1</span><br>    <span class="hljs-attr">doy</span>: <span class="hljs-number">4</span>,<br>  &#125;,<br>&#125;);<br><br><span class="hljs-built_in">console</span>.log(<br>  <span class="hljs-string">&quot;今天是：&quot;</span> + moment().format(<span class="hljs-string">&quot;MMMM&quot;</span>) + <span class="hljs-string">&quot; &quot;</span> + moment().format(<span class="hljs-string">&quot;dddd&quot;</span>)<br>);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;今天是：&quot;</span> + moment().format(<span class="hljs-string">&quot;MMM&quot;</span>) + <span class="hljs-string">&quot; &quot;</span> + moment().format(<span class="hljs-string">&quot;ddd&quot;</span>));<br><br><span class="hljs-built_in">console</span>.log(moment().format(<span class="hljs-string">&quot;LLLL&quot;</span>));<br><br><span class="hljs-built_in">console</span>.log(moment([<span class="hljs-number">2008</span>]).from());<br><br><span class="hljs-built_in">console</span>.log(moment().calendar(moment([<span class="hljs-number">2020</span>, <span class="hljs-number">3</span>, <span class="hljs-number">15</span>])));<br></code></pre></td></tr></table></figure>
+
+<h1 id="6-时长方法"><a href="#6-时长方法" class="headerlink" title="6.时长方法"></a>6.时长方法</h1><h3 id="duration"><a href="#duration" class="headerlink" title="duration()"></a>duration()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(moment.duration());<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment.duration(<span class="hljs-number">100</span>), <span class="hljs-comment">//给一个参数表示为毫秒</span><br>  moment.duration(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;seconds&quot;</span>), <span class="hljs-comment">//时长为2s</span><br>  moment.duration(<span class="hljs-number">3</span>, <span class="hljs-string">&quot;minutes&quot;</span>), <span class="hljs-comment">//时长为3min</span><br>  moment.duration(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;M&quot;</span>),<br><br>  <span class="hljs-comment">//参数也可以是一个对象</span><br>  moment.duration(&#123;<br>    <span class="hljs-attr">seconds</span>: <span class="hljs-number">1</span>,<br>    <span class="hljs-attr">minutes</span>: <span class="hljs-number">2</span>,<br>    <span class="hljs-attr">hours</span>: <span class="hljs-number">3</span>,<br>    <span class="hljs-attr">days</span>: <span class="hljs-number">4</span>,<br>    <span class="hljs-attr">weeks</span>: <span class="hljs-number">5</span>,<br>    <span class="hljs-attr">months</span>: <span class="hljs-number">6</span>,<br>    <span class="hljs-attr">years</span>: <span class="hljs-number">7</span>,<br>  &#125;),<br><br>  <span class="hljs-comment">//ASP.NET 风格的时间跨度</span><br>  moment.duration(<span class="hljs-string">&quot;23:59:59&quot;</span>) <span class="hljs-comment">//时:分:秒</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="clone-1"><a href="#clone-1" class="headerlink" title="clone()"></a>clone()</h3><p>克隆一个时长对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> d1 = moment.duration();<br><span class="hljs-keyword">var</span> d2 = d1.clone();<br>d1.add(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;second&quot;</span>);<br><span class="hljs-built_in">console</span>.log(d1, d2);<br></code></pre></td></tr></table></figure>
+
+<h3 id="humanize"><a href="#humanize" class="headerlink" title="humanize()"></a>humanize()</h3><p>显示一段时长</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js">moment.locale(<span class="hljs-string">&quot;zh-cn&quot;</span>);<br><span class="hljs-built_in">console</span>.log(<br>  moment.duration(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;minutes&quot;</span>).humanize(),<br>  moment.duration(<span class="hljs-number">24</span>, <span class="hljs-string">&quot;hours&quot;</span>).humanize(),<br>  moment.duration(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;minutes&quot;</span>).humanize(<span class="hljs-literal">true</span>), <span class="hljs-comment">//1 分钟内</span><br>  moment.duration(-<span class="hljs-number">1</span>, <span class="hljs-string">&quot;minutes&quot;</span>).humanize(<span class="hljs-literal">true</span>) <span class="hljs-comment">//1 分钟前</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="milliseconds"><a href="#milliseconds" class="headerlink" title="milliseconds()"></a>milliseconds()</h3><p>此方法会计算溢出</p>
+<h3 id="asMilliseconds"><a href="#asMilliseconds" class="headerlink" title="asMilliseconds()"></a>asMilliseconds()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment.duration(<span class="hljs-number">500</span>).milliseconds(), <span class="hljs-comment">//500</span><br>  moment.duration(<span class="hljs-number">1500</span>).milliseconds(), <span class="hljs-comment">//500</span><br>  moment.duration(<span class="hljs-number">15000</span>).milliseconds(), <span class="hljs-comment">//0</span><br>  <span class="hljs-comment">//moment.duration(1500)</span><br><br>  moment.duration(<span class="hljs-number">500</span>).asMilliseconds(), <span class="hljs-comment">//500</span><br>  moment.duration(<span class="hljs-number">1500</span>).asMilliseconds(), <span class="hljs-comment">//1500</span><br>  moment.duration(<span class="hljs-number">15000</span>).asMilliseconds() <span class="hljs-comment">//15000</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="seconds"><a href="#seconds" class="headerlink" title="seconds()"></a>seconds()</h3><h3 id="asSeconds"><a href="#asSeconds" class="headerlink" title="asSeconds()"></a>asSeconds()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment.duration(<span class="hljs-number">500</span>).seconds(), <span class="hljs-comment">//0</span><br>  moment.duration(<span class="hljs-number">1500</span>).seconds(), <span class="hljs-comment">//1</span><br>  moment.duration(<span class="hljs-number">15000</span>).seconds(), <span class="hljs-comment">//15</span><br><br>  moment.duration(<span class="hljs-number">500</span>).asSeconds(), <span class="hljs-comment">//0.5</span><br>  moment.duration(<span class="hljs-number">1500</span>).asSeconds(), <span class="hljs-comment">//1.5</span><br>  moment.duration(<span class="hljs-number">15000</span>).asSeconds() <span class="hljs-comment">//15</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="add-1"><a href="#add-1" class="headerlink" title="add()"></a>add()</h3><p>增加时长，这个方法可以添加多种类型的参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = moment.duration(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;d&quot;</span>); <span class="hljs-comment">//时长为1天</span><br><span class="hljs-keyword">var</span> b = moment.duration(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;d&quot;</span>); <span class="hljs-comment">//时长为2天</span><br><span class="hljs-built_in">console</span>.log(<br>  a.add(b).days(),<br>  moment.duration().add(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;d&quot;</span>).days() <span class="hljs-comment">// 1</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="subtract-1"><a href="#subtract-1" class="headerlink" title="subtract()"></a>subtract()</h3><p>减少时长</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = moment.duration(<span class="hljs-number">3</span>, <span class="hljs-string">&quot;d&quot;</span>);<br><span class="hljs-keyword">var</span> b = moment.duration(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;d&quot;</span>);<br><span class="hljs-built_in">console</span>.log(<br>  a.subtract(b).days(), <span class="hljs-comment">//1</span><br>  moment.duration(<span class="hljs-number">5</span>, <span class="hljs-string">&quot;d&quot;</span>).subtract(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;d&quot;</span>).days() <span class="hljs-comment">//4</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="duration-x-diff-y"><a href="#duration-x-diff-y" class="headerlink" title="duration(x.diff(y))"></a>duration(x.diff(y))</h3><p>获取两个时长的差值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = moment([<span class="hljs-number">2018</span>, <span class="hljs-number">10</span>, <span class="hljs-number">21</span>, <span class="hljs-number">10</span>, <span class="hljs-number">05</span>]);<br><span class="hljs-keyword">var</span> b = moment([<span class="hljs-number">2018</span>, <span class="hljs-number">10</span>, <span class="hljs-number">21</span>, <span class="hljs-number">10</span>, <span class="hljs-number">06</span>]);<br><span class="hljs-built_in">console</span>.log(moment.duration(b.diff(a)));<br></code></pre></td></tr></table></figure>
+
+<h3 id="as"><a href="#as" class="headerlink" title="as()"></a>as()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">console</span>.log(<br>  moment.duration(<span class="hljs-number">1000</span>).as(<span class="hljs-string">&quot;milliseconds&quot;</span>), <span class="hljs-comment">//1000</span><br>  moment.duration(<span class="hljs-number">1000</span>).as(<span class="hljs-string">&quot;seconds&quot;</span>) <span class="hljs-comment">//1</span><br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="get-1"><a href="#get-1" class="headerlink" title="get()"></a>get()</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> d = moment.duration(&#123;<br>  <span class="hljs-attr">seconds</span>: <span class="hljs-number">1</span>,<br>  <span class="hljs-attr">minutes</span>: <span class="hljs-number">2</span>,<br>  <span class="hljs-attr">hours</span>: <span class="hljs-number">3</span>,<br>  <span class="hljs-attr">days</span>: <span class="hljs-number">4</span>,<br>  <span class="hljs-attr">months</span>: <span class="hljs-number">5</span>,<br>  <span class="hljs-attr">years</span>: <span class="hljs-number">6</span>,<br>&#125;);<br><span class="hljs-built_in">console</span>.log(d);<br><span class="hljs-built_in">console</span>.log(<br>  d.get(<span class="hljs-string">&quot;seconds&quot;</span>),<br>  d.get(<span class="hljs-string">&quot;minutes&quot;</span>),<br>  d.get(<span class="hljs-string">&quot;hours&quot;</span>),<br>  d.get(<span class="hljs-string">&quot;days&quot;</span>),<br>  d.get(<span class="hljs-string">&quot;months&quot;</span>),<br>  d.get(<span class="hljs-string">&quot;years&quot;</span>)<br>);<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2021/7z/758572/1615534595525-6063b4bd-fd3c-4589-b52d-ead797c07a01.7z?_lake_card=%7B%22uid%22:%221615534564337-0%22,%22src%22:%22https://www.yuque.com/attachments/yuque/0/2021/7z/758572/1615534595525-6063b4bd-fd3c-4589-b52d-ead797c07a01.7z%22,%22name%22:%22Moment%E5%AE%9E%E6%88%98.7z%22,%22size%22:84834,%22type%22:%22%22,%22ext%22:%227z%22,%22progress%22:%7B%22percent%22:99%7D,%22status%22:%22done%22,%22percent%22:0,%22id%22:%2222Bjs%22,%22card%22:%22file%22%7D">Moment 实战.7z</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/03/10/CSS3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CSS3</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/02/25/lodash/">
+                        <span class="hidden-mobile">lodash</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

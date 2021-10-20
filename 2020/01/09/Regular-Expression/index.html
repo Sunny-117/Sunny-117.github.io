@@ -1,0 +1,596 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <meta name="description" content="正则表达式https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;Reference&#x2F;Global_Objects&#x2F;RegExp (一).课前补充 字符串转义字符 “\” 反斜杠会强制把后面的东西强制转换成文本 1var str &#x3D; &quot;abc\&quot;snj&quot;;&#x2F;&#x2F;双引号里面打印出双引号     \n 换行    \r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regular Expression">
+<meta property="og:url" content="http://example.com/2020/01/09/Regular-Expression/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="正则表达式https:&#x2F;&#x2F;developer.mozilla.org&#x2F;zh-CN&#x2F;docs&#x2F;Web&#x2F;JavaScript&#x2F;Reference&#x2F;Global_Objects&#x2F;RegExp (一).课前补充 字符串转义字符 “\” 反斜杠会强制把后面的东西强制转换成文本 1var str &#x3D; &quot;abc\&quot;snj&quot;;&#x2F;&#x2F;双引号里面打印出双引号     \n 换行    \r">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-09T02:04:13.000Z">
+<meta property="article:modified_time" content="2021-10-20T02:26:01.235Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>Regular Expression - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Sunny</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Regular Expression">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-01-09 10:04" pubdate>
+        January 9, 2020 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Regular Expression</h1>
+            
+            <div class="markdown-body">
+              <h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp</a></p>
+<h2 id="一-课前补充-字符串"><a href="#一-课前补充-字符串" class="headerlink" title="(一).课前补充 字符串"></a>(一).课前补充 字符串</h2><p>转义字符 “\”</p>
+<p>反斜杠会强制把后面的东西强制转换成文本</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abc\&quot;snj&quot;</span>;<span class="hljs-comment">//双引号里面打印出双引号</span><br></code></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="center">\n</th>
+<th align="center">换行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">\r</td>
+<td align="center">正常下，一个回车代表\r+\n 行结束+行换行</td>
+</tr>
+<tr>
+<td align="center">\t</td>
+<td align="center">缩进</td>
+</tr>
+</tbody></table>
+<p>多行字符串 打印多行文本——编程上让字符串换行</p>
+<p>系统规定字符串不能多行展示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> test = <span class="hljs-string">&quot;\</span><br><span class="hljs-string">&lt;div&gt;&lt;/div&gt;\</span><br><span class="hljs-string">&lt;span&gt;&lt;span&gt;\</span><br><span class="hljs-string">&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<h2 id="二-RegExp-正则表达式"><a href="#二-RegExp-正则表达式" class="headerlink" title="(二).RegExp 正则表达式"></a>(二).RegExp 正则表达式</h2><p>正则表达式的作用：匹配特殊字符或有特殊搭配原则的字符的最佳选择。</p>
+<p>用户输入用户名密码格式校验，例如：输入 XXYY 才符合</p>
+<p>API 字典 参考 w3school 参考正则表达式 pdf</p>
+<h2 id="1-两种创建方式"><a href="#1-两种创建方式" class="headerlink" title="1.两种创建方式"></a>1.两种创建方式</h2><p>1.直接量（推荐）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg =  <span class="hljs-regexp">/abc/</span>;   <span class="hljs-comment">//匹配这个字符串的规则叫abc</span><br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abcd&quot;</span>;<br><span class="hljs-built_in">console</span>.log(reg.test(str));<span class="hljs-comment">//true</span><br></code></pre></td></tr></table></figure>
+
+<p>2.new RegExp();</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abcd/m&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&quot;abc&quot;</span>);<br><span class="hljs-keyword">var</span> reg = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&quot;abc&quot;</span>, <span class="hljs-string">&quot;m&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>w3c 上面有这么一段话<br>返回值：一个新的 RegExp 对象，具有指定的模式和标志。如果参数 <em>pattern</em> 是正则表达式而不是字符串，那么 RegExp() 构造函数将用与指定的 RegExp 相同的模式和标志创建一个新的 RegExp 对象。如果不用 new 运算符，而将 RegExp() 作为函数调用，那么它的行为与用 new 运算符调用时一样，只是当 <em>pattern</em> 是正则表达式时，它只返回 _pattern_，而不再创建一个新的 RegExp 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(reg);<span class="hljs-comment">//不同人</span><br><span class="hljs-keyword">var</span> reg1 = <span class="hljs-built_in">RegExp</span>(reg);<span class="hljs-comment">//同一个人</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="2-三个属性"><a href="#2-三个属性" class="headerlink" title="2.三个属性"></a>2.三个属性</h2><p>(1) 忽视大小写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg =  <span class="hljs-regexp">/abc/i</span>;<br></code></pre></td></tr></table></figure>
+
+<p>(2) 全局匹配</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span>  reg = <span class="hljs-regexp">/ab/</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abababab&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>加上全局</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/ab/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abababab&quot;</span>;<br><span class="hljs-built_in">console</span>.log(str.match(reg));<br></code></pre></td></tr></table></figure>
+
+<p>(3) 执行多行匹配</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^a/g</span>;<span class="hljs-comment">//一行里面以a开头的a</span><br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abcde\na&quot;</span>;<br><span class="hljs-comment">// console.log(str.match(reg));-----&gt;&quot;a&quot;依旧是一个a</span><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^a/gm</span>;<span class="hljs-comment">//加上m才具有多行匹配功能</span><br></code></pre></td></tr></table></figure>
+
+<p>两个方法：</p>
+<p>reg.test(); 有没有符合要求额片 段—-true/false<br>str.match(reg); 直观匹配</p>
+<p>方括号：表达式</p>
+<p>匹配三个数字相连接</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/[1234567890][1234567890][1234567890]/g</span>;<span class="hljs-comment">//一个方括号代表一位</span><br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;123jbh987jkbjbnjik&quot;</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;str.match(reg)&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>演示</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/[ab][cd][d]/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abcd&quot;</span>;<br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;str.match(reg)&quot;</span>)<span class="hljs-comment">//可以取bcd</span><br></code></pre></td></tr></table></figure>
+
+<p>演示：非</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/[^a][^b]/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;ab1cd&quot;</span><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;str.match(reg)&quot;</span>)<span class="hljs-comment">//可以取b1 cd 返回的是数组</span><br></code></pre></td></tr></table></figure>
+
+<p>括号</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(abc|bcd)/g</span>;<span class="hljs-comment">//匹配abc或者bcd</span><br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;bcd&quot;</span><br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abc&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>括号升级</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(abc|bcd)[0-9]/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;bcd&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>元字符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/\w/g</span>;<br><span class="hljs-comment">//\w===[0-9A-z_]</span><br><span class="hljs-comment">//\W===[^\w]</span><br><span class="hljs-comment">//\d===[0-9]</span><br><span class="hljs-comment">//\D===[^\d]</span><br><span class="hljs-comment">//\s===[\t\n\r\v\f]</span><br><span class="hljs-comment">//\S===[^\s]</span><br><span class="hljs-comment">//\b===单词边界</span><br><span class="hljs-comment">//\B===非单词边界</span><br><span class="hljs-comment">// var reg = /\bcde/g;</span><br><span class="hljs-comment">// var str = &quot;abc ada ads&quot;;</span><br><span class="hljs-comment">//</span><br></code></pre></td></tr></table></figure>
+
+<p>unicode 编码</p>
+<p>一般是 6 位</p>
+<p>量词</p>
+<p>Doctype</p>
+<p>1.渲染模式</p>
+<p>在多年以前（IE6 诞生以前），各浏览器都处于各自比较封闭的发展中（基本没有兼容性可谈）。随着 WEB 的发展，兼容性问题的解决越来越显得迫切，随即，各浏览器厂商发布了按照标准模式（遵循各厂商制定的统一标准）工作的浏览器，比如 IE6 就是其中之一。但是考虑到以前建设的网站并不支持标准模式，所以各浏览器在加入标准模式的同时也保留了混杂模式（即以前那种未按照统一标准工作的模式，也叫怪异模式）。</p>
+<p>三种标准模式的写法</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs HTML">1.<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br>2.<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">HTML</span> <span class="hljs-meta-keyword">PUBLIC</span> <span class="hljs-meta-string">&quot;-//W3C//DTD HTML 4.01//EN&quot;</span> <span class="hljs-meta-string">&quot;http://www.w3.org/TR/html4/strict.dtd&quot;</span>&gt;</span><br>3.<span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span> <span class="hljs-meta-keyword">PUBLIC</span> <span class="hljs-meta-string">&quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;</span> <span class="hljs-meta-string">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<p>待穿插知识点</p>
+<p><label> for 属性 — &gt; js 中表示 htmlFor<br>属性映射 HTML 属性 映射到 Element 属性<br>讲事件的时候，阻止默认事件记得要拿 form 提交举例，阻止提交，也要拿 a 举例，组织跳转—&gt;同时引出 javascript:void(0);<br>img 图片预加载<br>byClassName 自己定义的写法还没写呢<br>Math.random() 和彩票程序 0-36 的随机数</label></p>
+<p>要打印多行字符串 打印多行文本——编程上让字符串换行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs JS">方法一：<br><span class="hljs-keyword">var</span> test = <span class="hljs-string">&quot;\</span><br><span class="hljs-string">            &lt;div&gt;&lt;/div&gt;\</span><br><span class="hljs-string">            &lt;span&gt;&lt;span&gt;\</span><br><span class="hljs-string">            &quot;</span>;<span class="hljs-comment">//将文本形式的回车转义掉，让他不再是回车</span><br>方法二：<br><span class="hljs-keyword">var</span> test = <span class="hljs-string">&quot;&lt;div&gt;&lt;/div&gt;&quot;</span> +<br>    		<span class="hljs-string">&quot;&lt;span&gt;&lt;/span&gt;&quot;</span>;<br><br></code></pre></td></tr></table></figure>
+
+<p>两种创建方式</p>
+<p>1.直接量（个人推荐用直接量）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg =  <span class="hljs-regexp">/abc/</span>;   <span class="hljs-comment">//匹配这个字符串的规则叫abc</span><br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abcd&quot;</span>;<br><span class="hljs-built_in">console</span>.log(reg.test(str));<span class="hljs-comment">//test()正则表达式的方法</span><br><br></code></pre></td></tr></table></figure>
+
+<p>2.new RegExp();</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abcd/m&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&quot;abc&quot;</span>);<br><span class="hljs-keyword">var</span> reg = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">&quot;abc&quot;</span>, <span class="hljs-string">&quot;m&quot;</span>);<br><span class="hljs-keyword">var</span> reg1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(reg);<span class="hljs-comment">//长得一样，实际不一样</span><br><span class="hljs-keyword">var</span> reg1 = <span class="hljs-built_in">RegExp</span>(reg);<span class="hljs-comment">//引用</span><br><br></code></pre></td></tr></table></figure>
+
+<p>三个属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs JS">i<br><span class="hljs-keyword">var</span> reg =  <span class="hljs-regexp">/abc/i</span>;  <span class="hljs-comment">//忽视大小写</span><br>g<br><span class="hljs-keyword">var</span> reg =  <span class="hljs-regexp">/abc/g</span>; <span class="hljs-comment">//全局匹配</span><br><span class="hljs-comment">// demo：</span><br><span class="hljs-keyword">var</span>  reg = <span class="hljs-regexp">/ab/</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abababab&quot;</span>;<span class="hljs-comment">//只会匹配出来一个</span><br><span class="hljs-comment">// 加上全局匹配：</span><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/ab/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abababab&quot;</span>;<br><span class="hljs-built_in">console</span>.log(str.match(reg));<br>m<br><span class="hljs-keyword">var</span> reg =  <span class="hljs-regexp">/abc/m</span>;  <span class="hljs-comment">//执行多行匹配</span><br>demo<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^a/g</span>;<span class="hljs-comment">//以a开头的a</span><br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abcde\na&quot;</span>;<br><span class="hljs-comment">// console.log(str.match(reg));-----&gt;&quot;a&quot;依旧是一个a，没有多行匹配功能</span><br><span class="hljs-comment">//一旦加上m------:</span><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^a/gm</span>;<span class="hljs-comment">//才具有多行匹配功能</span><br><br><br></code></pre></td></tr></table></figure>
+
+<p>reg.test();//有没有符合要求额片段—-true/false<br>str.match();//直观匹配</p>
+<p>方括号：表达式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-comment">// 匹配三个数字相连接</span><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/[1234567890][1234567890][1234567890]/g</span>;<span class="hljs-comment">//一个方括号代表一位</span><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/[ab][cd][d]/g</span>;<span class="hljs-comment">//可以取bcd??????????????</span><br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abcd&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/[0-9A-z][cd][d]/g</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/[^a][^b]/g</span>;<span class="hljs-comment">//非</span><br>括号：<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(abc|bcd)/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;bcd&quot;</span>;<br><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(abc|bcd)[0-9]/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;bcd2&quot;</span>;<br><br></code></pre></td></tr></table></figure>
+
+<p>量词</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs JS">n+ : (<span class="hljs-number">1</span>, <span class="hljs-literal">Infinity</span>)<br>n* : (<span class="hljs-number">0</span>, <span class="hljs-literal">Infinity</span>)<br><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/\d*/g</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/\w*/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abc&quot;</span>;<br><br>n? : (<span class="hljs-number">0</span>, <span class="hljs-number">1</span>)<br>n&#123;X&#125; : (X)<br>n&#123;x,y&#125; : (x, y)<br>n&#123;x, &#125; : 不写，默认<span class="hljs-literal">Infinity</span><br><span class="hljs-attr">n$</span> : 开头<br>    ^n : 结尾<br><br></code></pre></td></tr></table></figure>
+
+<p>阿里巴巴： 写一个正则表达式，检验字符串首尾是否含有数字(首或尾)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^\d|\d$/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;123abc&quot;</span>;<br><br></code></pre></td></tr></table></figure>
+
+<p>// 写一个正则表达式，检验字符串首尾是否都含有数字</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/^\d[\s\S]*\d$/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;123abc&quot;</span>;<br><br></code></pre></td></tr></table></figure>
+
+<p>正则表达式对象属性</p>
+<p>global<br>ignoreCase<br>lastIndex<br>multiline<br>source</p>
+<p>正则表达式对象方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs JS">reg.test();<span class="hljs-comment">//检索字符串中指定的值，返回true/false</span><br>reg.compile();<span class="hljs-comment">//编译正则表达式</span><br>reg.exec();<span class="hljs-comment">//检索字符串中指定的值，并确定位置</span><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/ab/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abababab&quot;</span>;<br><span class="hljs-built_in">console</span>.log(reg.lastIndex);<br><span class="hljs-built_in">console</span>.log(reg.exec(str));<br><span class="hljs-built_in">console</span>.log(reg.lastIndex);<br><span class="hljs-built_in">console</span>.log(reg.exec(str));<br><span class="hljs-built_in">console</span>.log(reg.lastIndex);<br><span class="hljs-built_in">console</span>.log(reg.exec(str));<br><span class="hljs-built_in">console</span>.log(reg.lastIndex);<br><span class="hljs-built_in">console</span>.log(reg.exec(str));<br><span class="hljs-built_in">console</span>.log(reg.lastIndex);<br><span class="hljs-built_in">console</span>.log(reg.exec(str));<br><span class="hljs-built_in">console</span>.log(reg.lastIndex);<br><span class="hljs-comment">//lastIndex可以手动更改值</span><br><br><span class="hljs-comment">// 如果不加g</span><br><span class="hljs-comment">// lastIndex不移动，永远在第一位开始匹配</span><br><br></code></pre></td></tr></table></figure>
+
+<p>小知识</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aaaa&quot;</span>;<span class="hljs-comment">//想匹配四个一样的东西</span><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(a)\1/g</span>;<span class="hljs-comment">//反向引用第一个子表达式中的匹配的内容</span><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(a)\1/g</span>;<span class="hljs-comment">//\w匹配出来的那个东西，后面要拷贝一个一样的</span><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(a)\1\1\1/g</span>;<br><span class="hljs-comment">// 变式：</span><br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aabb&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(\w)\1(\w)\2/g</span>;<br><br></code></pre></td></tr></table></figure>
+
+<p>jQuery 会深入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aabb&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(\w)\1(\w)\2/g</span>;<br><span class="hljs-built_in">console</span>.log(reg.exec(str));<br><br><br></code></pre></td></tr></table></figure>
+
+<p>字符串方法：match</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aabb&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(\w)\1(\w)\2/g</span>;<br><span class="hljs-built_in">console</span>.log(str.match(reg));<br></code></pre></td></tr></table></figure>
+
+<p>字符串方法：search</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abc&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(\w)\1(\w)\2/g</span>;<br><span class="hljs-built_in">console</span>.log(str.search(reg));<br></code></pre></td></tr></table></figure>
+
+<p>字符串方法：split</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aadnsndcbbccdsvwsnkdd&quot;</span>;<span class="hljs-comment">//双向重复拆分</span><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(\w)\1/g</span>;<br><span class="hljs-built_in">console</span>.log(str.split(reg));<br></code></pre></td></tr></table></figure>
+
+<p>字符串方法：relpace</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aa&quot;</span>;<br>str.replace(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>);<span class="hljs-comment">//ba  只能匹配一个</span><br><br><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/a/</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aa&quot;</span>;<br>str.replace(reg, <span class="hljs-string">&quot;b&quot;</span>);<span class="hljs-comment">//ba 没写全局匹配</span><br><br>demo:aabb---&gt;bbaa<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(\w)\1(\w)\2/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aabb&quot;</span>;<br><span class="hljs-built_in">console</span>.log(str.replace(reg, <span class="hljs-string">&quot;$2$2$1$1&quot;</span>));<br>demo变式:xyxy---&gt;yxyx<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(\w)\1(\w)\2/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aabb&quot;</span>;<br><span class="hljs-built_in">console</span>.log(str.replace(reg, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$, $<span class="hljs-number">1</span>, $<span class="hljs-number">2</span></span>) </span>&#123;<br><br>    <span class="hljs-keyword">return</span> $<span class="hljs-number">2</span> + $<span class="hljs-number">2</span> + $<span class="hljs-number">1</span> + $<span class="hljs-number">1</span>;<span class="hljs-comment">//规则随便拼</span><br>&#125;));<br><br>str.toUpperCase();<span class="hljs-comment">// 变大写方法</span><br>str.toUpperCase().toLowerCase();<span class="hljs-comment">//变小写</span><br><br></code></pre></td></tr></table></figure>
+
+<p>demo // the-first-name—&gt;theFirstName;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/-(\w)/g</span>;<br><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;the-first-name&quot;</span>;<br><span class="hljs-built_in">console</span>.log(str.replace(reg, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">$, $<span class="hljs-number">1</span></span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> $<span class="hljs-number">1.</span>toUpperCase();<br>&#125;))<br><br></code></pre></td></tr></table></figure>
+
+<p>正向预查、正向断言</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;abaaaaaa&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/a(?=b)/g</span>;<span class="hljs-comment">//后面跟着b</span><br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/a(?!b)/g</span>;<span class="hljs-comment">//后面不跟着b</span><br><br></code></pre></td></tr></table></figure>
+
+<p>贪婪匹配&amp;&amp;非贪婪匹配</p>
+<p>正则表达式默认贪婪匹配</p>
+<p>变成非贪婪：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aaaa&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/a+?/g</span>;<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aaaa&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/a&#123;1,3&#125;?/g</span>;<span class="hljs-comment">//有1不取23</span><br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aaaa&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/a??/g</span>;<span class="hljs-comment">//能取0不取1</span><br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aaaa&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/a*?/g</span>;<span class="hljs-comment">//能取0不取1</span><br><br></code></pre></td></tr></table></figure>
+
+<p>正则表达式专题文档</p>
+<p>匹配空格</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aaa aaa&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/ /g</span>;<br><br></code></pre></td></tr></table></figure>
+
+<p><strong>精通计划</strong></p>
+<p>匹配\</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aa\\aaaa&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/\\/g</span>;<br><br></code></pre></td></tr></table></figure>
+
+<p>匹配*+-?()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aa?aaaa&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/\?/g</span>;<br><br></code></pre></td></tr></table></figure>
+
+<p>高难——字符串去重</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;aaaaaabbbbbbbbbbcccccccc&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(\w)\1*/g</span>;<br><span class="hljs-built_in">console</span>.log(str.replace(reg, <span class="hljs-string">&quot;$1&quot;</span>));<br><br></code></pre></td></tr></table></figure>
+
+<p>百度顶级难题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs JS"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&quot;100000000&quot;</span>;<br><span class="hljs-keyword">var</span> reg = <span class="hljs-regexp">/(?=(\B)(\d&#123;3&#125;)+$)/g</span>;<br><span class="hljs-built_in">console</span>.log(str.replace(reg,<span class="hljs-string">&quot;.&quot;</span>));<br><br><span class="hljs-comment">//100.000.000</span><br><br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/01/20/JavaScript%E5%AE%8C%E7%BE%8E%E6%94%B6%E5%AE%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript完美收官</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/01/05/DOM-BOM/">
+                        <span class="hidden-mobile">DOM BOM</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
