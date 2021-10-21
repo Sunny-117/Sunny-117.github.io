@@ -1,0 +1,512 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <meta name="description" content="1、字符串反转 ‘123abc’ -&gt; ‘cba321’12345var str &#x3D; &amp;#x27;123abc&amp;#x27;;&#x2F;&#x2F; 字符串拆成数组方法：split(&amp;#x27;按照什么去拆&amp;#x27;)&#x2F;&#x2F; 数组倒置: reverse()&#x2F;&#x2F; 拼接成字符串:join(&amp;#x27;用什么拼&amp;#x27;);console.log(str.split(&amp;#x27;&amp;#x27;).reverse().">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode">
+<meta property="og:url" content="http://example.com/2020/07/21/%E6%95%B0%E7%BB%84%E7%AE%97%E6%B3%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Sunny">
+<meta property="og:description" content="1、字符串反转 ‘123abc’ -&gt; ‘cba321’12345var str &#x3D; &amp;#x27;123abc&amp;#x27;;&#x2F;&#x2F; 字符串拆成数组方法：split(&amp;#x27;按照什么去拆&amp;#x27;)&#x2F;&#x2F; 数组倒置: reverse()&#x2F;&#x2F; 拼接成字符串:join(&amp;#x27;用什么拼&amp;#x27;);console.log(str.split(&amp;#x27;&amp;#x27;).reverse().">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/758572/1614955922841-1f3d621a-5348-4e27-a6e1-5e85bdb4ceaa.png#height=236&id=CW24C&margin=%5Bobject%20Object%5D&name=image.png&originHeight=742&originWidth=802&originalType=binary&ratio=1&size=60473&status=done&style=none&width=255">
+<meta property="article:published_time" content="2020-07-21T01:04:12.000Z">
+<meta property="article:modified_time" content="2021-10-21T01:09:19.061Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="algorithm">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2021/png/758572/1614955922841-1f3d621a-5348-4e27-a6e1-5e85bdb4ceaa.png#height=236&id=CW24C&margin=%5Bobject%20Object%5D&name=image.png&originHeight=742&originWidth=802&originalType=binary&ratio=1&size=60473&status=done&style=none&width=255">
+  
+  <title>Leetcode - Sunny</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Sunny</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Leetcode">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-07-21 09:04" pubdate>
+        July 21, 2020 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Leetcode</h1>
+            
+            <div class="markdown-body">
+              <h1 id="1、字符串反转-‘123abc’-gt-‘cba321’"><a href="#1、字符串反转-‘123abc’-gt-‘cba321’" class="headerlink" title="1、字符串反转 ‘123abc’ -&gt; ‘cba321’"></a>1、字符串反转 ‘123abc’ -&gt; ‘cba321’</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;123abc&#x27;</span>;<br><span class="hljs-comment">// 字符串拆成数组方法：split(&#x27;按照什么去拆&#x27;)</span><br><span class="hljs-comment">// 数组倒置: reverse()</span><br><span class="hljs-comment">// 拼接成字符串:join(&#x27;用什么拼&#x27;);</span><br><span class="hljs-built_in">console</span>.log(str.split(<span class="hljs-string">&#x27;&#x27;</span>).reverse().join(<span class="hljs-string">&#x27;&#x27;</span>));	<span class="hljs-comment">//cba321</span><br></code></pre></td></tr></table></figure>
+<p>for笨方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;123abc456&#x27;</span>;<br>arr = str.split(<span class="hljs-string">&#x27;&#x27;</span>);<br><span class="hljs-comment">// [1 2 3 a b c]</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">strReverse</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> arrn = [];<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = arr.length - <span class="hljs-number">1</span>; i &gt; <span class="hljs-number">0</span>; i--) &#123;<br>    arrn.push(arr[i]);<br>  &#125;<br>  arrn.push(arr[<span class="hljs-number">0</span>]);<span class="hljs-comment">//最后一位补上</span><br>  <span class="hljs-keyword">return</span> arrn;<br>&#125;<br><span class="hljs-built_in">console</span>.log(strReverse(arr));<br></code></pre></td></tr></table></figure>
+<h1 id="2、在有序的数组里找出指定的值，返回该值在数组中的索引，（二分查找）"><a href="#2、在有序的数组里找出指定的值，返回该值在数组中的索引，（二分查找）" class="headerlink" title="2、在有序的数组里找出指定的值，返回该值在数组中的索引，（二分查找）"></a>2、在有序的数组里找出指定的值，返回该值在数组中的索引，（二分查找）</h1><p>方法一</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 有序 [1,2,3,4,5,5,5,6]不符合</span><br>如果不是有序，就不能使用二分查找<br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">14</span>, <span class="hljs-number">15</span>];	<span class="hljs-comment">//5=&gt;2</span><br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getIndex</span>(<span class="hljs-params">arr, val</span>) </span>&#123;<br>    <span class="hljs-comment">//....</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (arr[i] == val) &#123;<br>            <span class="hljs-keyword">return</span> i;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<span class="hljs-comment">//考虑到不存在的情况</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>变式<br>数组不是有序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">14</span>, <span class="hljs-number">15</span>]<br><span class="hljs-comment">//返回2,4怎么实现</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">14</span>, <span class="hljs-number">15</span>];<br><span class="hljs-keyword">var</span> count = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">find</span>(<span class="hljs-params">n</span>) </span>&#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (arr[i] == n) &#123;<br>      count++;<br>      <span class="hljs-keyword">return</span> i;<br>    &#125;<br>    <span class="hljs-comment">// return count;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">123</span>;<br>  &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(find(<span class="hljs-number">5</span>));<br><span class="hljs-comment">// console.log(count);</span><br><span class="hljs-comment">// 我想计数:几次，目前没有实现</span><br></code></pre></td></tr></table></figure>
+<p>方法二</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getIndex</span>(<span class="hljs-params">arr, val</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> arr.findIndex(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) </span>&#123;<span class="hljs-comment">//es6方法</span><br>    <span class="hljs-keyword">return</span> value == val;	<span class="hljs-comment">//return后面的值为true，返回索引值。后面的值为false，返回-1</span><br>  &#125;);<br>&#125;<br><span class="hljs-comment">// console.log(getIndex(arr, 5));//2</span><br></code></pre></td></tr></table></figure>
+
+
+<p>方法三</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 二分查找/折半查找  必须有序数组</span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">		[1, 3, 5, 7, 9, 10, 11, 12, 14, 15] </span><br><span class="hljs-comment">		[1, 3, 5, 7, 9]</span><br><span class="hljs-comment">		[1, 3]</span><br><span class="hljs-comment">		[7, 9]</span><br><span class="hljs-comment">		效率高</span><br><span class="hljs-comment">*/</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getIndex</span>(<span class="hljs-params">arr, val</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> start = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">var</span> end = arr.length - <span class="hljs-number">1</span>;<br>  <span class="hljs-comment">/* for		//次数循环</span><br><span class="hljs-comment">			while	//条件循环 */</span><br>  <span class="hljs-keyword">while</span> (start &lt;= end) &#123;<span class="hljs-comment">//=:z最后三个了，一persInt()肯定相等	&lt;：剩下两个数字</span><br>    <span class="hljs-keyword">var</span> middle = <span class="hljs-built_in">parseInt</span>((start + end) / <span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">if</span> (arr[middle] == val) &#123;<br>      <span class="hljs-keyword">return</span> middle;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (val &lt; arr[middle]) &#123;<br>      <span class="hljs-comment">//这个条件成立说明要找的数据在中间数据的左边，要更新end的值</span><br>      end = middle - <span class="hljs-number">1</span>;<span class="hljs-comment">//这里的更新值实际上是用middle的值替换了end</span><br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (val &gt; arr[middle]) &#123;<br>      <span class="hljs-comment">//这个条件成立说明要找的数据在中间数据的右边，要更新start的值</span><br>      start = middle + <span class="hljs-number">1</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-built_in">console</span>.log(getIndex(arr, <span class="hljs-number">5</span>));	<span class="hljs-comment">//2</span><br></code></pre></td></tr></table></figure>
+
+
+<h1 id="3-判断数组是否为对称数组，对称数组形式如：-a-b-c-b-a-、-a-b-c-c-b-a"><a href="#3-判断数组是否为对称数组，对称数组形式如：-a-b-c-b-a-、-a-b-c-c-b-a" class="headerlink" title="3.判断数组是否为对称数组，对称数组形式如：[a, b, c, b, a]、[a, b, c, c, b, a]"></a>3.判断数组是否为对称数组，对称数组形式如：[a, b, c, b, a]、[a, b, c, c, b, a]</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr1 = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;d&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>];<br><span class="hljs-keyword">var</span> arr2 = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>];<br><span class="hljs-keyword">var</span> arr3 = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>];<br></code></pre></td></tr></table></figure>
+
+
+<p>方法一</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">symmetry</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> newArr = [];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = arr.length - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>        newArr.push(arr[i]);<br>    &#125;<br>    <span class="hljs-comment">// 颠倒后对比</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>        <span class="hljs-keyword">if</span> (arr[i] != newArr[i]) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>方法二</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">symmetry</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> start = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">var</span> end = arr.length - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>        <span class="hljs-comment">//console.log(start,end);</span><br>        <span class="hljs-keyword">if</span> (arr[start] != arr[end]) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        start++;<br>        end--;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 判断数组是否为对称数组，对称数组形式如：[a, b, c, b, a]、[a, b, c, c, b, a]</span><br><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>];<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isBalance</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (arr[i] == arr[arr.length - <span class="hljs-number">1</span> - i]) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<span class="hljs-comment">//这代码含义：只要有一个对上，就true了;我想要得是全循环完后都对上才行</span><br>  &#125;<br>&#125;<br><span class="hljs-built_in">console</span>.log(isBalance(arr));<br><span class="hljs-comment">// 1        2        3      3       2       1</span><br><span class="hljs-comment">// arr[0]  arr[1]  arr[2]  arr[3]  arr[4]  arr[5]</span><br><span class="hljs-comment">// arr.length = 6</span><br><span class="hljs-comment">// arr[0] == arr[length - 1]</span><br><span class="hljs-comment">// arr[1] == arr[length - 2]</span><br><span class="hljs-comment">// arr[2] == arr[length - 3]</span><br><span class="hljs-comment">// arr[i] == arr[length - i - 1]</span><br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">symmetry</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (arr[i] != arr[arr.length - <span class="hljs-number">1</span> - i]) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><span class="hljs-built_in">console</span>.log(symmetry(arr));<br></code></pre></td></tr></table></figure>
+
+
+<p>优化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">symmetry</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> start = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">var</span> end = arr.length - <span class="hljs-number">1</span>;<br><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (start &gt;= end) &#123;<span class="hljs-comment">//减少了一半</span><br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (arr[start] != arr[end]) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>    start++;<br>    end--;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>继续优化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">symmetry</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> start = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">var</span> end = arr.length - <span class="hljs-number">1</span>;<br><br>    <span class="hljs-keyword">while</span> (start &lt; end) &#123;<br>        <span class="hljs-keyword">if</span> (arr[start] != arr[end]) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>        start++;<br>        end--;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-built_in">console</span>.log(symmetry(arr1), symmetry(arr2), symmetry(arr3));<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="4-查询子串首次出现的位置，如：原串abccbaxzabc-子串为axz-结果为5"><a href="#4-查询子串首次出现的位置，如：原串abccbaxzabc-子串为axz-结果为5" class="headerlink" title="4.查询子串首次出现的位置，如：原串abccbaxzabc 子串为axz 结果为5"></a>4.查询子串首次出现的位置，如：原串abccbaxzabc 子串为axz 结果为5</h1><p>方法一</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> str = <span class="hljs-string">&#x27;abccbaxzabc&#x27;</span>;<br><span class="hljs-keyword">var</span> subStr = <span class="hljs-string">&#x27;axz&#x27;</span>;<br><span class="hljs-built_in">console</span>.log(str.indexOf(subStr));	<span class="hljs-comment">//5  正则</span><br></code></pre></td></tr></table></figure>
+
+
+<p>方法二<br><img src="https://cdn.nlark.com/yuque/0/2021/png/758572/1614955922841-1f3d621a-5348-4e27-a6e1-5e85bdb4ceaa.png#height=236&id=CW24C&margin=%5Bobject%20Object%5D&name=image.png&originHeight=742&originWidth=802&originalType=binary&ratio=1&size=60473&status=done&style=none&width=255" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getIndex</span>(<span class="hljs-params">str, sub</span>) </span>&#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt;= str.length - sub.length; i++) &#123;	<span class="hljs-comment">//这个是原串的循环</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; j &lt; sub.length; j++) &#123;	<span class="hljs-comment">//这个是子串的循环</span><br>      <span class="hljs-comment">/* </span><br><span class="hljs-comment">						子串的索引为j</span><br><span class="hljs-comment">						对应原串的索引为j+i</span><br><span class="hljs-comment">					 */</span><br>      <span class="hljs-comment">//核心： 原串的索引=子串的索引+移动次数</span><br>      <span class="hljs-keyword">if</span> (sub[j] != str[j + i]) &#123;	<span class="hljs-comment">//这个条件是要对应的数据</span><br>        <span class="hljs-comment">//这个条件成立说明子串与原串中对应的数据不匹配</span><br>        <span class="hljs-keyword">break</span>;<br>      &#125;<br><br>      <span class="hljs-comment">//找到是有条件的，代码能走到这里说明已经匹配到了</span><br>      <span class="hljs-comment">//能走到这里说明if没有发生</span><br>      <span class="hljs-keyword">if</span> (j == sub.length - <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-comment">//这个条件成立说明子串里的所有数据在原串里都匹配到了</span><br>        <span class="hljs-keyword">return</span> i;<br>      &#125;<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<span class="hljs-comment">//一个也没找到</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<p>学员创新揭发   基础强     数组-字符串<br>把str的sub长度 截出来，拿字符串去对比</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getIndex</span>(<span class="hljs-params">str, sub</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> start = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">var</span> end = str.length - sub.length;<br>  <span class="hljs-keyword">while</span> (start &lt;= end) &#123;<br>    <span class="hljs-keyword">if</span> (str.slice(start, sub.length + start) === sub) &#123;<span class="hljs-comment">//玩转JS方法</span><br>      <span class="hljs-keyword">return</span> start;<br>    &#125;<br>    start++;<br>  &#125;<br>  <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-built_in">console</span>.log(getIndex(str, subStr));<br></code></pre></td></tr></table></figure>
+
+
+<h1 id="5-计算数组中，最大连续增长子序列的长度，如：-1-2-3-4-1-2-3-4-5-1-2-3-结果为5"><a href="#5-计算数组中，最大连续增长子序列的长度，如：-1-2-3-4-1-2-3-4-5-1-2-3-结果为5" class="headerlink" title="5.计算数组中，最大连续增长子序列的长度，如：[1,2,3,4,1,2,3,4,5,1,2,3] 结果为5"></a>5.计算数组中，最大连续增长子序列的长度，如：[1,2,3,4,1,2,3,4,5,1,2,3] 结果为5</h1><p>单纯的思路</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>];<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMaxLength</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> addNum = <span class="hljs-number">0</span>;<span class="hljs-comment">//每个序列增长的次数</span><br>  <span class="hljs-keyword">var</span> len = <span class="hljs-number">0</span>;<span class="hljs-comment">//增长最大序列的长度</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (arr[i] &gt; arr[i - <span class="hljs-number">1</span>]) &#123;<br>      addNum++;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      len = addNum &gt; len ? addNum : len;<br>      addNum = <span class="hljs-number">0</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> len;<br>&#125;<br><span class="hljs-built_in">console</span>.log(getMaxLength(arr));<span class="hljs-comment">//4,应该5</span><br></code></pre></td></tr></table></figure>
+<p>几个坑</p>
+<ol>
+<li>if (arr[i] &gt; arr[i - 1])，第一个arr[0]&gt;arr[-1]，arr[-1]=undefined，现在成了0&gt;undefined?—&gt;false（不能比较）</li>
+</ol>
+<p>谈到这里了，我们来说一下那些年见过的变态的比较题</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log([]+&#123;&#125;);<br><span class="hljs-built_in">console</span>.log(![]+<span class="hljs-number">0</span>+!![]+&#123;&#125;);<br><span class="hljs-built_in">console</span>.log(<span class="hljs-number">0</span>&gt;<span class="hljs-literal">false</span>)<br><span class="hljs-comment">// undefined转数字==NaN</span><br></code></pre></td></tr></table></figure>
+<p>解决方案1<br>问题无非就是if没走，addNum没有加，让addNum变成1就好了<br>2.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">90</span>, <span class="hljs-number">98</span>, <span class="hljs-number">99</span>];<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMaxLength</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> addNum = <span class="hljs-number">0</span>;<span class="hljs-comment">//每个序列增长的次数</span><br>  <span class="hljs-keyword">var</span> len = <span class="hljs-number">0</span>;<span class="hljs-comment">//增长最大序列的长度</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (arr[i] &gt; arr[i - <span class="hljs-number">1</span>]) &#123;<br>      addNum++;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      len = addNum &gt; len ? addNum : len;<br>      addNum = <span class="hljs-number">1</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> len;<br>&#125;<br><span class="hljs-built_in">console</span>.log(getMaxLength(arr));<span class="hljs-comment">//应该7</span><br></code></pre></td></tr></table></figure>
+<p>分析：如果99后面加上一个0/10，就成7了，如果加99也不对了，因为没有对比最后一个。<br>序列在持续增长中，不知道是否已经断了<br>新方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">90</span>, <span class="hljs-number">98</span>, <span class="hljs-number">99</span>];<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMaxLength</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> addNum = <span class="hljs-number">0</span>;<span class="hljs-comment">//每个序列增长的次数</span><br>  <span class="hljs-keyword">var</span> len = <span class="hljs-number">0</span>;<span class="hljs-comment">//增长最大序列的长度</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (arr[i] &lt; arr[i + <span class="hljs-number">1</span>]) &#123;<br>      <span class="hljs-comment">//巧点：最后0&gt;NaN==false，走else</span><br>      addNum++;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      len = addNum &gt; len ? addNum : len;<br>      addNum = <span class="hljs-number">1</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> len;<br>&#125;<br><span class="hljs-built_in">console</span>.log(getMaxLength(arr));<br></code></pre></td></tr></table></figure>
+<p>老方法：不就是最后的else没有走吗，最后在加上len = addNum &gt; len ? addNum : len</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">90</span>, <span class="hljs-number">98</span>, <span class="hljs-number">99</span>];<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getMaxLength</span>(<span class="hljs-params">arr</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> addNum = <span class="hljs-number">0</span>;<span class="hljs-comment">//每个序列增长的次数</span><br>  <span class="hljs-keyword">var</span> len = <span class="hljs-number">0</span>;<span class="hljs-comment">//增长最大序列的长度</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (arr[i] &gt; arr[i - <span class="hljs-number">1</span>]) &#123;<br>      addNum++;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      len = addNum &gt; len ? addNum : len;<br>      addNum = <span class="hljs-number">1</span>;<br>    &#125;<br>  &#125;<br>  len = addNum &gt; len ? addNum : len;<br>  <span class="hljs-keyword">return</span> len;<br>&#125;<br><span class="hljs-built_in">console</span>.log(getMaxLength(arr));<br></code></pre></td></tr></table></figure>
+<p>方法3</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt;= arr.length; i++)<br>  <span class="hljs-comment">//与新方法套路一致 undefined</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/algorithm/">algorithm</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/07/23/%E5%89%8D%E7%AB%AF%E5%BF%85%E4%BC%9A%E7%AE%97%E6%B3%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Leetcode</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/06/20/Vue-js/">
+                        <span class="hidden-mobile">Vue.js</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
