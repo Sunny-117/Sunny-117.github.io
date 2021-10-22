@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="zh-CN">
 
 
 <head>
@@ -131,7 +131,7 @@
   
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
     </a>
   </li>
 </ul>
@@ -445,7 +445,7 @@
             <div class="post-info">
                 
                 <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
                     2020-05-16
                 </div>
                 
@@ -461,6 +461,9 @@
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
         
@@ -575,16 +578,40 @@
 <li>dependencies：生产环境的依赖包</li>
 <li>devDependencies：仅开发环境的依赖包</li>
 </ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;jquery&quot;</span>: <span class="string">&quot;latest&quot;</span>,<span class="comment">//不推荐最新，防止开发冲突</span></span><br><span class="line">    <span class="attr">&quot;lodash&quot;</span>: <span class="string">&quot;4.17.15&quot;</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;mocha&quot;</span>: <span class="string">&quot;6.2.2&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"jquery"</span><span class="token operator">:</span> <span class="token string">"latest"</span><span class="token punctuation">,</span><span class="token comment">//不推荐最新，防止开发冲突</span>
+    <span class="token property">"lodash"</span><span class="token operator">:</span> <span class="token string">"4.17.15"</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"mocha"</span><span class="token operator">:</span> <span class="token string">"6.2.2"</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>配置好依赖后，使用下面的命令即可安装依赖</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 本地安装所有依赖 dependencies + devDependencies</span></span></span><br><span class="line">npm install</span><br><span class="line">npm i</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 仅安装生产环境的依赖 dependencies</span></span></span><br><span class="line">npm install --production</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">## 本地安装所有依赖 dependencies + devDependencies
+npm install
+npm i
+
+## 仅安装生产环境的依赖 dependencies
+npm install --production<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这样一来，代码移植就不是问题了，只需要移植源代码和 package.json 文件，不用移植 node_modules 目录，然后在移植之后通过命令即可重新恢复安装<br>为了更加方便的添加依赖，npm 支持在使用 install 命令时，加入一些额外的参数，用于将安装的依赖包保存到 package.json 文件中(自动地)<br>涉及的命令如下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 安装依赖到生产环境</span></span></span><br><span class="line">npm i 包名</span><br><span class="line">npm i --save 包名</span><br><span class="line">npm i -S 包名</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 安装依赖到开发环境</span></span></span><br><span class="line">npm i --save-dev 包名</span><br><span class="line">npm i -D 包名</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">## 安装依赖到生产环境
+npm i 包名
+npm i --save 包名
+npm i -S 包名
+
+## 安装依赖到开发环境
+npm i --save-dev 包名
+npm i -D 包名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>安装包之后 package.json 会自动生成：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;jquery&quot;</span>: <span class="string">&quot;^3.4.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;lodash&quot;</span>: <span class="string">&quot;^4.17.15&quot;</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;mocha&quot;</span>: <span class="string">&quot;^6.2.2&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"jquery"</span><span class="token operator">:</span> <span class="token string">"^3.4.1"</span><span class="token punctuation">,</span>
+    <span class="token property">"lodash"</span><span class="token operator">:</span> <span class="token string">"^4.17.15"</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"mocha"</span><span class="token operator">:</span> <span class="token string">"^6.2.2"</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p>自动保存的依赖版本，例如<code>^15.1.3</code>，这种书写方式叫做语义版本号（semver version），具体规则后续讲解</p>
@@ -593,16 +620,22 @@
 <p>引入模块：npm init—chapter2—回车—-回车—-npm i lodash 安装成功</p>
 </blockquote>
 <p>nodejs 对 npm 支持非常良好<br>使用 nodejs 导入模块时传统方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">&quot;./node_modules/lodash/index&quot;</span>);</span><br><span class="line"><span class="comment">// 习惯用下划线命名</span></span><br><span class="line"><span class="built_in">console</span>.log(_);</span><br><span class="line">运行命令：node index.js</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> _ <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./node_modules/lodash/index"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 习惯用下划线命名</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>_<span class="token punctuation">)</span><span class="token punctuation">;</span>
+运行命令：node index<span class="token punctuation">.</span>js<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>返回的里面有很多方法，例如：compact</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = _.compact([<span class="number">1</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="string">&quot;&quot;</span>, <span class="literal">false</span>, <span class="number">5</span>]);</span><br><span class="line"><span class="comment">// compact会把数组里面判定为假的除去，返回新数组</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> arr <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">compact</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// compact会把数组里面判定为假的除去，返回新数组</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>当使用 nodejs 导入模块时，如果模块路径不是以 ./ 或 ../ 开头，则 node 会认为导入的模块来自于 node_modules 目录，例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _ = <span class="built_in">require</span>(<span class="string">&quot;lodash&quot;</span>);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> _ <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"lodash"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>它首先会从当前目录的以下位置寻找文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node_modules/lodash.js</span><br><span class="line">node_modules/lodash/入口文件</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">node_modules&#x2F;lodash.js
+node_modules&#x2F;lodash&#x2F;入口文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>若当前目录没有这样的文件，则会回溯到上级目录按照同样的方式查找</p>
 <blockquote>
@@ -616,12 +649,15 @@
 </blockquote>
 </li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 首先，查看当前目录是否有 a.js //</span><br><span class="line">把a当作文件夹，并且，把该文件夹当作一个包，看该包中是否有package.json文件，读取main字段。。。。</span><br><span class="line">var a = require(&quot;./a&quot;); console.log(a)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">// 首先，查看当前目录是否有 a.js //
+把a当作文件夹，并且，把该文件夹当作一个包，看该包中是否有package.json文件，读取main字段。。。。
+var a = require("./a"); console.log(a)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p>在 node 中，还可以手动指定路径来导入相应的文件，这种情况比较少见</p>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="built_in">require</span>(<span class="string">&quot;lodash/fp/add&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(test);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> test <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"lodash/fp/add"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h1 id="简易数据爬虫"><a href="#简易数据爬虫" class="headerlink" title="简易数据爬虫"></a>简易数据爬虫</h1><blockquote>
 <p>补充： require 导入一个包，如果以./或../开头，就导入自己写的文件。如果没有写，就导入 node_modules 下面的模块<br>特殊情况：导入模块是一个特殊名字，使用 nodejs 自带的模块。（require(“fs”)）</p>
@@ -720,7 +756,9 @@
 <h2 id="1-避免还原的差异"><a href="#1-避免还原的差异" class="headerlink" title="1.避免还原的差异"></a>1.避免还原的差异</h2><p>版本依赖控制始终是一个两难的问题<br>如果允许版本增加，可以让依赖包的 bug 得以修复（补丁版本号），可以带来一些意外的惊喜（次版本号），但同样可能带来不确定的风险（新的 bug）<br>如果不允许版本增加，可以获得最好的稳定性，但失去了依赖包自我优化的能力<br>而有的时候情况更加复杂，如果依赖包升级后，依赖也发生了变化，会有更多不确定的情况出现<br>基于此，npm 在安装包的时候，会自动生成一个 package-lock.json 文件，该文件记录了安装包时的确切依赖关系<br>当移植工程时，如果移植了 package-lock.json 文件，恢复安装时，会按照 package-lock.json 文件中的确切依赖进行安装，最大限度的避免了差异</p>
 <h2 id="2-扩展-npm-的差异版本处理"><a href="#2-扩展-npm-的差异版本处理" class="headerlink" title="2.[扩展]npm 的差异版本处理"></a>2.[扩展]npm 的差异版本处理</h2><p>如果两个包依赖同一个包的不同版本，如下图<br><img src="/img/8-3.png"></p>
 <p>面对这种情况，在 node_modules 目录中，不会使用扁平的目录结构，而会形成嵌套的目录，如下图：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">├── node_modules │ ├── a │ │ ├── node_modules │ │ │ ├── c │ │ │ | |—— c包的文件</span><br><span class="line">│ │ │── a包的文件 │ ├── b │ │ ├── node_modules │ │ │ ├── c │ │ │ | |—— c包的文件</span><br><span class="line">│ │ │── b包的文件</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">├── node_modules │ ├── a │ │ ├── node_modules │ │ │ ├── c │ │ │ | |—— c包的文件
+│ │ │── a包的文件 │ ├── b │ │ ├── node_modules │ │ │ ├── c │ │ │ | |—— c包的文件
+│ │ │── b包的文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="npm-脚本-（npm-scripts）"><a href="#npm-脚本-（npm-scripts）" class="headerlink" title="npm 脚本 （npm scripts）"></a>npm 脚本 （npm scripts）</h1><p>在开发的过程中，我们可能会反复使用很多的 CLI 命令，例如：</p>
 <ul>
@@ -748,7 +786,13 @@
 <p>启动 node 方式二：</p>
 </blockquote>
 <p>第三方工具 npm in nodemon<br>输入命令：npx nodemon .\index.js<br>可以不断刷新运行，想停止：ctrl+c<br>以上两种方式要记着，太麻烦了，所以有了本节课内容：<br>在 package.json 里面加上</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;start&quot;</span>: <span class="string">&quot;nodemon index.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;start&quot;</span>: <span class="string">&quot;npx nodemon index.js&quot;</span>,</span><br><span class="line">      <span class="string">&quot;trick&quot;</span>: <span class="string">&quot;chrome https://www.baidu.com&quot;</span></span><br><span class="line">  <span class="string">&quot;trick&quot;</span>: <span class="string">&quot;dir&quot;</span></span><br><span class="line"></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token string">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+  <span class="token string">"start"</span><span class="token operator">:</span> <span class="token string">"nodemon index.js"</span><span class="token punctuation">,</span>
+    <span class="token string">"start"</span><span class="token operator">:</span> <span class="token string">"npx nodemon index.js"</span><span class="token punctuation">,</span>
+      <span class="token string">"trick"</span><span class="token operator">:</span> <span class="token string">"chrome https://www.baidu.com"</span>
+  <span class="token string">"trick"</span><span class="token operator">:</span> <span class="token string">"dir"</span>
+
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>向运行 node,这次就直接 npm run start/trick<br>这里可以配置各种命令<strong>​</strong></p>
 <h1 id="运行环境配置"><a href="#运行环境配置" class="headerlink" title="运行环境配置"></a>运行环境配置</h1><p>我们书写的代码一般有三种运行环境：</p>
@@ -758,7 +802,18 @@
 <li>测试环境</li>
 </ol>
 <p>有的时候，我们可能需要在 node 代码中根据不同的环境做出不同的处理<br>如何优雅的让 node 知道处于什么环境，是极其重要的<br>通常我们使用如下的处理方式：<br>node 中有一个全局变量 global (可以类比浏览器环境的 window)，该变量是一个对象，对象中的所有属性均可以直接使用<br>global 有一个属性是 process，该属性是一个对象，包含了当前运行 node 程序的计算机的很多信息，其中有一个信息是 env，是一个对象，包含了计算机中所有的系统变量<br>设置环境变量：<br>名字：NODE_ENV<br>值：development<br>通常，我们通过系统变量 NODE_ENV 的值，来判定 node 程序处于何种环境</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">&quot;没有环境变量&quot;</span>;</span><br><span class="line"><span class="comment">// 此电脑属性高级系统设置进行配置</span></span><br><span class="line"><span class="comment">// console.log(process.env.NODE_ENV)//development</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">&quot;development&quot;</span>) &#123;</span><br><span class="line">  a = <span class="string">&quot;开发环境&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">&quot;production&quot;</span>) &#123;</span><br><span class="line">  a = <span class="string">&quot;生产环境&quot;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (process.env.NODE_ENV === <span class="string">&quot;test&quot;</span>) &#123;</span><br><span class="line">  a = <span class="string">&quot;测试环境&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token string">"没有环境变量"</span><span class="token punctuation">;</span>
+<span class="token comment">// 此电脑属性高级系统设置进行配置</span>
+<span class="token comment">// console.log(process.env.NODE_ENV)//development</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">"development"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  a <span class="token operator">=</span> <span class="token string">"开发环境"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">"production"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  a <span class="token operator">=</span> <span class="token string">"生产环境"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">"test"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  a <span class="token operator">=</span> <span class="token string">"测试环境"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>有两种方式设置 NODE_ENV 的值</p>
 <ol>
@@ -767,72 +822,97 @@
 </ol>
 <p>我们一般使用临时设置</p>
 <p>因此，我们可以配置 scripts 脚本，在设置好了 NODE_ENV 后启动程序</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//开发环境</span></span><br><span class="line"><span class="string">&quot;start&quot;</span>: <span class="string">&quot;set NODE_ENV=development&amp;&amp;node index.js&quot;</span>,<span class="comment">//这里不能有空格</span></span><br><span class="line"> <span class="comment">//在package.json里面配置：相当于设置NODE_ENV为development并且执行index.js</span></span><br><span class="line"><span class="comment">//生产环境</span></span><br><span class="line"><span class="string">&quot;build&quot;</span>: <span class="string">&quot;set NODE_ENV=production&amp;&amp;node index.js</span></span><br><span class="line"><span class="string">//测试环境</span></span><br><span class="line"><span class="string">&quot;</span>build<span class="string">&quot;: &quot;</span>set NODE_ENV=test&amp;&amp;node index.js</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//开发环境</span>
+<span class="token string">"start"</span><span class="token operator">:</span> <span class="token string">"set NODE_ENV=development&amp;&amp;node index.js"</span><span class="token punctuation">,</span><span class="token comment">//这里不能有空格</span>
+ <span class="token comment">//在package.json里面配置：相当于设置NODE_ENV为development并且执行index.js</span>
+<span class="token comment">//生产环境</span>
+<span class="token string">"build"</span><span class="token operator">:</span> "<span class="token keyword">set</span> <span class="token constant">NODE_ENV</span><span class="token operator">=</span>production<span class="token operator">&amp;&amp;</span>node index<span class="token punctuation">.</span>js
+<span class="token comment">//测试环境</span>
+<span class="token string">"build"</span><span class="token operator">:</span> "<span class="token keyword">set</span> <span class="token constant">NODE_ENV</span><span class="token operator">=</span>test<span class="token operator">&amp;&amp;</span>node index<span class="token punctuation">.</span>js<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p>为了避免不同系统(macOS windows 不同)的设置方式的差异，可以使用第三方库 cross-env 对环境变量进行设置</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;start&quot;</span>: <span class="string">&quot;cross-env NODE_ENV=development node index.js&quot;</span>,</span><br><span class="line"><span class="string">&quot;build&quot;</span>: <span class="string">&quot;cross-env NODE_ENV=production node index.js&quot;</span>,</span><br><span class="line"><span class="string">&quot;test&quot;</span>: <span class="string">&quot;cross-env NODE_ENV=test node index.js&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">npm start;</span><br><span class="line">npm run build;</span><br><span class="line">npm test;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token string">"start"</span><span class="token operator">:</span> <span class="token string">"cross-env NODE_ENV=development node index.js"</span><span class="token punctuation">,</span>
+<span class="token string">"build"</span><span class="token operator">:</span> <span class="token string">"cross-env NODE_ENV=production node index.js"</span><span class="token punctuation">,</span>
+<span class="token string">"test"</span><span class="token operator">:</span> <span class="token string">"cross-env NODE_ENV=test node index.js"</span>
+
+
+npm start<span class="token punctuation">;</span>
+npm run build<span class="token punctuation">;</span>
+npm test<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="在-node-中读取-package-json"><a href="#在-node-中读取-package-json" class="headerlink" title="在 node 中读取 package.json"></a>在 node 中读取 package.json</h2><p>有的时候，我们可能在 package.json 中配置一些自定义的字段，这些字段需要在 node 中读取<br>在 node 中，可以直接导入一个 json 格式的文件，它会自动将其转换为 js 对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//读取package.json文件中的版本号</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> config = <span class="built_in">require</span>(<span class="string">&quot;./package.json&quot;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(config.version);</span><br><span class="line"><span class="built_in">console</span>.log(config.a);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//读取package.json文件中的版本号</span>
+
+<span class="token keyword">var</span> config <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./package.json"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span>version<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>config<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="其他-npm-命令"><a href="#其他-npm-命令" class="headerlink" title="其他 npm 命令"></a>其他 npm 命令</h1><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><ol>
 <li>精确安装最新版本</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-exact 包名</span><br><span class="line">npm install -E 包名</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm install --save-exact 包名
+npm install -E 包名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <ol start="2">
 <li>安装指定版本</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install 包名@版本号</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm install 包名@版本号<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="2-查询"><a href="#2-查询" class="headerlink" title="2.查询"></a>2.查询</h2><ol>
 <li>查询包安装路径</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm root [-g]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm root [-g]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="2">
 <li>查看包信息</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm view 包名 [子信息]</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># view aliases：v info show</span></span></span><br><span class="line"></span><br><span class="line">依赖的包：npm v react dependencies</span><br><span class="line">版本：npm v react version</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm view 包名 [子信息]
+## view aliases：v info show
+
+依赖的包：npm v react dependencies
+版本：npm v react version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="3">
 <li>查询安装包</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm list [-g] [--depth=依赖深度]//0开始</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># list aliases: ls  la  ll</span></span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm list [-g] [--depth&#x3D;依赖深度]&#x2F;&#x2F;0开始
+## list aliases: ls  la  ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h2 id="3-更新"><a href="#3-更新" class="headerlink" title="3.更新"></a>3.更新</h2><ol>
 <li>检查有哪些包需要更新</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm outdated</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm outdated<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="2">
 <li>更新包</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm update [-g] [包名]</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># update 别名（aliases）：up、upgrade</span></span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm update [-g] [包名]
+## update 别名（aliases）：up、upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>用 npm 安装最新版的 npm<br>npm i -g npm</p>
-<h2 id="4-卸载包"><a href="#4-卸载包" class="headerlink" title="4.卸载包"></a>4.卸载包</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall [-g] 包名</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># uninstall aliases: remove, rm, r, un, unlink</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="4-卸载包"><a href="#4-卸载包" class="headerlink" title="4.卸载包"></a>4.卸载包</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm uninstall [-g] 包名
+## uninstall aliases: remove, rm, r, un, unlink<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h2 id="5-npm-配置"><a href="#5-npm-配置" class="headerlink" title="5.npm 配置"></a>5.npm 配置</h2><p>npm 的配置会对其他命令产生或多或少的影响<br>安装好 npm 之后，最终会产生两个配置文件，一个是用户配置，一个是系统配置，当两个文件的配置项有冲突的时候，用户配置会覆盖系统配置<br>通常，我们不关心具体的配置文件，而只关心最终生效的配置<br>通过下面的命令可以查询目前生效的各种配置</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config ls [-l] [--json]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm config ls [-l] [--json]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>另外，可以通过下面的命令操作配置</p>
 <ol>
 <li>获取某个配置项</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config get 配置项</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm config get 配置项<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="2">
 <li>设置某个配置项</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set 配置项=值</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm config set 配置项&#x3D;值<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="3">
 <li>移除某个配置项</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config delete 配置项</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm config delete 配置项<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h1 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h1><h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><ol>
 <li>移除淘宝镜像源</li>
@@ -847,7 +927,7 @@
 </ol>
 </li>
 <li>创建工程根目录</li>
-<li>使用 npm init 进行初始化（包名必须是小写） author：bnagbangji <a href="mailto:&#x31;&#49;&#x31;&#49;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#109;">&#x31;&#49;&#x31;&#49;&#64;&#113;&#x71;&#46;&#x63;&#x6f;&#109;</a></li>
+<li>使用 npm init 进行初始化（包名必须是小写） author：bnagbangji <a href="mailto:&#x31;&#49;&#x31;&#49;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#109;">&#x31;&#49;&#x31;&#49;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#109;</a></li>
 <li>创建 LICENSE 使用刚才使用的协议</li>
 </ol>
 <h2 id="2-发布"><a href="#2-发布" class="headerlink" title="2.发布"></a>2.发布</h2><ol>
@@ -905,7 +985,7 @@
 <li><strong>安装</strong></li>
 </ol>
 <p>添加指定包：<code>yarn [global] add package-name [--dev/-D] [--exact/-E] 全局安装 </code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn <span class="built_in">global</span> add nodemon</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">yarn global add nodemon<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>安装 package.json 中的所有依赖：<code>yarn install [--production/--prod]</code></p>
 <ol start="3">
@@ -944,7 +1024,10 @@
 <ul>
 <li>INFO：信息级别</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">...args</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 求和，没有考虑到字符串输入会导致拼接</span></span><br><span class="line">  <span class="keyword">return</span> args.reduce(<span class="function">(<span class="params">s, item</span>) =&gt;</span> s + item, <span class="number">0</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 求和，没有考虑到字符串输入会导致拼接</span>
+  <span class="token keyword">return</span> args<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">s<span class="token punctuation">,</span> item</span><span class="token punctuation">)</span> <span class="token operator">=></span> s <span class="token operator">+</span> item<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
 <li>LOW: 低级别</li>
@@ -969,7 +1052,10 @@
 <p>由于大部分脚手架工具都是以<code>create-xxx</code>的方式命名的，比如 react 的官方脚手架名称为<code>create-react-app</code></p>
 <p>因此，可以使用<code>yarn create</code>命令来一步完成安装和搭建</p>
 <p>例如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yarn create react-app my-app</span><br><span class="line"><span class="meta">#</span><span class="bash"> 等同于下面的两条命令</span></span><br><span class="line">yarn global add create-react-app</span><br><span class="line">create-react-app my-app</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">yarn create react-app my-app
+# 等同于下面的两条命令
+yarn global add create-react-app
+create-react-app my-app<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="其他包管理器"><a href="#其他包管理器" class="headerlink" title="其他包管理器"></a>其他包管理器</h1><h1 id="cnpm"><a href="#cnpm" class="headerlink" title="cnpm"></a>cnpm</h1><blockquote>
 <p>官网地址：<a target="_blank" rel="noopener" href="https://npm.taobao.org/">https://npm.taobao.org/</a></p>
@@ -977,7 +1063,7 @@
 <p>为解决国内用户连接 npm registry 缓慢的问题，淘宝搭建了自己的 registry，即淘宝 npm 镜像源</p>
 <p>过去，npm 没有提供修改 registry 的功能，因此，淘宝提供了一个 CLI 工具即 cnpm，它支持除了<code>npm publish</code>以外的所有命令，只不过连接的是淘宝镜像源</p>
 <p>如今，npm 已经支持修改 registry 了，可能 cnpm 唯一的作用就是和 npm 共存，即如果要使用官方源，则使用 npm，如果使用淘宝源，则使用 cnpm</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https:<span class="comment">//registry.npm.taobao.org</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">npm install <span class="token operator">-</span>g cnpm <span class="token operator">--</span>registry<span class="token operator">=</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>registry<span class="token punctuation">.</span>npm<span class="token punctuation">.</span>taobao<span class="token punctuation">.</span>org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h1 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h1><p>nvm 并非包管理器，它是用于管理多个 node 版本的工具</p>
 <p>在实际的开发中，可能会出现多个项目分别使用的是不同的 node 版本，在这种场景下，管理不同的 node 版本就显得尤为重要</p>
@@ -1000,7 +1086,7 @@
 <li>使用缓存</li>
 </ol>
 <h2 id="1-安装和使用"><a href="#1-安装和使用" class="headerlink" title="1.安装和使用"></a>1.安装和使用</h2><p>全局安装 pnpm</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pnpm</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm install -g pnpm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>之后在使用时，只需要把 npm 替换为 pnpm 即可</p>
 <p>如果要执行安装在本地的 CLI，可以使用 pnpx，它和 npx 的功能完全一样，唯一不同的是，在使用 pnpx 执行一个需要安装的命令时，会使用 pnpm 进行安装</p>
@@ -1035,7 +1121,7 @@
 <p>通过硬链接，不会产生额外的磁盘占用，并且，两个文件都能找到相同的磁盘内容</p>
 <p>硬链接的数量没有限制，可以为同一个文件产生多个硬链接</p>
 <p>windows Vista 操作系统开始，支持了创建硬链接的操作，在 cmd 中使用下面的命令可以创建硬链接</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mklink /h 链接名称 目标文件</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mklink &#x2F;h 链接名称 目标文件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>由于文件夹（目录）不存在文件内容，所以文件夹（目录）不能创建硬链接</p>
 <blockquote>
@@ -1046,7 +1132,8 @@
 </ol>
 <p>符号链接又称为软连接，如果为某个文件或文件夹 A 创建符号连接 B，则 B 指向 A。</p>
 <p>windows Vista 操作系统开始，支持了创建符号链接的操作，在 cmd 中使用下面的命令可以创建符号链接：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mklink /d 链接名称 目标文件</span><br><span class="line"><span class="meta">#</span><span class="bash"> /d表示创建的是目录的符号链接，不写则是文件的符号链接</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mklink &#x2F;d 链接名称 目标文件
+# &#x2F;d表示创建的是目录的符号链接，不写则是文件的符号链接<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p>早期的 windows 系统不支持符号链接，但它提供了一个工具 junction 来达到类似的功能</p>
@@ -1114,17 +1201,17 @@
             <div class="reprint__author">
                 <span class="reprint-meta" style="font-weight: bold;">
                     <i class="fas fa-user">
-                        Author:
+                        文章作者:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">John Doe</a>
+                    <a href="/about" rel="external nofollow noreferrer">Sunny</a>
                 </span>
             </div>
             <div class="reprint__type">
                 <span class="reprint-meta" style="font-weight: bold;">
                     <i class="fas fa-link">
-                        Link:
+                        文章链接:
                     </i>
                 </span>
                 <span class="reprint-info">
@@ -1134,14 +1221,14 @@
             <div class="reprint__notice">
                 <span class="reprint-meta" style="font-weight: bold;">
                     <i class="fas fa-copyright">
-                        Reprint policy:
+                        版权声明:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    All articles in this blog are used except for special statements
+                    本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    reprint policy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">John Doe</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Sunny</a>
                     !
                 </span>
             </div>
@@ -1150,7 +1237,7 @@
 
     <script async defer>
       document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
         M.toast({html: toastHTML})
       });
 
@@ -1341,7 +1428,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2020/05/29/webpack/">
                     <div class="card-image">
@@ -1365,7 +1452,7 @@
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            John Doe
+                            Sunny
                             
                         </span>
                     </div>
@@ -1385,7 +1472,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2020/05/10/modularization/">
@@ -1410,7 +1497,7 @@
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            John Doe
+                            Sunny
                             
                         </span>
                     </div>
@@ -1455,7 +1542,7 @@
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
     </div>
@@ -1617,7 +1704,7 @@
             
                 <span id="year">2019-2021</span>
             
-            <a href="/about" target="_blank">John Doe</a>
+            <a href="/about" target="_blank">Sunny</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -1628,13 +1715,13 @@
             
             
                 <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
                     <span id="busuanzi_value_site_pv" class="white-color"></span>
             </span>
             
             
                 <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
                     <span id="busuanzi_value_site_uv" class="white-color"></span>
             </span>
             
@@ -1687,8 +1774,8 @@
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
-            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
                    class="search-input">
         </div>
         <div id="searchResult"></div>

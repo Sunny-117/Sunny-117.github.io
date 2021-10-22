@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html lang="zh-CN">
 
 
 <head>
@@ -133,7 +133,7 @@
   
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
     </a>
   </li>
 </ul>
@@ -447,7 +447,7 @@
             <div class="post-info">
                 
                 <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
                     2020-01-09
                 </div>
                 
@@ -464,6 +464,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -472,7 +475,7 @@
                 <h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp</a></p>
 <h2 id="一-课前补充-字符串"><a href="#一-课前补充-字符串" class="headerlink" title="(一).课前补充 字符串"></a>(一).课前补充 字符串</h2><p>转义字符 “\”</p>
 <p>反斜杠会强制把后面的东西强制转换成文本</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abc\&quot;snj&quot;</span>;<span class="comment">//双引号里面打印出双引号</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;abc\&quot;snj&quot;;&#x2F;&#x2F;双引号里面打印出双引号<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <table>
 <thead>
@@ -492,52 +495,86 @@
 </tbody></table>
 <p>多行字符串 打印多行文本——编程上让字符串换行</p>
 <p>系统规定字符串不能多行展示</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="string">&quot;\</span></span><br><span class="line"><span class="string">&lt;div&gt;&lt;/div&gt;\</span></span><br><span class="line"><span class="string">&lt;span&gt;&lt;span&gt;\</span></span><br><span class="line"><span class="string">&quot;</span>;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var test &#x3D; &quot;\
+&lt;div&gt;&lt;&#x2F;div&gt;\
+&lt;span&gt;&lt;span&gt;\
+&quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="二-RegExp-正则表达式"><a href="#二-RegExp-正则表达式" class="headerlink" title="(二).RegExp 正则表达式"></a>(二).RegExp 正则表达式</h2><p>正则表达式的作用：匹配特殊字符或有特殊搭配原则的字符的最佳选择。</p>
 <p>用户输入用户名密码格式校验，例如：输入 XXYY 才符合</p>
 <p>API 字典 参考 w3school 参考正则表达式 pdf</p>
 <h2 id="1-两种创建方式"><a href="#1-两种创建方式" class="headerlink" title="1.两种创建方式"></a>1.两种创建方式</h2><p>1.直接量（推荐）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg =  <span class="regexp">/abc/</span>;   <span class="comment">//匹配这个字符串的规则叫abc</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abcd&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(str));<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D;  &#x2F;abc&#x2F;;   &#x2F;&#x2F;匹配这个字符串的规则叫abc
+var str &#x3D; &quot;abcd&quot;;
+console.log(reg.test(str));&#x2F;&#x2F;true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>2.new RegExp();</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abcd/m&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;m&quot;</span>);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;abcd&#x2F;m&quot;;
+var reg &#x3D; new RegExp(&quot;abc&quot;);
+var reg &#x3D; new RegExp(&quot;abc&quot;, &quot;m&quot;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>w3c 上面有这么一段话<br>返回值：一个新的 RegExp 对象，具有指定的模式和标志。如果参数 <em>pattern</em> 是正则表达式而不是字符串，那么 RegExp() 构造函数将用与指定的 RegExp 相同的模式和标志创建一个新的 RegExp 对象。如果不用 new 运算符，而将 RegExp() 作为函数调用，那么它的行为与用 new 运算符调用时一样，只是当 <em>pattern</em> 是正则表达式时，它只返回 _pattern_，而不再创建一个新的 RegExp 对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg1 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(reg);<span class="comment">//不同人</span></span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="built_in">RegExp</span>(reg);<span class="comment">//同一个人</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg1 &#x3D; new RegExp(reg);&#x2F;&#x2F;不同人
+var reg1 &#x3D; RegExp(reg);&#x2F;&#x2F;同一个人<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h2 id="2-三个属性"><a href="#2-三个属性" class="headerlink" title="2.三个属性"></a>2.三个属性</h2><p>(1) 忽视大小写</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg =  <span class="regexp">/abc/i</span>;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D;  &#x2F;abc&#x2F;i;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>(2) 全局匹配</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  reg = <span class="regexp">/ab/</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abababab&quot;</span>;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var  reg &#x3D; &#x2F;ab&#x2F;;
+var str &#x3D; &quot;abababab&quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>加上全局</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/ab/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abababab&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.match(reg));</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D; &#x2F;ab&#x2F;g;
+var str &#x3D; &quot;abababab&quot;;
+console.log(str.match(reg));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>(3) 执行多行匹配</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^a/g</span>;<span class="comment">//一行里面以a开头的a</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abcde\na&quot;</span>;</span><br><span class="line"><span class="comment">// console.log(str.match(reg));-----&gt;&quot;a&quot;依旧是一个a</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^a/gm</span>;<span class="comment">//加上m才具有多行匹配功能</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D; &#x2F;^a&#x2F;g;&#x2F;&#x2F;一行里面以a开头的a
+var str &#x3D; &quot;abcde\na&quot;;
+&#x2F;&#x2F; console.log(str.match(reg));-----&gt;&quot;a&quot;依旧是一个a
+var reg &#x3D; &#x2F;^a&#x2F;gm;&#x2F;&#x2F;加上m才具有多行匹配功能<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>两个方法：</p>
 <p>reg.test(); 有没有符合要求额片 段—-true/false<br>str.match(reg); 直观匹配</p>
 <p>方括号：表达式</p>
 <p>匹配三个数字相连接</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/[1234567890][1234567890][1234567890]/g</span>;<span class="comment">//一个方括号代表一位</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;123jbh987jkbjbnjik&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;str.match(reg)&quot;</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D; &#x2F;[1234567890][1234567890][1234567890]&#x2F;g;&#x2F;&#x2F;一个方括号代表一位
+var str &#x3D; &quot;123jbh987jkbjbnjik&quot;
+console.log(&quot;str.match(reg)&quot;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>演示</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/[ab][cd][d]/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abcd&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;str.match(reg)&quot;</span>)<span class="comment">//可以取bcd</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D; &#x2F;[ab][cd][d]&#x2F;g;
+var str &#x3D; &quot;abcd&quot;;
+console.log(&quot;str.match(reg)&quot;)&#x2F;&#x2F;可以取bcd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>演示：非</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/[^a][^b]/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;ab1cd&quot;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;str.match(reg)&quot;</span>)<span class="comment">//可以取b1 cd 返回的是数组</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D; &#x2F;[^a][^b]&#x2F;g;
+var str &#x3D; &quot;ab1cd&quot;
+console.log(&quot;str.match(reg)&quot;)&#x2F;&#x2F;可以取b1 cd 返回的是数组<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>括号</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(abc|bcd)/g</span>;<span class="comment">//匹配abc或者bcd</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;bcd&quot;</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abc&quot;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D; &#x2F;(abc|bcd)&#x2F;g;&#x2F;&#x2F;匹配abc或者bcd
+var str &#x3D; &quot;bcd&quot;
+var str &#x3D; &quot;abc&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>括号升级</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(abc|bcd)[0-9]/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;bcd&quot;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D; &#x2F;(abc|bcd)[0-9]&#x2F;g;
+var str &#x3D; &quot;bcd&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>元字符</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\w/g</span>;</span><br><span class="line"><span class="comment">//\w===[0-9A-z_]</span></span><br><span class="line"><span class="comment">//\W===[^\w]</span></span><br><span class="line"><span class="comment">//\d===[0-9]</span></span><br><span class="line"><span class="comment">//\D===[^\d]</span></span><br><span class="line"><span class="comment">//\s===[\t\n\r\v\f]</span></span><br><span class="line"><span class="comment">//\S===[^\s]</span></span><br><span class="line"><span class="comment">//\b===单词边界</span></span><br><span class="line"><span class="comment">//\B===非单词边界</span></span><br><span class="line"><span class="comment">// var reg = /\bcde/g;</span></span><br><span class="line"><span class="comment">// var str = &quot;abc ada ads&quot;;</span></span><br><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D; &#x2F;\w&#x2F;g;
+&#x2F;&#x2F;\w&#x3D;&#x3D;&#x3D;[0-9A-z_]
+&#x2F;&#x2F;\W&#x3D;&#x3D;&#x3D;[^\w]
+&#x2F;&#x2F;\d&#x3D;&#x3D;&#x3D;[0-9]
+&#x2F;&#x2F;\D&#x3D;&#x3D;&#x3D;[^\d]
+&#x2F;&#x2F;\s&#x3D;&#x3D;&#x3D;[\t\n\r\v\f]
+&#x2F;&#x2F;\S&#x3D;&#x3D;&#x3D;[^\s]
+&#x2F;&#x2F;\b&#x3D;&#x3D;&#x3D;单词边界
+&#x2F;&#x2F;\B&#x3D;&#x3D;&#x3D;非单词边界
+&#x2F;&#x2F; var reg &#x3D; &#x2F;\bcde&#x2F;g;
+&#x2F;&#x2F; var str &#x3D; &quot;abc ada ads&quot;;
+&#x2F;&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>unicode 编码</p>
 <p>一般是 6 位</p>
@@ -546,94 +583,250 @@
 <p>1.渲染模式</p>
 <p>在多年以前（IE6 诞生以前），各浏览器都处于各自比较封闭的发展中（基本没有兼容性可谈）。随着 WEB 的发展，兼容性问题的解决越来越显得迫切，随即，各浏览器厂商发布了按照标准模式（遵循各厂商制定的统一标准）工作的浏览器，比如 IE6 就是其中之一。但是考虑到以前建设的网站并不支持标准模式，所以各浏览器在加入标准模式的同时也保留了混杂模式（即以前那种未按照统一标准工作的模式，也叫怪异模式）。</p>
 <p>三种标准模式的写法</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1.<span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line">2.<span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//W3C//DTD HTML 4.01//EN&quot;</span> <span class="meta-string">&quot;http://www.w3.org/TR/html4/strict.dtd&quot;</span>&gt;</span></span><br><span class="line">3.<span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;</span> <span class="meta-string">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-HTML" data-language="HTML"><code class="language-HTML">1.&lt;!DOCTYPE html&gt;
+2.&lt;!DOCTYPE HTML PUBLIC &quot;-&#x2F;&#x2F;W3C&#x2F;&#x2F;DTD HTML 4.01&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;html4&#x2F;strict.dtd&quot;&gt;
+3.&lt;!DOCTYPE html PUBLIC &quot;-&#x2F;&#x2F;W3C&#x2F;&#x2F;DTD XHTML 1.0 Strict&#x2F;&#x2F;EN&quot; &quot;http:&#x2F;&#x2F;www.w3.org&#x2F;TR&#x2F;xhtml1&#x2F;DTD&#x2F;xhtml1-strict.dtd&quot;&gt;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>待穿插知识点</p>
 <p><label> for 属性 — &gt; js 中表示 htmlFor<br>属性映射 HTML 属性 映射到 Element 属性<br>讲事件的时候，阻止默认事件记得要拿 form 提交举例，阻止提交，也要拿 a 举例，组织跳转—&gt;同时引出 javascript:void(0);<br>img 图片预加载<br>byClassName 自己定义的写法还没写呢<br>Math.random() 和彩票程序 0-36 的随机数</label></p>
 <p>要打印多行字符串 打印多行文本——编程上让字符串换行</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">方法一：</span><br><span class="line"><span class="keyword">var</span> test = <span class="string">&quot;\</span></span><br><span class="line"><span class="string">            &lt;div&gt;&lt;/div&gt;\</span></span><br><span class="line"><span class="string">            &lt;span&gt;&lt;span&gt;\</span></span><br><span class="line"><span class="string">            &quot;</span>;<span class="comment">//将文本形式的回车转义掉，让他不再是回车</span></span><br><span class="line">方法二：</span><br><span class="line"><span class="keyword">var</span> test = <span class="string">&quot;&lt;div&gt;&lt;/div&gt;&quot;</span> +</span><br><span class="line">    		<span class="string">&quot;&lt;span&gt;&lt;/span&gt;&quot;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">方法一：
+var test &#x3D; &quot;\
+            &lt;div&gt;&lt;&#x2F;div&gt;\
+            &lt;span&gt;&lt;span&gt;\
+            &quot;;&#x2F;&#x2F;将文本形式的回车转义掉，让他不再是回车
+方法二：
+var test &#x3D; &quot;&lt;div&gt;&lt;&#x2F;div&gt;&quot; +
+    		&quot;&lt;span&gt;&lt;&#x2F;span&gt;&quot;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>两种创建方式</p>
 <p>1.直接量（个人推荐用直接量）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg =  <span class="regexp">/abc/</span>;   <span class="comment">//匹配这个字符串的规则叫abc</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abcd&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.test(str));<span class="comment">//test()正则表达式的方法</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D;  &#x2F;abc&#x2F;;   &#x2F;&#x2F;匹配这个字符串的规则叫abc
+var str &#x3D; &quot;abcd&quot;;
+console.log(reg.test(str));&#x2F;&#x2F;test()正则表达式的方法
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>2.new RegExp();</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abcd/m&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;m&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(reg);<span class="comment">//长得一样，实际不一样</span></span><br><span class="line"><span class="keyword">var</span> reg1 = <span class="built_in">RegExp</span>(reg);<span class="comment">//引用</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;abcd&#x2F;m&quot;;
+var reg &#x3D; new RegExp(&quot;abc&quot;);
+var reg &#x3D; new RegExp(&quot;abc&quot;, &quot;m&quot;);
+var reg1 &#x3D; new RegExp(reg);&#x2F;&#x2F;长得一样，实际不一样
+var reg1 &#x3D; RegExp(reg);&#x2F;&#x2F;引用
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>三个属性</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">i</span><br><span class="line"><span class="keyword">var</span> reg =  <span class="regexp">/abc/i</span>;  <span class="comment">//忽视大小写</span></span><br><span class="line">g</span><br><span class="line"><span class="keyword">var</span> reg =  <span class="regexp">/abc/g</span>; <span class="comment">//全局匹配</span></span><br><span class="line"><span class="comment">// demo：</span></span><br><span class="line"><span class="keyword">var</span>  reg = <span class="regexp">/ab/</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abababab&quot;</span>;<span class="comment">//只会匹配出来一个</span></span><br><span class="line"><span class="comment">// 加上全局匹配：</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/ab/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abababab&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.match(reg));</span><br><span class="line">m</span><br><span class="line"><span class="keyword">var</span> reg =  <span class="regexp">/abc/m</span>;  <span class="comment">//执行多行匹配</span></span><br><span class="line">demo</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^a/g</span>;<span class="comment">//以a开头的a</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abcde\na&quot;</span>;</span><br><span class="line"><span class="comment">// console.log(str.match(reg));-----&gt;&quot;a&quot;依旧是一个a，没有多行匹配功能</span></span><br><span class="line"><span class="comment">//一旦加上m------:</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^a/gm</span>;<span class="comment">//才具有多行匹配功能</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">i
+var reg &#x3D;  &#x2F;abc&#x2F;i;  &#x2F;&#x2F;忽视大小写
+g
+var reg &#x3D;  &#x2F;abc&#x2F;g; &#x2F;&#x2F;全局匹配
+&#x2F;&#x2F; demo：
+var  reg &#x3D; &#x2F;ab&#x2F;;
+var str &#x3D; &quot;abababab&quot;;&#x2F;&#x2F;只会匹配出来一个
+&#x2F;&#x2F; 加上全局匹配：
+var reg &#x3D; &#x2F;ab&#x2F;g;
+var str &#x3D; &quot;abababab&quot;;
+console.log(str.match(reg));
+m
+var reg &#x3D;  &#x2F;abc&#x2F;m;  &#x2F;&#x2F;执行多行匹配
+demo
+var reg &#x3D; &#x2F;^a&#x2F;g;&#x2F;&#x2F;以a开头的a
+var str &#x3D; &quot;abcde\na&quot;;
+&#x2F;&#x2F; console.log(str.match(reg));-----&gt;&quot;a&quot;依旧是一个a，没有多行匹配功能
+&#x2F;&#x2F;一旦加上m------:
+var reg &#x3D; &#x2F;^a&#x2F;gm;&#x2F;&#x2F;才具有多行匹配功能
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>reg.test();//有没有符合要求额片段—-true/false<br>str.match();//直观匹配</p>
 <p>方括号：表达式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 匹配三个数字相连接</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/[1234567890][1234567890][1234567890]/g</span>;<span class="comment">//一个方括号代表一位</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/[ab][cd][d]/g</span>;<span class="comment">//可以取bcd??????????????</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abcd&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/[0-9A-z][cd][d]/g</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/[^a][^b]/g</span>;<span class="comment">//非</span></span><br><span class="line">括号：</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(abc|bcd)/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;bcd&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(abc|bcd)[0-9]/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;bcd2&quot;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">&#x2F;&#x2F; 匹配三个数字相连接
+var reg &#x3D; &#x2F;[1234567890][1234567890][1234567890]&#x2F;g;&#x2F;&#x2F;一个方括号代表一位
+var reg &#x3D; &#x2F;[ab][cd][d]&#x2F;g;&#x2F;&#x2F;可以取bcd??????????????
+var str &#x3D; &quot;abcd&quot;;
+var reg &#x3D; &#x2F;[0-9A-z][cd][d]&#x2F;g;
+var reg &#x3D; &#x2F;[^a][^b]&#x2F;g;&#x2F;&#x2F;非
+括号：
+var reg &#x3D; &#x2F;(abc|bcd)&#x2F;g;
+var str &#x3D; &quot;bcd&quot;;
+
+var reg &#x3D; &#x2F;(abc|bcd)[0-9]&#x2F;g;
+var str &#x3D; &quot;bcd2&quot;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>量词</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">n+ : (<span class="number">1</span>, <span class="literal">Infinity</span>)</span><br><span class="line">n* : (<span class="number">0</span>, <span class="literal">Infinity</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\d*/g</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\w*/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line"></span><br><span class="line">n? : (<span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">n&#123;X&#125; : (X)</span><br><span class="line">n&#123;x,y&#125; : (x, y)</span><br><span class="line">n&#123;x, &#125; : 不写，默认<span class="literal">Infinity</span></span><br><span class="line"><span class="attr">n$</span> : 开头</span><br><span class="line">    ^n : 结尾</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">n+ : (1, Infinity)
+n* : (0, Infinity)
+
+var reg &#x3D; &#x2F;\d*&#x2F;g;
+var reg &#x3D; &#x2F;\w*&#x2F;g;
+var str &#x3D; &quot;abc&quot;;
+
+n? : (0, 1)
+n&#123;X&#125; : (X)
+n&#123;x,y&#125; : (x, y)
+n&#123;x, &#125; : 不写，默认Infinity
+n$ : 开头
+    ^n : 结尾
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>阿里巴巴： 写一个正则表达式，检验字符串首尾是否含有数字(首或尾)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^\d|\d$/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;123abc&quot;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D; &#x2F;^\d|\d$&#x2F;g;
+var str &#x3D; &quot;123abc&quot;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>// 写一个正则表达式，检验字符串首尾是否都含有数字</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/^\d[\s\S]*\d$/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;123abc&quot;</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D; &#x2F;^\d[\s\S]*\d$&#x2F;g;
+var str &#x3D; &quot;123abc&quot;;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>正则表达式对象属性</p>
 <p>global<br>ignoreCase<br>lastIndex<br>multiline<br>source</p>
 <p>正则表达式对象方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">reg.test();<span class="comment">//检索字符串中指定的值，返回true/false</span></span><br><span class="line">reg.compile();<span class="comment">//编译正则表达式</span></span><br><span class="line">reg.exec();<span class="comment">//检索字符串中指定的值，并确定位置</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/ab/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abababab&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex);</span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str));</span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex);</span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str));</span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex);</span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str));</span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex);</span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str));</span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex);</span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str));</span><br><span class="line"><span class="built_in">console</span>.log(reg.lastIndex);</span><br><span class="line"><span class="comment">//lastIndex可以手动更改值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果不加g</span></span><br><span class="line"><span class="comment">// lastIndex不移动，永远在第一位开始匹配</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">reg.test();&#x2F;&#x2F;检索字符串中指定的值，返回true&#x2F;false
+reg.compile();&#x2F;&#x2F;编译正则表达式
+reg.exec();&#x2F;&#x2F;检索字符串中指定的值，并确定位置
+var reg &#x3D; &#x2F;ab&#x2F;g;
+var str &#x3D; &quot;abababab&quot;;
+console.log(reg.lastIndex);
+console.log(reg.exec(str));
+console.log(reg.lastIndex);
+console.log(reg.exec(str));
+console.log(reg.lastIndex);
+console.log(reg.exec(str));
+console.log(reg.lastIndex);
+console.log(reg.exec(str));
+console.log(reg.lastIndex);
+console.log(reg.exec(str));
+console.log(reg.lastIndex);
+&#x2F;&#x2F;lastIndex可以手动更改值
+
+&#x2F;&#x2F; 如果不加g
+&#x2F;&#x2F; lastIndex不移动，永远在第一位开始匹配
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>小知识</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aaaa&quot;</span>;<span class="comment">//想匹配四个一样的东西</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(a)\1/g</span>;<span class="comment">//反向引用第一个子表达式中的匹配的内容</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(a)\1/g</span>;<span class="comment">//\w匹配出来的那个东西，后面要拷贝一个一样的</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(a)\1\1\1/g</span>;</span><br><span class="line"><span class="comment">// 变式：</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aabb&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1(\w)\2/g</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;aaaa&quot;;&#x2F;&#x2F;想匹配四个一样的东西
+var reg &#x3D; &#x2F;(a)\1&#x2F;g;&#x2F;&#x2F;反向引用第一个子表达式中的匹配的内容
+var reg &#x3D; &#x2F;(a)\1&#x2F;g;&#x2F;&#x2F;\w匹配出来的那个东西，后面要拷贝一个一样的
+var reg &#x3D; &#x2F;(a)\1\1\1&#x2F;g;
+&#x2F;&#x2F; 变式：
+var str &#x3D; &quot;aabb&quot;;
+var reg &#x3D; &#x2F;(\w)\1(\w)\2&#x2F;g;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>jQuery 会深入</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aabb&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1(\w)\2/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(reg.exec(str));</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;aabb&quot;;
+var reg &#x3D; &#x2F;(\w)\1(\w)\2&#x2F;g;
+console.log(reg.exec(str));
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>字符串方法：match</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aabb&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1(\w)\2/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.match(reg));</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;aabb&quot;;
+var reg &#x3D; &#x2F;(\w)\1(\w)\2&#x2F;g;
+console.log(str.match(reg));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>字符串方法：search</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abc&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1(\w)\2/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.search(reg));</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;abc&quot;;
+var reg &#x3D; &#x2F;(\w)\1(\w)\2&#x2F;g;
+console.log(str.search(reg));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>字符串方法：split</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aadnsndcbbccdsvwsnkdd&quot;</span>;<span class="comment">//双向重复拆分</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.split(reg));</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;aadnsndcbbccdsvwsnkdd&quot;;&#x2F;&#x2F;双向重复拆分
+var reg &#x3D; &#x2F;(\w)\1&#x2F;g;
+console.log(str.split(reg));<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>字符串方法：relpace</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aa&quot;</span>;</span><br><span class="line">str.replace(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>);<span class="comment">//ba  只能匹配一个</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/a/</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aa&quot;</span>;</span><br><span class="line">str.replace(reg, <span class="string">&quot;b&quot;</span>);<span class="comment">//ba 没写全局匹配</span></span><br><span class="line"></span><br><span class="line">demo:aabb---&gt;bbaa</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1(\w)\2/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aabb&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(reg, <span class="string">&quot;$2$2$1$1&quot;</span>));</span><br><span class="line">demo变式:xyxy---&gt;yxyx</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;aa&quot;;
+str.replace(&quot;a&quot;, &quot;b&quot;);&#x2F;&#x2F;ba  只能匹配一个
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1(\w)\2/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aabb&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(reg, <span class="function"><span class="keyword">function</span> (<span class="params">$, $<span class="number">1</span>, $<span class="number">2</span></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $<span class="number">2</span> + $<span class="number">2</span> + $<span class="number">1</span> + $<span class="number">1</span>;<span class="comment">//规则随便拼</span></span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">str.toUpperCase();<span class="comment">// 变大写方法</span></span><br><span class="line">str.toUpperCase().toLowerCase();<span class="comment">//变小写</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+var reg &#x3D; &#x2F;a&#x2F;;
+var str &#x3D; &quot;aa&quot;;
+str.replace(reg, &quot;b&quot;);&#x2F;&#x2F;ba 没写全局匹配
+
+demo:aabb---&gt;bbaa
+var reg &#x3D; &#x2F;(\w)\1(\w)\2&#x2F;g;
+var str &#x3D; &quot;aabb&quot;;
+console.log(str.replace(reg, &quot;$2$2$1$1&quot;));
+demo变式:xyxy---&gt;yxyx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D; &#x2F;(\w)\1(\w)\2&#x2F;g;
+var str &#x3D; &quot;aabb&quot;;
+console.log(str.replace(reg, function ($, $1, $2) &#123;
+
+    return $2 + $2 + $1 + $1;&#x2F;&#x2F;规则随便拼
+&#125;));
+
+str.toUpperCase();&#x2F;&#x2F; 变大写方法
+str.toUpperCase().toLowerCase();&#x2F;&#x2F;变小写
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>demo // the-first-name—&gt;theFirstName;</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/-(\w)/g</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;the-first-name&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(reg, <span class="function"><span class="keyword">function</span> (<span class="params">$, $<span class="number">1</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $<span class="number">1.</span>toUpperCase();</span><br><span class="line">&#125;))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var reg &#x3D; &#x2F;-(\w)&#x2F;g;
+var str &#x3D; &quot;the-first-name&quot;;
+console.log(str.replace(reg, function ($, $1) &#123;
+    return $1.toUpperCase();
+&#125;))
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>正向预查、正向断言</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;abaaaaaa&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/a(?=b)/g</span>;<span class="comment">//后面跟着b</span></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/a(?!b)/g</span>;<span class="comment">//后面不跟着b</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;abaaaaaa&quot;;
+var reg &#x3D; &#x2F;a(?&#x3D;b)&#x2F;g;&#x2F;&#x2F;后面跟着b
+var reg &#x3D; &#x2F;a(?!b)&#x2F;g;&#x2F;&#x2F;后面不跟着b
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>贪婪匹配&amp;&amp;非贪婪匹配</p>
 <p>正则表达式默认贪婪匹配</p>
 <p>变成非贪婪：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aaaa&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/a+?/g</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;aaaa&quot;;
+var reg &#x3D; &#x2F;a+?&#x2F;g;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aaaa&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/a&#123;1,3&#125;?/g</span>;<span class="comment">//有1不取23</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;aaaa&quot;;
+var reg &#x3D; &#x2F;a&#123;1,3&#125;?&#x2F;g;&#x2F;&#x2F;有1不取23
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aaaa&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/a??/g</span>;<span class="comment">//能取0不取1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;aaaa&quot;;
+var reg &#x3D; &#x2F;a??&#x2F;g;&#x2F;&#x2F;能取0不取1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aaaa&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/a*?/g</span>;<span class="comment">//能取0不取1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;aaaa&quot;;
+var reg &#x3D; &#x2F;a*?&#x2F;g;&#x2F;&#x2F;能取0不取1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>正则表达式专题文档</p>
 <p>匹配空格</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aaa aaa&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/ /g</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;aaa aaa&quot;;
+var reg &#x3D; &#x2F; &#x2F;g;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p><strong>精通计划</strong></p>
 <p>匹配\</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aa\\aaaa&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\\/g</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;aa\\aaaa&quot;;
+var reg &#x3D; &#x2F;\\&#x2F;g;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>匹配*+-?()</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aa?aaaa&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/\?/g</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;aa?aaaa&quot;;
+var reg &#x3D; &#x2F;\?&#x2F;g;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>高难——字符串去重</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aaaaaabbbbbbbbbbcccccccc&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(\w)\1*/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(reg, <span class="string">&quot;$1&quot;</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;aaaaaabbbbbbbbbbcccccccc&quot;;
+var reg &#x3D; &#x2F;(\w)\1*&#x2F;g;
+console.log(str.replace(reg, &quot;$1&quot;));
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>百度顶级难题</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;100000000&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/(?=(\B)(\d&#123;3&#125;)+$)/g</span>;</span><br><span class="line"><span class="built_in">console</span>.log(str.replace(reg,<span class="string">&quot;.&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//100.000.000</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-JS" data-language="JS"><code class="language-JS">var str &#x3D; &quot;100000000&quot;;
+var reg &#x3D; &#x2F;(?&#x3D;(\B)(\d&#123;3&#125;)+$)&#x2F;g;
+console.log(str.replace(reg,&quot;.&quot;));
+
+&#x2F;&#x2F;100.000.000
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -646,17 +839,17 @@
             <div class="reprint__author">
                 <span class="reprint-meta" style="font-weight: bold;">
                     <i class="fas fa-user">
-                        Author:
+                        文章作者:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">John Doe</a>
+                    <a href="/about" rel="external nofollow noreferrer">Sunny</a>
                 </span>
             </div>
             <div class="reprint__type">
                 <span class="reprint-meta" style="font-weight: bold;">
                     <i class="fas fa-link">
-                        Link:
+                        文章链接:
                     </i>
                 </span>
                 <span class="reprint-info">
@@ -666,14 +859,14 @@
             <div class="reprint__notice">
                 <span class="reprint-meta" style="font-weight: bold;">
                     <i class="fas fa-copyright">
-                        Reprint policy:
+                        版权声明:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    All articles in this blog are used except for special statements
+                    本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    reprint policy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">John Doe</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Sunny</a>
                     !
                 </span>
             </div>
@@ -682,7 +875,7 @@
 
     <script async defer>
       document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
         M.toast({html: toastHTML})
       });
 
@@ -873,7 +1066,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2020/01/20/JavaScript%E5%AE%8C%E7%BE%8E%E6%94%B6%E5%AE%98/">
                     <div class="card-image">
@@ -897,7 +1090,7 @@
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            John Doe
+                            Sunny
                             
                         </span>
                     </div>
@@ -917,7 +1110,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2020/01/05/DOM-BOM/">
@@ -942,7 +1135,7 @@
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
-                            John Doe
+                            Sunny
                             
                         </span>
                     </div>
@@ -987,7 +1180,7 @@
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
     </div>
@@ -1149,7 +1342,7 @@
             
                 <span id="year">2019-2021</span>
             
-            <a href="/about" target="_blank">John Doe</a>
+            <a href="/about" target="_blank">Sunny</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -1160,13 +1353,13 @@
             
             
                 <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
                     <span id="busuanzi_value_site_pv" class="white-color"></span>
             </span>
             
             
                 <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
                     <span id="busuanzi_value_site_uv" class="white-color"></span>
             </span>
             
@@ -1219,8 +1412,8 @@
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
-            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
                    class="search-input">
         </div>
         <div id="searchResult"></div>
