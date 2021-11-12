@@ -1117,7 +1117,7 @@ v-show始终会生成vnode，也就间接导致了始终生成dom。它只是控
 <li><strong>把选择的组件放到哪个位置？</strong></li>
 <li><strong>如何无刷新的切换组件？</strong></li>
 </ol>
-<h2 id="路由插件"><a href="#路由插件" class="headerlink" title="路由插件"></a>路由插件</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm i vue-router<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="路由插件"><a href="#路由插件" class="headerlink" title="路由插件"></a>路由插件</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> i vue-router<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>路由插件的使用</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
@@ -1179,9 +1179,9 @@ http:&#x2F;&#x2F;localhost:8081&#x2F;blog  --&gt; &#x2F;blog<span aria-hidden="t
 <ol start="3">
 <li>abstract：路由从内存中获取路径，改变路径也只是改动内存中的值。这种模式通常应用到非浏览器环境中。</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">内存： &#x2F;			--&gt;   &#x2F;
-内存： &#x2F;about	--&gt; &#x2F;about
-内存： &#x2F;blog	  --&gt; &#x2F;blog<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">内存： /			--<span class="token operator">></span>   /
+内存： /about	--<span class="token operator">></span> /about
+内存： /blog	  --<span class="token operator">></span> /blog<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p>每一次刷新页面</p>

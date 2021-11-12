@@ -587,22 +587,22 @@
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>配置好依赖后，使用下面的命令即可安装依赖</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">## 本地安装所有依赖 dependencies + devDependencies
-npm install
-npm i
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">## 本地安装所有依赖 dependencies + devDependencies</span>
+<span class="token function">npm</span> <span class="token function">install</span>
+<span class="token function">npm</span> i
 
-## 仅安装生产环境的依赖 dependencies
-npm install --production<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">## 仅安装生产环境的依赖 dependencies</span>
+<span class="token function">npm</span> <span class="token function">install</span> --production<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这样一来，代码移植就不是问题了，只需要移植源代码和 package.json 文件，不用移植 node_modules 目录，然后在移植之后通过命令即可重新恢复安装<br>为了更加方便的添加依赖，npm 支持在使用 install 命令时，加入一些额外的参数，用于将安装的依赖包保存到 package.json 文件中(自动地)<br>涉及的命令如下</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">## 安装依赖到生产环境
-npm i 包名
-npm i --save 包名
-npm i -S 包名
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">## 安装依赖到生产环境</span>
+<span class="token function">npm</span> i 包名
+<span class="token function">npm</span> i --save 包名
+<span class="token function">npm</span> i -S 包名
 
-## 安装依赖到开发环境
-npm i --save-dev 包名
-npm i -D 包名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">## 安装依赖到开发环境</span>
+<span class="token function">npm</span> i --save-dev 包名
+<span class="token function">npm</span> i -D 包名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>安装包之后 package.json 会自动生成：</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
@@ -634,8 +634,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> _ <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"lodash"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>它首先会从当前目录的以下位置寻找文件</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">node_modules&#x2F;lodash.js
-node_modules&#x2F;lodash&#x2F;入口文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">node_modules/lodash.js
+node_modules/lodash/入口文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>若当前目录没有这样的文件，则会回溯到上级目录按照同样的方式查找</p>
 <blockquote>
@@ -852,67 +852,67 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <h1 id="其他-npm-命令"><a href="#其他-npm-命令" class="headerlink" title="其他 npm 命令"></a>其他 npm 命令</h1><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><ol>
 <li>精确安装最新版本</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm install --save-exact 包名
-npm install -E 包名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> --save-exact 包名
+<span class="token function">npm</span> <span class="token function">install</span> -E 包名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <ol start="2">
 <li>安装指定版本</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm install 包名@版本号<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> 包名@版本号<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="2-查询"><a href="#2-查询" class="headerlink" title="2.查询"></a>2.查询</h2><ol>
 <li>查询包安装路径</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm root [-g]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> root <span class="token punctuation">[</span>-g<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="2">
 <li>查看包信息</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm view 包名 [子信息]
-## view aliases：v info show
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> view 包名 <span class="token punctuation">[</span>子信息<span class="token punctuation">]</span>
+<span class="token comment">## view aliases：v info show</span>
 
-依赖的包：npm v react dependencies
-版本：npm v react version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+依赖的包：npm <span class="token function">v</span> react dependencies
+版本：npm <span class="token function">v</span> react version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="3">
 <li>查询安装包</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm list [-g] [--depth&#x3D;依赖深度]&#x2F;&#x2F;0开始
-## list aliases: ls  la  ll<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> list <span class="token punctuation">[</span>-g<span class="token punctuation">]</span> <span class="token punctuation">[</span>--depth<span class="token operator">=</span>依赖深度<span class="token punctuation">]</span>//0开始
+<span class="token comment">## list aliases: ls  la  ll</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h2 id="3-更新"><a href="#3-更新" class="headerlink" title="3.更新"></a>3.更新</h2><ol>
 <li>检查有哪些包需要更新</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm outdated<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> outdated<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="2">
 <li>更新包</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm update [-g] [包名]
-## update 别名（aliases）：up、upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> update <span class="token punctuation">[</span>-g<span class="token punctuation">]</span> <span class="token punctuation">[</span>包名<span class="token punctuation">]</span>
+<span class="token comment">## update 别名（aliases）：up、upgrade</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>用 npm 安装最新版的 npm<br>npm i -g npm</p>
-<h2 id="4-卸载包"><a href="#4-卸载包" class="headerlink" title="4.卸载包"></a>4.卸载包</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm uninstall [-g] 包名
-## uninstall aliases: remove, rm, r, un, unlink<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="4-卸载包"><a href="#4-卸载包" class="headerlink" title="4.卸载包"></a>4.卸载包</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> uninstall <span class="token punctuation">[</span>-g<span class="token punctuation">]</span> 包名
+<span class="token comment">## uninstall aliases: remove, rm, r, un, unlink</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h2 id="5-npm-配置"><a href="#5-npm-配置" class="headerlink" title="5.npm 配置"></a>5.npm 配置</h2><p>npm 的配置会对其他命令产生或多或少的影响<br>安装好 npm 之后，最终会产生两个配置文件，一个是用户配置，一个是系统配置，当两个文件的配置项有冲突的时候，用户配置会覆盖系统配置<br>通常，我们不关心具体的配置文件，而只关心最终生效的配置<br>通过下面的命令可以查询目前生效的各种配置</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm config ls [-l] [--json]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> config <span class="token function">ls</span> <span class="token punctuation">[</span>-l<span class="token punctuation">]</span> <span class="token punctuation">[</span>--json<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>另外，可以通过下面的命令操作配置</p>
 <ol>
 <li>获取某个配置项</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm config get 配置项<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> config get 配置项<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="2">
 <li>设置某个配置项</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm config set 配置项&#x3D;值<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> config <span class="token builtin class-name">set</span> 配置项<span class="token operator">=</span>值<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="3">
 <li>移除某个配置项</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm config delete 配置项<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> config delete 配置项<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h1 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h1><h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1.准备工作"></a>1.准备工作</h2><ol>
 <li>移除淘宝镜像源</li>
@@ -927,7 +927,7 @@ npm install -E 包名<span aria-hidden="true" class="line-numbers-rows"><span></
 </ol>
 </li>
 <li>创建工程根目录</li>
-<li>使用 npm init 进行初始化（包名必须是小写） author：bnagbangji <a href="mailto:&#x31;&#x31;&#x31;&#x31;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;">&#x31;&#x31;&#x31;&#x31;&#64;&#113;&#113;&#x2e;&#x63;&#x6f;&#x6d;</a></li>
+<li>使用 npm init 进行初始化（包名必须是小写） author：bnagbangji <a href="mailto:&#49;&#49;&#49;&#x31;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;">&#49;&#49;&#49;&#x31;&#x40;&#x71;&#113;&#x2e;&#x63;&#111;&#x6d;</a></li>
 <li>创建 LICENSE 使用刚才使用的协议</li>
 </ol>
 <h2 id="2-发布"><a href="#2-发布" class="headerlink" title="2.发布"></a>2.发布</h2><ol>
@@ -1052,9 +1052,9 @@ npm install -E 包名<span aria-hidden="true" class="line-numbers-rows"><span></
 <p>由于大部分脚手架工具都是以<code>create-xxx</code>的方式命名的，比如 react 的官方脚手架名称为<code>create-react-app</code></p>
 <p>因此，可以使用<code>yarn create</code>命令来一步完成安装和搭建</p>
 <p>例如：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">yarn create react-app my-app
-# 等同于下面的两条命令
-yarn global add create-react-app
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">yarn</span> create react-app my-app
+<span class="token comment"># 等同于下面的两条命令</span>
+<span class="token function">yarn</span> global <span class="token function">add</span> create-react-app
 create-react-app my-app<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h1 id="其他包管理器"><a href="#其他包管理器" class="headerlink" title="其他包管理器"></a>其他包管理器</h1><h1 id="cnpm"><a href="#cnpm" class="headerlink" title="cnpm"></a>cnpm</h1><blockquote>
@@ -1086,7 +1086,7 @@ create-react-app my-app<span aria-hidden="true" class="line-numbers-rows"><span>
 <li>使用缓存</li>
 </ol>
 <h2 id="1-安装和使用"><a href="#1-安装和使用" class="headerlink" title="1.安装和使用"></a>1.安装和使用</h2><p>全局安装 pnpm</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm install -g pnpm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> -g <span class="token function">pnpm</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>之后在使用时，只需要把 npm 替换为 pnpm 即可</p>
 <p>如果要执行安装在本地的 CLI，可以使用 pnpx，它和 npx 的功能完全一样，唯一不同的是，在使用 pnpx 执行一个需要安装的命令时，会使用 pnpm 进行安装</p>
@@ -1121,7 +1121,7 @@ create-react-app my-app<span aria-hidden="true" class="line-numbers-rows"><span>
 <p>通过硬链接，不会产生额外的磁盘占用，并且，两个文件都能找到相同的磁盘内容</p>
 <p>硬链接的数量没有限制，可以为同一个文件产生多个硬链接</p>
 <p>windows Vista 操作系统开始，支持了创建硬链接的操作，在 cmd 中使用下面的命令可以创建硬链接</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mklink &#x2F;h 链接名称 目标文件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mklink /h 链接名称 目标文件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>由于文件夹（目录）不存在文件内容，所以文件夹（目录）不能创建硬链接</p>
 <blockquote>
@@ -1132,8 +1132,8 @@ create-react-app my-app<span aria-hidden="true" class="line-numbers-rows"><span>
 </ol>
 <p>符号链接又称为软连接，如果为某个文件或文件夹 A 创建符号连接 B，则 B 指向 A。</p>
 <p>windows Vista 操作系统开始，支持了创建符号链接的操作，在 cmd 中使用下面的命令可以创建符号链接：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mklink &#x2F;d 链接名称 目标文件
-# &#x2F;d表示创建的是目录的符号链接，不写则是文件的符号链接<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mklink /d 链接名称 目标文件
+<span class="token comment"># /d表示创建的是目录的符号链接，不写则是文件的符号链接</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p>早期的 windows 系统不支持符号链接，但它提供了一个工具 junction 来达到类似的功能</p>
