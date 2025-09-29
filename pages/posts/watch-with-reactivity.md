@@ -14,9 +14,9 @@ Here are some proof of concepts for using the reactivity system outside of Vue:
 
 - [`@vue/lit`](https://github.com/yyx990803/vue-lit) is a minimal framework wrote by Evan combining [`@vue/reactivity`](https://github.com/vuejs/core/tree/main/packages/reactivity) and [`lit-html`](https://lit-html.polymer-project.org/). It can run directly in browsers, with the almost identical experience as Vue Composition API.
 
-- [`ReactiVue`](https://github.com/antfu/reactivue) ports Vue Composition API to React. It also provides React's lifecycles in the Vue style.
+- [`ReactiVue`](https://github.com/Sunny-117/reactivue) ports Vue Composition API to React. It also provides React's lifecycles in the Vue style.
 
-Furthermore, you can even use Vue's libraries in them. Tested with [`VueUse`](https://github.com/antfu/vueuse) and [`pinia`](https://github.com/posva/pinia) in [`ReactiVue`](https://github.com/antfu/reactivue), and they just work. You can find [more details and examples here](https://github.com/antfu/reactivue#using-vues-libraries).
+Furthermore, you can even use Vue's libraries in them. Tested with [`VueUse`](https://github.com/Sunny-117/vueuse) and [`pinia`](https://github.com/posva/pinia) in [`ReactiVue`](https://github.com/Sunny-117/reactivue), and they just work. You can find [more details and examples here](https://github.com/Sunny-117/reactivue#using-vues-libraries).
 
 I am also experimenting more possibility of Vue reactivity in other scenarios, for example [reactive file system](https://twitter.com/antfu7/status/1305313110903779330?s=20), in a project called `tive`. It's currently a WIP private repo, but keep tuned, I get more to come 😉!
 
@@ -254,7 +254,7 @@ Since we don't have an instance, if you want to stop those effects, you have to 
 Thanks for reading! And hope it is helpful for you to understand and better play with the Vue reactivity system. If you want to have the `watch` outside of Vue, I made one for you (much more robust than the examples above for sure).
 
 <pre class="block language-bash">
-npm i <a href='https://github.com/antfu/vue-reactivity-watch' target='_blank'>@vue-reactivity/watch</a>
+npm i <a href='https://github.com/Sunny-117/vue-reactivity-watch' target='_blank'>@vue-reactivity/watch</a>
 </pre>
 
 Have fun ;P

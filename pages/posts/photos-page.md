@@ -11,7 +11,7 @@ During certain periods of my life, photography was my greatest passion, just as 
 
 I am not sure if anger or disappointment are the right words to describe my feelings. But I'm certainly lucky to be a frontend developer - so I can leverage my skills to build my own website and host my photos here.
 
-I [requested to download all my data from Instagram](https://accountscenter.instagram.com/info_and_permissions/dyi/) (it took roughly a day to process in my case), and imported them to the website. Thankfully, the downloaded data was relatively easy to process, with photos dating back to 2015. I use [`sharp`](https://github.com/lovell/sharp) to process the images and compress them with [this script](https://github.com/antfu/antfu.me/blob/main/scripts/photos-manage.ts). This automation helps me manage the photos without worrying about image sizes for hosting.
+I [requested to download all my data from Instagram](https://accountscenter.instagram.com/info_and_permissions/dyi/) (it took roughly a day to process in my case), and imported them to the website. Thankfully, the downloaded data was relatively easy to process, with photos dating back to 2015. I use [`sharp`](https://github.com/lovell/sharp) to process the images and compress them with [this script](https://github.com/Sunny-117/antfu.me/blob/main/scripts/photos-manage.ts). This automation helps me manage the photos without worrying about image sizes for hosting.
 
 Looking through these old photos brings back so many memories. While some may not meet my current standards - and I admittedly feel a bit embarrassed sharing them - they hold too many precious memories to leave behind. So I decided to keep most of them - hope you won't look too closely at them :P
 

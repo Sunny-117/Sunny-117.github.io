@@ -25,7 +25,6 @@ declare module 'vue-router/auto-routes' {
     '/chat': RouteRecordInfo<'/chat', '/chat', Record<never, never>, Record<never, never>>,
     '/chat-zh': RouteRecordInfo<'/chat-zh', '/chat-zh', Record<never, never>, Record<never, never>>,
     '/collective-sponsor-onetime': RouteRecordInfo<'/collective-sponsor-onetime', '/collective-sponsor-onetime', Record<never, never>, Record<never, never>>,
-    '/giving-talks': RouteRecordInfo<'/giving-talks', '/giving-talks', Record<never, never>, Record<never, never>>,
     '/media': RouteRecordInfo<'/media', '/media', Record<never, never>, Record<never, never>>,
     '/notes': RouteRecordInfo<'/notes', '/notes', Record<never, never>, Record<never, never>>,
     '/photos': RouteRecordInfo<'/photos', '/photos', Record<never, never>, Record<never, never>>,
@@ -75,7 +74,6 @@ declare module 'vue-router/auto-routes' {
     '/posts/new-ways-to-vue-taiwan-2021': RouteRecordInfo<'/posts/new-ways-to-vue-taiwan-2021', '/posts/new-ways-to-vue-taiwan-2021', Record<never, never>, Record<never, never>>,
     '/posts/now-and-future-devtools-nuxt-nation-2023': RouteRecordInfo<'/posts/now-and-future-devtools-nuxt-nation-2023', '/posts/now-and-future-devtools-nuxt-nation-2023', Record<never, never>, Record<never, never>>,
     '/posts/npm-binary-mirrors': RouteRecordInfo<'/posts/npm-binary-mirrors', '/posts/npm-binary-mirrors', Record<never, never>, Record<never, never>>,
-    '/posts/nuxt-cpuprofile': RouteRecordInfo<'/posts/nuxt-cpuprofile', '/posts/nuxt-cpuprofile', Record<never, never>, Record<never, never>>,
     '/posts/nuxt-devtools-v1': RouteRecordInfo<'/posts/nuxt-devtools-v1', '/posts/nuxt-devtools-v1', Record<never, never>, Record<never, never>>,
     '/posts/nuxt-dx-2023': RouteRecordInfo<'/posts/nuxt-dx-2023', '/posts/nuxt-dx-2023', Record<never, never>, Record<never, never>>,
     '/posts/nuxt-dx-strasbourg-2023': RouteRecordInfo<'/posts/nuxt-dx-strasbourg-2023', '/posts/nuxt-dx-strasbourg-2023', Record<never, never>, Record<never, never>>,
@@ -114,10 +112,8 @@ declare module 'vue-router/auto-routes' {
     '/posts/why-reproductions-are-required-zh': RouteRecordInfo<'/posts/why-reproductions-are-required-zh', '/posts/why-reproductions-are-required-zh', Record<never, never>, Record<never, never>>,
     '/posts/windicss-and-tailwind-jit': RouteRecordInfo<'/posts/windicss-and-tailwind-jit', '/posts/windicss-and-tailwind-jit', Record<never, never>, Record<never, never>>,
     '/projects': RouteRecordInfo<'/projects', '/projects', Record<never, never>, Record<never, never>>,
-    '/sponsors-list': RouteRecordInfo<'/sponsors-list', '/sponsors-list', Record<never, never>, Record<never, never>>,
     '/streams': RouteRecordInfo<'/streams', '/streams', Record<never, never>, Record<never, never>>,
     '/talks': RouteRecordInfo<'/talks', '/talks', Record<never, never>, Record<never, never>>,
-    '/use': RouteRecordInfo<'/use', '/use', Record<never, never>, Record<never, never>>,
   }
 
   /**
@@ -157,10 +153,6 @@ declare module 'vue-router/auto-routes' {
     }
     'pages/collective-sponsor-onetime.md': {
       routes: '/collective-sponsor-onetime'
-      views: never
-    }
-    'pages/giving-talks.md': {
-      routes: '/giving-talks'
       views: never
     }
     'pages/media.md': {
@@ -359,10 +351,6 @@ declare module 'vue-router/auto-routes' {
       routes: '/posts/npm-binary-mirrors'
       views: never
     }
-    'pages/posts/nuxt-cpuprofile.md': {
-      routes: '/posts/nuxt-cpuprofile'
-      views: never
-    }
     'pages/posts/nuxt-devtools-v1.md': {
       routes: '/posts/nuxt-devtools-v1'
       views: never
@@ -515,20 +503,12 @@ declare module 'vue-router/auto-routes' {
       routes: '/projects'
       views: never
     }
-    'pages/sponsors-list.md': {
-      routes: '/sponsors-list'
-      views: never
-    }
     'pages/streams.md': {
       routes: '/streams'
       views: never
     }
     'pages/talks.md': {
       routes: '/talks'
-      views: never
-    }
-    'pages/use.md': {
-      routes: '/use'
       views: never
     }
   }

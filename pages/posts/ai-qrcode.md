@@ -158,7 +158,7 @@ Here are the list of resources for easier reference.
 
 ### Tools
 
-- [Hardwares & Softwares I am using](https://github.com/antfu/use).
+- [Hardwares & Softwares I am using](https://github.com/Sunny-117/use).
 - [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) - Web UI for Stable Diffusion
   - [canisminor1990/sd-webui-kitchen-theme](https://github.com/canisminor1990/sd-webui-kitchen-theme) - Nice UI enhancement
 - [Mikubill/sd-webui-controlnet](https://github.com/Mikubill/sd-webui-controlnet) - ControlNet extension for the webui
