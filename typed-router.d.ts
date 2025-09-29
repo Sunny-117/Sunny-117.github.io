@@ -25,12 +25,10 @@ declare module 'vue-router/auto-routes' {
     '/chat': RouteRecordInfo<'/chat', '/chat', Record<never, never>, Record<never, never>>,
     '/chat-zh': RouteRecordInfo<'/chat-zh', '/chat-zh', Record<never, never>, Record<never, never>>,
     '/collective-sponsor-onetime': RouteRecordInfo<'/collective-sponsor-onetime', '/collective-sponsor-onetime', Record<never, never>, Record<never, never>>,
-    '/demos': RouteRecordInfo<'/demos', '/demos', Record<never, never>, Record<never, never>>,
     '/giving-talks': RouteRecordInfo<'/giving-talks', '/giving-talks', Record<never, never>, Record<never, never>>,
     '/media': RouteRecordInfo<'/media', '/media', Record<never, never>, Record<never, never>>,
     '/notes': RouteRecordInfo<'/notes', '/notes', Record<never, never>, Record<never, never>>,
     '/photos': RouteRecordInfo<'/photos', '/photos', Record<never, never>, Record<never, never>>,
-    '/podcasts': RouteRecordInfo<'/podcasts', '/podcasts', Record<never, never>, Record<never, never>>,
     '/posts/': RouteRecordInfo<'/posts/', '/posts', Record<never, never>, Record<never, never>>,
     '/posts/about-yak-shaving': RouteRecordInfo<'/posts/about-yak-shaving', '/posts/about-yak-shaving', Record<never, never>, Record<never, never>>,
     '/posts/about-yak-shaving-zh': RouteRecordInfo<'/posts/about-yak-shaving-zh', '/posts/about-yak-shaving-zh', Record<never, never>, Record<never, never>>,
@@ -101,7 +99,6 @@ declare module 'vue-router/auto-routes' {
     '/posts/shiki-magic-move': RouteRecordInfo<'/posts/shiki-magic-move', '/posts/shiki-magic-move', Record<never, never>, Record<never, never>>,
     '/posts/shikiji-twoslash': RouteRecordInfo<'/posts/shikiji-twoslash', '/posts/shikiji-twoslash', Record<never, never>, Record<never, never>>,
     '/posts/sliding-enter-animation': RouteRecordInfo<'/posts/sliding-enter-animation', '/posts/sliding-enter-animation', Record<never, never>, Record<never, never>>,
-    '/posts/sponsorship-forwarding': RouteRecordInfo<'/posts/sponsorship-forwarding', '/posts/sponsorship-forwarding', Record<never, never>, Record<never, never>>,
     '/posts/type-inferencing-in-vue': RouteRecordInfo<'/posts/type-inferencing-in-vue', '/posts/type-inferencing-in-vue', Record<never, never>, Record<never, never>>,
     '/posts/type-your-config': RouteRecordInfo<'/posts/type-your-config', '/posts/type-your-config', Record<never, never>, Record<never, never>>,
     '/posts/typed-provide-and-inject-in-vue': RouteRecordInfo<'/posts/typed-provide-and-inject-in-vue', '/posts/typed-provide-and-inject-in-vue', Record<never, never>, Record<never, never>>,
@@ -162,10 +159,6 @@ declare module 'vue-router/auto-routes' {
       routes: '/collective-sponsor-onetime'
       views: never
     }
-    'pages/demos.md': {
-      routes: '/demos'
-      views: never
-    }
     'pages/giving-talks.md': {
       routes: '/giving-talks'
       views: never
@@ -180,10 +173,6 @@ declare module 'vue-router/auto-routes' {
     }
     'pages/photos.md': {
       routes: '/photos'
-      views: never
-    }
-    'pages/podcasts.md': {
-      routes: '/podcasts'
       views: never
     }
     'pages/posts/index.md': {
@@ -464,10 +453,6 @@ declare module 'vue-router/auto-routes' {
     }
     'pages/posts/sliding-enter-animation.md': {
       routes: '/posts/sliding-enter-animation'
-      views: never
-    }
-    'pages/posts/sponsorship-forwarding.md': {
-      routes: '/posts/sponsorship-forwarding'
       views: never
     }
     'pages/posts/type-inferencing-in-vue.md': {
