@@ -21,18 +21,9 @@ declare module 'vue-router/auto-routes' {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
     '/[...404]': RouteRecordInfo<'/[...404]', '/:404(.*)', { 404: ParamValue<true> }, { 404: ParamValue<false> }>,
     '/bar': RouteRecordInfo<'/bar', '/bar', Record<never, never>, Record<never, never>>,
-    '/bookmarks': RouteRecordInfo<'/bookmarks', '/bookmarks', Record<never, never>, Record<never, never>>,
-    '/chat': RouteRecordInfo<'/chat', '/chat', Record<never, never>, Record<never, never>>,
-    '/chat-zh': RouteRecordInfo<'/chat-zh', '/chat-zh', Record<never, never>, Record<never, never>>,
-    '/collective-sponsor-onetime': RouteRecordInfo<'/collective-sponsor-onetime', '/collective-sponsor-onetime', Record<never, never>, Record<never, never>>,
-    '/media': RouteRecordInfo<'/media', '/media', Record<never, never>, Record<never, never>>,
-    '/notes': RouteRecordInfo<'/notes', '/notes', Record<never, never>, Record<never, never>>,
-    '/photos': RouteRecordInfo<'/photos', '/photos', Record<never, never>, Record<never, never>>,
     '/posts/': RouteRecordInfo<'/posts/', '/posts', Record<never, never>, Record<never, never>>,
     '/posts/mental-health-oss-zh': RouteRecordInfo<'/posts/mental-health-oss-zh', '/posts/mental-health-oss-zh', Record<never, never>, Record<never, never>>,
     '/projects': RouteRecordInfo<'/projects', '/projects', Record<never, never>, Record<never, never>>,
-    '/streams': RouteRecordInfo<'/streams', '/streams', Record<never, never>, Record<never, never>>,
-    '/talks': RouteRecordInfo<'/talks', '/talks', Record<never, never>, Record<never, never>>,
   }
 
   /**
@@ -58,34 +49,6 @@ declare module 'vue-router/auto-routes' {
       routes: '/bar'
       views: never
     }
-    'pages/bookmarks.md': {
-      routes: '/bookmarks'
-      views: never
-    }
-    'pages/chat.md': {
-      routes: '/chat'
-      views: never
-    }
-    'pages/chat-zh.md': {
-      routes: '/chat-zh'
-      views: never
-    }
-    'pages/collective-sponsor-onetime.md': {
-      routes: '/collective-sponsor-onetime'
-      views: never
-    }
-    'pages/media.md': {
-      routes: '/media'
-      views: never
-    }
-    'pages/notes.md': {
-      routes: '/notes'
-      views: never
-    }
-    'pages/photos.md': {
-      routes: '/photos'
-      views: never
-    }
     'pages/posts/index.md': {
       routes: '/posts/'
       views: never
@@ -96,14 +59,6 @@ declare module 'vue-router/auto-routes' {
     }
     'pages/projects.md': {
       routes: '/projects'
-      views: never
-    }
-    'pages/streams.md': {
-      routes: '/streams'
-      views: never
-    }
-    'pages/talks.md': {
-      routes: '/talks'
       views: never
     }
   }
